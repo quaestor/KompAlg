@@ -15,11 +15,16 @@
     \end{itemize}
     \item Induktionsvoraussetzung: Die Behauptung gelte für $n$.
     \item Induktionsschritt: $n \rightarrow n + 1$
-    \[ \Phi + 1 = \frac{3 + \sqrt{5}}{2} = \frac{6 + 2 \sqrt{5}}{4} 
-                = \frac{1 + s \sqrt{5} + 5}{4} = (\frac{1 + \sqrt{5}}{2})^2 
-                = \Phi^2 \]
-    analog gilt:
-    \[ \hat \Phi + 1 = \hat \Phi^2 \]
+    
+    Da $\Phi$ und $\hat \Phi$ die beiden Lösungen der quadratischen Gleichung
+    $x^2 - x - 1 = 0$ sind, gilt offensichtlich $\Phi + 1 = \Phi^2$ sowie
+    $\hat \Phi + 1 = \hat \Phi^2$.
+%    \[ \Phi + 1 = \frac{3 + \sqrt{5}}{2} = \frac{6 + 2 \sqrt{5}}{4} 
+%                = \frac{1 + s \sqrt{5} + 5}{4} = (\frac{1 + \sqrt{5}}{2})^2 
+%                = \Phi^2 \]
+%    analog gilt:
+%    \[ \hat \Phi + 1 = \hat \Phi^2 \]
+    
     Damit folgt:
     \[ f_{n+1} = f_n + f_{n-1} \overset{IV}{=} \frac{\Phi^n - \hat
        \Phi^n}{\sqrt{5}} + \frac{\Phi^{n-1} - \hat \Phi^{n-1}}{\sqrt{5}} = \]
@@ -42,6 +47,8 @@
     \end{itemize}
     \item Induktionsvoraussetzung: Die Annahme gelte für $n$.
     \item Induktionsschritt: $n \rightarrow n + 1$
+
+    Mit dem Zusammenhang $f_{n} = f_{n-1} + f_{n-2}$ für alle $n \geq 2$ folgt:
     \[ f_{n+2}f_n - f_{n+1}^2 = (f_{n+1} + f_n)(f_{n+1} - f_{n-1}) - f_{n+1}^2
                               = -f_{n+1}f_{n-1} + f_{n+1}f_n - f_nf_{n-1} = \]
     \[ = -1(f_{n+1}f_{n-1} - (f_{n+1}f_n - f_nf_{n-1})) 
