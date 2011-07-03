@@ -72,10 +72,30 @@
            \beta = 0     &\quad x_{n} \sim \alpha 2^{n}
           \end{split}
         \end{equation*}
-      \item \[ x_{n} = 2^{n-1} + \alpha n2^{n} + \beta n^{2}2^{n}\]
+      \item \[ x_{n} = \alpha2^{n} + \beta n2^{n} + n^{2}2^{n-1}\]
         \[ x_{n} \sim n^{2}2^{n-1} \]
       \item \[ x_{n} = \alpha 2^{n} + \beta n2^{n} + 3^{n+2} \]
         \[ x_{n} \sim 3^{n+2} \]
     \end{enumerate}
+  \end{subparagraph}
+  \begin{subparagraph}{Alternative Herangehensweise}
+	Alternativ lässt sich diese Aufgabe auch durch Überlegungen aus dem
+	Skript lösen:
+	\[ x_{n} = 4x_{n-1} - 4x_{n-2} + y_{n} \]
+	Ist die Folge $(y_n)_{n\geq 0}$ ebenfalls C-rekursiv, so genügt die
+	Folge $(x_n)_{n\geq 0}$ einer homogenen Rekursion mit
+	charakteristischem Polynom $\chi_x(z)\cdot\chi_y(z)$ (Skript S. 83).
+
+	Das charakteristische Polynom von $(y_n)_{n\geq 0}$ erhält man
+	beispielsweise über die Reihenent\-wicklung der $z$-Transformierten
+	\[ y(z) = \sum_{n\geq 0} y_n z^n = \frac{c(z)}{d(z)}. \]
+	Das Polynom $d(z)$ entspricht dabei dem \textit{Rekursionspolynom} zu
+	$(y_n)_{n\geq 0}$, aus dem sich unmittelbar das charakteristische
+	Polynom ableiten lässt.
+
+	Die resultierende Rekursion entspricht genau der homogenen Rekursion,
+	die in \textbf{2)} durch Elimination des inhomogenen Terms entstand.
+	Nachdem die Eigenwerte dieser Rekursion bestimmt sind verfährt man wie
+	bisher.
   \end{subparagraph}
 \end{paragraph}
