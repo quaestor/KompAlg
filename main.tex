@@ -1,0 +1,77 @@
+\documentclass[a4paper]{scrartcl}
+\pagestyle{plain}
+\usepackage{a4wide}
+\usepackage{tikz}
+\usepackage{enumerate}
+\usepackage{listings}
+\usepackage[colorlinks=true,linkcolor=black,a4paper=true]{hyperref}
+\usetikzlibrary{calc}
+\usetikzlibrary{matrix}
+\usetikzlibrary{automata}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{positioning}
+\usepackage{dsfont}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{ifxetex}
+\usepackage{color}
+\usepackage{scrpage2}
+
+\ifxetex
+ \usepackage[EU1]{fontenc}
+ \usepackage[no-math]{fontspec}
+ \usepackage{lmodern}
+ \usepackage{xunicode}
+ \defaultfontfeatures{Scale=MatchLowercase, Mapping=tex-text}
+ \setsansfont{Latin Modern Sans}
+ \setmonofont[SmallCapsFont={Latin Modern Mono Caps}]{Latin Modern Mono Light}
+\else
+ \usepackage[utf8]{inputenc}
+\fi
+
+% Pretty captions!
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{0.98\linewidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+
+% Pretty page headings!
+\pagestyle{scrheadings}
+\clearscrheadings
+\clearscrplain
+\setfootwidth{head}
+\ofoot{\pagemark}
+
+\makeatletter
+% Different format for headings
+\def\section{\@startsection{section}{1}%
+  \z@{.7\baselineskip\@plus\baselineskip}{.5\baselineskip}%
+  {\normalfont\large\scshape\centering}}
+% This does spacing around caption.
+\setlength{\abovecaptionskip}{0.5em}
+\setlength{\belowcaptionskip}{0.5em}
+% This does justification (left) of caption.
+\long\def\@makecaption#1#2{%
+  \vskip\abovecaptionskip
+  \sbox\@tempboxa{#2}%
+  \ifdim \wd\@tempboxa >\hsize
+    #2\par
+  \else
+    \global \@minipagefalse
+    \hb@xt@\hsize{\box\@tempboxa\hfill}%
+  \fi
+  \vskip\belowcaptionskip}
+\makeatother
+
+\title{Komplexität von Algorithmen\\
+       Sommersemester 2011 \\
+       \small Lösungen zu den Übungsaufgaben}
+\author{\LaTeX-Version von Christoph Rauch\\ FAU Erlangen-Nürnberg}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\include{kompalg_aufgabe4}
+\include{kompalg_aufgabe10}
+\include{kompalg_aufgabe16}
+\include{kompalg_aufgabe17}
+\end{document}

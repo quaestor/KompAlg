@@ -1,0 +1,81 @@
+\section*{Aufgabe 17 - inhomogene Rekursion}
+\addcontentsline{toc}{subsection}{Aufgabe 17 - inhomogene Rekursion}
+\[ x_{n} = 4x_{n-1} - 4x_{n-2} + f_{n} \quad (n\geq 2) \]
+\begin{paragraph}{1)}
+  Lösungen der homogenen Rekursion
+  \[ x_{n} = 4x_{n-1} - 4x_{n-2} \]
+  \[ \chi(z) = z^{2} - 4z + 4 = (z - 2)^{2} \]
+  also der doppelte Eigenwert
+  \[ \lambda = 2 \]
+  und damit
+  \[ x_{n} = \alpha_{1}2^{n} + \alpha_{2}n2^{n} \]
+
+  \[ \textnormal{für } \alpha_{2} = 0 \Rightarrow x_{n} \sim \alpha_{1}2^{n} \]
+  \[ \textnormal{für } \alpha_{2} \not= 0 \Rightarrow x_{n} \sim \alpha_{2}n2^{n} \]
+  \[ \textnormal{für } x_{0} = x_{1} = 0 \Rightarrow x_{n} = 0 \]
+\end{paragraph}
+\begin{paragraph}{2)}
+  spezielle Lösungen der inhomogenen Rekursion
+  \begin{enumerate}[(a)]
+    \item $f = (1, 1, \dots) = (1^{n})_{n\geq 0}$
+      \[ x_{n} = 4x_{n-1} - 4x_{n-2} + 1^{n} \]
+      \[ x_{n+1} = 4x_{n} - 4x_{n-1} + 1^{n+1} \]
+
+      \[ x_{n} - x_{n+1} = 4x_{n-1} - 4x_{n-2} - 4x_{n} + 4x_{n-1} \]
+      \[ -x_{n+1} = -5x_{n} + 8x_{n-1} - 4x_{n-2} \]
+      \[ x_{n} = 5x_{n-1} - 8x_{n-2} + 4x_{n-3} \]
+
+      \[ \chi(z) = z^{3} - 5z^{2} + 8z -  4 = (z - 1) (z - 2)^{2} \]
+      \[ \lambda_{1} = 1, \lambda_{2} = 2 \textnormal{ (doppelter EW)} \]
+
+      \[ x_{n} = \alpha_{1}1^{n} + \alpha_{2}2^{n} + \alpha_{3}n2^{n} \]
+      Durch einsetzen in die ursprüngliche Rekursion erhält man $\alpha_{1} =
+      1$ und damit
+      \[ x_{n} = 1 + \alpha 2^{n} + \beta n2^{n} \]
+    \item $f = (1, 2, 4, \dots) = (2^{n})_{n\geq 0}$
+      \[ x_{n} = 4x_{n-1} - 4x_{n-2} + 2^{n} \]
+      \[ x_{n+1} = 4x_{n} - 4x_{n-1} + 2^{n+1} \]
+
+      \[ 2x_{n} - x_{n+1} = 8x_{n-1} - 8x_{n-2} - 4x_{n} + 4x_{n-1} \]
+      \[ -x_{n+1} = -6x_{n} + 12x_{n-1} - 8x_{n-2} \]
+      \[ x_{n} = 6x_{n-1} - 12x_{n-2} + 8x_{n-3} \]
+
+      \[ \chi(z) = z^{3} - 6z^{2} + 12z - 8 = (z - 2)^{3} \]
+      \[ \lambda = 2, \textnormal{ (dreifacher EW)} \]
+
+      \[ x_{n} = \alpha_{1}2^{n} + \alpha_{2}n2^{n} + \alpha_{3}n^{2}2^{n} \]
+      Durch einsetzen in die ursprüngliche Rekursion erhält man wiederum
+      $\alpha_{3} = \frac{1}{2}$ und damit
+      \[ x_{n} = \alpha_1 2^{n} + \alpha_2 n2^{n} + n^{2}2^{n-1}\]
+    \item $f = (1, 3, 9, \dots) = (3^{n})_{n\geq 0}$
+      \[ x_{n} = 4x_{n-1} - 4x_{n-2} + 3^{n} \]
+      \[ x_{n+1} = 4x_{n} - 4x_{n-1} + 3^{n+1} \]
+
+      \[ 3x_{n} - x_{n+1} = 12x_{n-1} - 12x_{n-2} - 4x_{n} + 4x_{n-1} \]
+      \[ -x_{n+1} = -7x_{n} + 16x_{n-1} - 12x_{n-2} \]
+      \[ x_{n} = 7x_{n-1} - 16x_{n-2} + 12x_{n-3} \]
+
+      \[ \chi(z) = z^{3} - 7z^{2} + 16z - 12 = (z - 3) (z - 2)^{2} \]
+      \[ \lambda_{1} = 3, \lambda_{2} = 2, \textnormal{ (doppelter EW)} \]
+
+      \[ x_{n} = \alpha_{1}3^{n} + \alpha_{2}2^{n} + \alpha_{3}n2^{n} \]
+      Erneut wird durch Einsetzen in die ursprüngliche Rekursionsgleichung der
+      Parameter $\alpha_{1} = 9$ eliminiert und es ergibt sich
+      \[ x_{n} = \alpha 2^{n} + \beta n2^{n} + 3^{n+2} \]
+  \end{enumerate}
+  \begin{subparagraph}{Asymptotisches Verhalten}
+    \begin{enumerate}[(a)]
+      \item \[ x_{n} = 1 + \alpha 2^{n} + \beta n2^{n} \]
+        \begin{equation*}
+          \begin{split}
+           \beta \not= 0 &\quad x_{n} \sim \beta n2^{n} \\
+           \beta = 0     &\quad x_{n} \sim \alpha 2^{n}
+          \end{split}
+        \end{equation*}
+      \item \[ x_{n} = 2^{n-1} + \alpha n2^{n} + \beta n^{2}2^{n}\]
+        \[ x_{n} \sim n^{2}2^{n-1} \]
+      \item \[ x_{n} = \alpha 2^{n} + \beta n2^{n} + 3^{n+2} \]
+        \[ x_{n} \sim 3^{n+2} \]
+    \end{enumerate}
+  \end{subparagraph}
+\end{paragraph}

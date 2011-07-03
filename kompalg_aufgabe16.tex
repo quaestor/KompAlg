@@ -1,0 +1,154 @@
+\section*{Aufgabe 16 - Devil's Staircase}
+\addcontentsline{toc}{subsection}{Aufgabe 16 - Devil's Staircase}
+\begin{paragraph}{1)}
+  $A_{k,p}$ für $k = 2, 3, 4$:
+
+  \begin{minipage}{0.4\linewidth}
+  \[ A_{2,p} = \begin{bmatrix} 1-p & p \\ 1 & 0 \end{bmatrix} \]
+  \[ \chi_{2,p}(z) = \begin{vmatrix} 1-p-z & p \\ 1 & -z \end{vmatrix} \]
+  \[ = z^{2} + pz - z - p \]
+  \[ \lambda_{1} = 1, \quad \lambda_{2}= -p \] \\[0.5em]
+  \[ A_{3,p} = \begin{bmatrix} 1-p & p & 0 \\
+                               1-p & 0 & p \\
+                                 1 & 0 & 0 \end{bmatrix} \]
+  \[ \chi_{3,p}(z) = \begin{vmatrix} 1-p-z & p  & 0 \\
+                                       1-p   & -z & p \\
+                                       1     & 0  & -z \end{vmatrix} \]
+  \[ = -z^{3} - pz^{2} + z^{2} - p^{2}z + pz + p^{2} = \]
+  \[ = -(z - 1) (z^{2} + pz + p^{2}) \]
+  \[ \lambda_{1}= 1 \]
+  \[ \lambda_{2}= -\frac{p}{2}(1 - i\sqrt{3}), \quad
+     \lambda_{3}= -\frac{p}{2}(1 + i\sqrt{3}) \]
+  \end{minipage}\hfill\begin{minipage}{0.5\linewidth}
+  \[ A_{4,p} = \begin{bmatrix} 1-p & p & 0 & 0 \\
+                               1-p & 0 & p & 0 \\
+                               1-p & 0 & 0 & p \\
+                                 1 & 0 & 0 & 0 \end{bmatrix} \]
+  \[ \chi_{4,p}(z) = det(A_{4,p} - z\cdot \mathds{1}) = \]
+  \[                 -\begin{vmatrix} p & 0 & 0 \\
+                                     -z & p & 0 \\
+                                      0 &-z & p \end{vmatrix} 
+                     -\begin{vmatrix} 1-p-z & p & 0 \\
+                                      1-p & -z & p \\
+                                      1-p & 0 & -z \end{vmatrix} \]
+  \[ = z^4 + pz^3 - z^3 + p^{2}z^2 - pz^2 + p^{3}z - p^{2}z -p^3 \]
+  \[ = (z - 1) (z^{3} + pz^{2} + p^{2}z + p^{3}) \]
+  \[ \lambda_{1}= 1, \]
+  \[ \lambda_{2}= -p, \quad
+     \lambda_{3}= ip, \quad
+     \lambda_{4}= -ip\]
+  \end{minipage}
+\end{paragraph}
+\begin{paragraph}{2)}
+  \[ A_{k,p} = \left[a_{ij}\right]_{1\leq i,j\leq k}, \]
+  \[ a_{ij} = \begin{cases} 1-p &\text{wenn~} j = 0, i \not= k \\
+                              1 &\text{wenn~} j = 0, i = k \\
+                              p &\text{wenn~} j = i + 1 \\
+                              0 &\text{sonst} \end{cases} \]
+
+  zu zeigen: \[ \chi_{k,p}(z) = (z - 1) \frac{z^{k}-p^{k}}{z-p}(-1)^{k} \]
+  Beweis durch Induktion über $k$.
+  \begin{itemize}
+    \item Induktionsanfang: $k = 2$
+      \[ \chi_{z,p}(z) = (z - 1) \frac{z^{2}-p^{2}}{z-p} = (z-1)(z+p) \]
+    \item Induktionsvoraussetzung: Die Behauptung gelte für $k$.
+    \item Induktionsschritt: $k \rightarrow k + 1$
+    
+      Sei $B_{k} = \left[b_{ij}\right]_{1\leq i,j\leq k},$
+      \[ b_{ij} = \begin{cases} 1-p &\text{wenn~} j = 0, i = k \\
+                                0 &\text{sonst} \end{cases} \]
+      \begin{tikzpicture}[every node/.style={anchor=west},decoration=brace]
+      \matrix (m) [matrix of math nodes,nodes in empty cells] {
+      \chi_{B_{k}}(z) &= \begin{vmatrix}
+                            1-p-z & p  & 0  & \cdots & 0 \\
+                            1-p & -z & p  & \ddots & \vdots \\
+                            \vdots & 0  & \ddots & \ddots & 0 \\
+                            \vdots & \vdots  & \ddots & \ddots & p \\
+                            1-p & 0 & \cdots & 0 & -z
+                           \end{vmatrix} = \\
+                        &= \begin{vmatrix}
+                            1-p-z & p  & 0  & \cdots & 0 \\
+                            1-p & -z & p  & \ddots & \vdots \\
+                            \vdots & 0  & \ddots & \ddots & 0 \\
+                            1-p & \vdots  & \ddots & \ddots & p \\
+                            1 & 0 & \cdots & 0 & -z
+                           \end{vmatrix} + \begin{vmatrix}
+                            1-p-z & p  & 0  & \cdots & 0 \\
+                            1-p & -z & p  & \ddots & \vdots \\
+                            \vdots & 0  & \ddots & \ddots & 0 \\
+                            1-p & \vdots  & \ddots & -z & p \\
+                            -p & 0 & \cdots & 0 & 0
+                           \end{vmatrix} = \\};
+        \begin{scope}[draw=black!70,color=black!70]
+        \node[below delimiter=\{,minimum height=0pt,minimum width=3.6cm,text
+            width=3.5cm] at (10.85, 1.5) {bidiagonale Unterdeterminante mit dem
+            Wert $\prod_{i=1}^{k-1} a_{ii}$, wobei $a_{ii}$ die
+            Diagonalelemente sind};
+        \end{scope};
+        \draw[fill=blue,opacity=0.2] (10.8, -2.52) rectangle (14.53, -0.1);
+      \end{tikzpicture}
+      \[ \chi_{A_{k}}(z) + (-1)^{k+1}(-p)(p^{k-1})
+         = \chi_{A_{k}}(z) + (-1)^{k}p^{k} \]
+
+      \begin{equation*}
+        \begin{split}
+          \chi_{A_{k+1}}(z) &= -z \chi_{B_{k}}(z) - (-1)^{k+1}p^{k} = \\
+          &= -z(\chi_{A_{k}}(z) + (-1)^{k}p^{k}) - (-1)^{k+1}p^{k} = \\
+          &= -z \chi_{A_{k}}(z) + (-1)^{k+1}zp^{k} - (-1)^{k+1}p^{k} = \\
+          &= -z \chi_{A_{k}}(z) + (-1)^{k+1}p^{k} (z - 1) = \\
+          &\overset{IV}{=} -z ((-1)^{k}(z - 1)\frac{z^{k}-p^{k}}{z-p}) +
+          (-1)^{k+1}p^{k}(z-1) = \\
+          &= (-1)^{k+1} (z-1) (z \frac{z^{k}-p^{k}}{z-p} + p^{k}) \\
+          &= (-1)^{k+1} (z-1) \frac{z^{k+1}-zp^{k}+zp^{k}-p^{k+1}}{z-p} = \\
+          &= (-1)^{k+1} (z-1) \frac{z^{k+1}-p^{k+1}}{z-p} 
+        \end{split}
+      \end{equation*}
+      Damit ist die Behauptung bewiesen, da das Vorzeichen des
+      charakteristischen Polynoms keine Rolle spielt.
+
+      Alternative Lösung (Addition der zweiten auf die erste Spalte):
+      \[ \chi_{A_{k}}(z) = \begin{vmatrix}
+                            1-p-z & p  & 0  & \cdots & \cdots & 0 \\
+                            1-p & -z & p  & \ddots & \ddots & \vdots \\
+                            \vdots & 0  & \ddots & \ddots & \ddots & \vdots \\
+                            \vdots & \vdots  & \ddots & \ddots & \ddots & 0 \\
+                            1-p & \vdots  & \ddots & \ddots & \ddots & p \\
+                            1 & 0 & \cdots & \cdots & 0 & -z
+                           \end{vmatrix}
+                        = \begin{vmatrix}
+                            1-z & p  & 0  & \cdots & \cdots & 0 \\
+                            1-p-z & -z & p  & \ddots & \ddots &\vdots \\
+                            1-p & 0  & \ddots & \ddots & \ddots & \vdots \\
+                            \vdots & \vdots  & \ddots & \ddots & \ddots & 0 \\
+                            1-p & \vdots  & \ddots & \ddots & \ddots & p \\
+                            1 & 0 & \cdots & \cdots & 0 & -z
+                           \end{vmatrix} = \]
+      \[ = -(z - 1) (-z)^{k-1} - p\chi_{A_{k-1}}(z-1) = \]
+      \[ = (-1)^{k}(z - 1) z^{k-1} - p(z-1)\frac{z^{k-1}-p^{k-1}}{z-p} = \]
+      \[ = (-1)^{k}(z - 1) \left( z^{k-1} + \frac{pz^{k-1}-p^{k}}{z-p} \right) = \]
+      \[ = (-1)^{k}(z - 1) \left( \frac{z^{k}-z^{k-1}p}{z-p} +
+                          \frac{pz^{k-1}-p^{k}}{z-p} \right) = \]
+      \[ = (-1)^{k}(z - 1) \left( \frac{z^{k}-p^{k}}{z-p} \right) \]
+
+      $\chi_{A_{k,p}}$ hat die Nullstellen $1$ und die $k$-ten Wurzeln von
+      $p^{k}$, welche in der komplexen Ebene auf einem Kreis mit Radius $p$ um
+      den Ursprung liegen.
+  \end{itemize}
+\end{paragraph}
+\begin{paragraph}{3)}
+  Da man die Stufe $S_{l}$ nur auf direktem Weg in $l - 1$ Schritten erreichen
+  kann, muss man, um beim $n$-ten Schritt auf Stufe $S_{l}$ zu landen, zuvor
+  nach $n - l - 1$ Schritten auf der ersten Stufe gestanden haben.
+
+  Die Wahrscheinlichkeit ergibt sich aus dem Produkt der
+  Einzelwahrscheinlichkeiten.
+\end{paragraph}
+\begin{paragraph}{4)}
+   \[ \lim_{n\rightarrow\infty} P_{1}^{(n)} = a, \quad
+      1 = \sum_{i=1}^{k} a \cdot p^{l-1} = \sum_{i=0}^{k-1} a \cdot p^{l} = a
+   \sum_{l=0}^{k-1} p^{l} = a \frac{1-p^{k}}{1-p} \]
+  \[ \Rightarrow a = \frac{1-p}{1-p^{k}} \]
+
+  \[ (\pi_{i})_{1\leq l\leq k} = (a\cdot p^{l-1})_{1\leq l\leq k} 
+     = (\frac{p^{l-1} - p^{l}}{1-p^{k}})_{1\leq l\leq k} \]
+\end{paragraph}
