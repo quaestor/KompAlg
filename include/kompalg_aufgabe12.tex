@@ -1,45 +1,44 @@
-
-
 \section*{Aufgabe 12 - Eine weitere schnell Transformation}
 \addcontentsline{toc}{subsection}{Aufgabe 12 - Eine weitere schnell Transformation}
 
+\newcommand{\H}{\mathcal{H}}
 \begin{enumerate}[1.]
 	\item Z.z.: Für alle $k \geq 0$ gilt:
-	\[ \mathcal{H}_{k+1} = \begin{bmatrix}
-		\mathcal{H}_k & \mathcal{H}_k \\
-		\mathcal{H}_k & -\mathcal{H}_k \\
+	\[ \H_{k+1} = \begin{bmatrix}
+		\H_k & \H_k \\
+		\H_k & -\H_k \\
 	\end{bmatrix} \]
-	Mit der Definition, dass die Werte der Hadamardmatrix $\mathcal{H}_k$ über die Indizierung 
+	Mit der Definition, dass die Werte der Hadamardmatrix $\H_k$ über die Indizierung 
 	mittels der Binärvektoren der Länge $k$ bestimmt sind
-	\[ \left( \mathcal{H}_k \right)_{u,v} = (-1)^{u \cdot v} \text{ für } u,v \in \mathds{B}^k \]
-	lässt sich die Matrix $\mathcal{H}_{k+1}$ schreiben als:
-	\[ \mathcal{H}_{k+1} = \begin{bmatrix}
+	\[ \left( \H_k \right)_{u,v} = (-1)^{u \cdot v} \text{ für } u,v \in \mathds{B}^k \]
+	lässt sich die Matrix $\H_{k+1}$ schreiben als:
+	\[ \H_{k+1} = \begin{bmatrix}
 		A & B \\
 		C & D \\
 	\end{bmatrix} \]
 	Mit
-	\[ \left( A \right)_{0u,0v} = \left( B\right)_{1u, 0v} = \left( C \right)_{0u, 1v} = (-1)^{u \cdot v} = \mathcal{H}_k \]
-	\[ \left( D \right)_{1u, 1v} = (-1)^{1 + u \cdot v} = - \mathcal{H}_k \]
+	\[ \left( A \right)_{0u,0v} = \left( B\right)_{1u, 0v} = \left( C \right)_{0u, 1v} = (-1)^{u \cdot v} = \H_k \]
+	\[ \left( D \right)_{1u, 1v} = (-1)^{1 + u \cdot v} = - \H_k \]
 	stimmt also die Behauptung.
 
 	\item Nach Augabenteil (1) gilt für jedes $k \geq 0$
-	\[ \mathcal{H}_{k+1} = \begin{bmatrix}
-		\mathcal{H}_k & \mathcal{H}_k \\
-		\mathcal{H}_k & -\mathcal{H}_k \\
+	\[ \H_{k+1} = \begin{bmatrix}
+		\H_k & \H_k \\
+		\H_k & -\H_k \\
 	\end{bmatrix} \]
-	Damit kann man die Multiplikation von $\mathcal{H}_k \cdot a$ rekursiv so definieren:
-	\[ \mathcal{H}_k \cdot a = 
+	Damit kann man die Multiplikation von $\H_k \cdot a$ rekursiv so definieren:
+	\[ \H_k \cdot a = 
 	\begin{bmatrix}
-		\mathcal{H}_{k-1} & \mathcal{H}_{k-1} \\
-		\mathcal{H}_{k-1} & -\mathcal{H}_{k-1} \\
+		\H_{k-1} & \H_{k-1} \\
+		\H_{k-1} & -\H_{k-1} \\
 	\end{bmatrix} \cdot
 	\begin{bmatrix}
 		a_{upper} \\
 		a_{lower}
 	\end{bmatrix} = 
 	\begin{bmatrix}
-		\mathcal{H}_{k-1} \cdot (a_{upper} + a_{lower}) \\
-		\mathcal{H}_{k-1} \cdot (a_{upper} - a_{lower}) \\
+		\H_{k-1} \cdot (a_{upper} + a_{lower}) \\
+		\H_{k-1} \cdot (a_{upper} - a_{lower}) \\
 	\end{bmatrix} \]
 	Durch Aufspaltung des Vectors $a$ in obere und untere Hälfte erhält man so eine Rekursion für den Aufwand
 	in Abhängigkeit des Parameters $k$, es müssen in jedem Rekursionsschritt zwei Matrixmultiplikationen der halben
@@ -47,7 +46,7 @@
 	\[ T(k) = 2 T(k-1) + 2^k \]
 	Induktion:
 
-	I.A.: $k = 0$: $\mathcal{H}_k = [1] \Rightarrow \mathcal{H}_0 \cdot a = a$ benötigt $0 = 0 2^0 = k 2^k$ Operationen.
+	I.A.: $k = 0$: $\H_k = [1] \Rightarrow \H_0 \cdot a = a$ benötigt $0 = 0 2^0 = k 2^k$ Operationen.
 
 	I.V.: Für ein $k$ gelte $T(k) = k 2^k$
 
@@ -58,23 +57,23 @@
 	\item Induktion:
 	
 	I.A.: Für $k = 0$ gilt 
-	\[ \mathcal{H}_0^2 = \mathcal{H}_0 \cdot \mathcal{H}_0^T = [1] = 2^0 \mathds{1}_0\]
+	\[ \H_0^2 = \H_0 \cdot \H_0^T = [1] = 2^0 \mathds{1}_0\]
 	
 	I.V.: Für ein $k$ gelte:
-	\[ \mathcal{H}_k^2 = \mathcal{H}_k \cdot \mathcal{H}_k^T = 2^k \mathds{1}_k \]
+	\[ \H_k^2 = \H_k \cdot \H_k^T = 2^k \mathds{1}_k \]
 
 	I.S.: $k \rightarrow k + 1$, mit Aufgabenteil (1):
 	\begin{eqnarray*}
-	\mathcal{H}_{k+1}^2 &=& \mathcal{H}_{k+1} \cdot \mathcal{H}_{k+1}^T = \begin{bmatrix}
-		\mathcal{H}_k & \mathcal{H}_k \\
-		\mathcal{H}_k & -\mathcal{H}_k \\
+	\H_{k+1}^2 &=& \H_{k+1} \cdot \H_{k+1}^T = \begin{bmatrix}
+		\H_k & \H_k \\
+		\H_k & -\H_k \\
 	\end{bmatrix} \cdot \begin{bmatrix}
-		\mathcal{H}_k & \mathcal{H}_k \\
-		\mathcal{H}_k & -\mathcal{H}_k \\
+		\H_k & \H_k \\
+		\H_k & -\H_k \\
 	\end{bmatrix}^T =
 	\begin{bmatrix}
-		2 \mathcal{H}_k^2 & 0 \\
-		0 & 2 \mathcal{H}_k^2
+		2 \H_k^2 & 0 \\
+		0 & 2 \H_k^2
 	\end{bmatrix} \overset{I.V.}{=} \\
 	&=&
 	\begin{bmatrix}
