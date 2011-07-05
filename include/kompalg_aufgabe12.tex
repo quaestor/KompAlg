@@ -1,5 +1,5 @@
-\section*{Aufgabe 12 - Eine weitere schnell Transformation}
-\addcontentsline{toc}{subsection}{Aufgabe 12 - Eine weitere schnell Transformation}
+\section*{Aufgabe 12 - Eine weitere schnelle Transformation}
+\addcontentsline{toc}{subsection}{Aufgabe 12 - Eine weitere schnelle Transformation}
 
 \renewcommand{\H}{\mathcal{H}}
 \begin{enumerate}[1.]
@@ -21,7 +21,7 @@
 	\[ \left( D \right)_{1u, 1v} = (-1)^{1 + u \cdot v} = - \H_k \]
 	stimmt also die Behauptung.
 
-	\item Nach Augabenteil (1) gilt für jedes $k \geq 0$
+	\item Nach Aufgabenteil (1) gilt für jedes $k \geq 0$
 	\[ \H_{k+1} = \begin{bmatrix}
 		\H_k & \H_k \\
 		\H_k & -\H_k \\
@@ -40,47 +40,52 @@
 		\H_{k-1} \cdot (a_{upper} + a_{lower}) \\
 		\H_{k-1} \cdot (a_{upper} - a_{lower}) \\
 	\end{bmatrix} \]
-	Durch Aufspaltung des Vectors $a$ in obere und untere Hälfte erhält man so eine Rekursion für den Aufwand
-	in Abhängigkeit des Parameters $k$, es müssen in jedem Rekursionsschritt zwei Matrixmultiplikationen der halben
-	Größe (i.e. $k-1$) sowie $2^k$ Additionen/Subtraktionen durchgeführt werden:
+	Durch Aufspaltung des Vektors $a$ in obere und untere Hälfte erhält man
+	eine Rekursion für den Aufwand in Abhängigkeit des Parameters $k$. Es
+	müssen in jedem Rekursionsschritt zwei Matrixmultiplikationen der
+	halben Größe (i.e. $T(k-1)$) sowie $2^k$ Additionen/Subtraktionen
+	durchgeführt werden:
 	\[ T(k) = 2 T(k-1) + 2^k \]
 	Induktion:
 
-	I.A.: $k = 0$: $\H_k = [1] \Rightarrow \H_0 \cdot a = a$ benötigt $0 = 0 2^0 = k 2^k$ Operationen.
+	\begin{itemize}
+		\item \textit{I.A.}: $k = 0$: $\H_k = [1] \Rightarrow \H_0 \cdot a = a$ benötigt $0 = 0 2^0 = k 2^k$ Operationen.
 
-	I.V.: Für ein $k$ gelte $T(k) = k 2^k$
+		\item \textit{I.V.}: Für ein $k$ gelte $T(k) = k 2^k$
 
-	I.S.: $k \rightarrow k + 1$:
-	\[T(k+1) = 2 T(k) + 2^{k+1} \overset{I.V.}{=} 2 k 2^k + 2^{k+1} = 2 (k+1)2^k = (k+1) 2^{k+1} \]
-	Somit erfüllt der Algorithmus die gewünschte Bedingung.
+		\item \textit{I.S.}: $k \rightarrow k + 1$:
+			\[T(k+1) = 2 T(k) + 2^{k+1} \overset{I.V.}{=} 2 k 2^k + 2^{k+1} = 2 (k+1)2^k = (k+1) 2^{k+1} \]
+			Somit erfüllt der Algorithmus die gewünschte Bedingung.
+	\end{itemize}
 
 	\item Induktion:
+		\begin{itemize}
+			\item \textit{I.A.}: Für $k = 0$ gilt 
+				\[ \H_0^2 = \H_0 \cdot \H_0^T = [1] = 2^0 \mathds{1}_0\]
 	
-	I.A.: Für $k = 0$ gilt 
-	\[ \H_0^2 = \H_0 \cdot \H_0^T = [1] = 2^0 \mathds{1}_0\]
-	
-	I.V.: Für ein $k$ gelte:
-	\[ \H_k^2 = \H_k \cdot \H_k^T = 2^k \mathds{1}_k \]
+			\item \textit{I.V.}: Für ein $k$ gelte:
+				\[ \H_k^2 = \H_k \cdot \H_k^T = 2^k \mathds{1}_k \]
 
-	I.S.: $k \rightarrow k + 1$, mit Aufgabenteil (1):
-	\begin{eqnarray*}
-	\H_{k+1}^2 &=& \H_{k+1} \cdot \H_{k+1}^T = \begin{bmatrix}
-		\H_k & \H_k \\
-		\H_k & -\H_k \\
-	\end{bmatrix} \cdot \begin{bmatrix}
-		\H_k & \H_k \\
-		\H_k & -\H_k \\
-	\end{bmatrix}^T =
-	\begin{bmatrix}
-		2 \H_k^2 & 0 \\
-		0 & 2 \H_k^2
-	\end{bmatrix} \overset{I.V.}{=} \\
-	&=&
-	\begin{bmatrix}
-		2^{k+1} \mathds{1}_k & 0 \\
-		0 & 2^{k+1}\mathds{1}_k \\
-	\end{bmatrix} = 
-	2^{k+1} \mathds{1}_{k+1}
-	\end{eqnarray*}
+			\item \textit{I.S.}: $k \rightarrow k + 1$, mit Aufgabenteil (1):
+				\begin{eqnarray*}
+					\H_{k+1}^2 &=& \H_{k+1} \cdot \H_{k+1}^T = \begin{bmatrix}
+						\H_k & \H_k \\
+						\H_k & -\H_k \\
+					\end{bmatrix} \cdot \begin{bmatrix}
+						\H_k & \H_k \\
+						\H_k & -\H_k \\
+					\end{bmatrix}^T =
+					\begin{bmatrix}
+						2 \H_k^2 & 0 \\
+						0 & 2 \H_k^2
+					\end{bmatrix} \overset{I.V.}{=} \\
+					&=&
+					\begin{bmatrix}
+						2^{k+1} \mathds{1}_k & 0 \\
+						0 & 2^{k+1}\mathds{1}_k \\
+					\end{bmatrix} = 
+					2^{k+1} \mathds{1}_{k+1}
+				\end{eqnarray*}
+		\end{itemize}
 
 \end{enumerate}

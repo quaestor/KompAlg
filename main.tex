@@ -4,7 +4,7 @@
 \usepackage{tikz}
 \usepackage{enumerate}
 \usepackage{listings}
-\usepackage[colorlinks=true,linkcolor=black,a4paper=true]{hyperref}
+\usepackage[colorlinks=true,linkcolor=black]{hyperref}
 \usetikzlibrary{calc}
 \usetikzlibrary{matrix}
 \usetikzlibrary{automata}
@@ -12,27 +12,18 @@
 \usetikzlibrary{positioning}
 \usepackage{dsfont}
 \usepackage{amsmath, amsthm, amssymb}
-\usepackage{ifxetex}
 \usepackage{color}
 \usepackage{scrpage2}
-
-\ifxetex
- \usepackage[EU1]{fontenc}
- \usepackage[no-math]{fontspec}
- \usepackage{lmodern}
- \usepackage{xunicode}
- \defaultfontfeatures{Scale=MatchLowercase, Mapping=tex-text}
- \setsansfont{Latin Modern Sans}
- \setmonofont[SmallCapsFont={Latin Modern Mono Caps}]{Latin Modern Mono Light}
-\else
- \usepackage[utf8]{inputenc}
-\fi
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[math,light]{anttor}
+\usepackage{textcomp}
 
 % Pretty captions!
-\usepackage{caption}
-\DeclareCaptionFont{white}{\color{white}}
-\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{0.98\linewidth}{#1#2#3}}}
-\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+%\usepackage{caption}
+%\DeclareCaptionFont{white}{\color{white}}
+%\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{0.98\linewidth}{#1#2#3}}}
+%\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
 
 % Pretty page headings!
 \pagestyle{scrheadings}
@@ -61,6 +52,12 @@
   \fi
   \vskip\belowcaptionskip}
 \makeatother
+
+\setkomafont{title}{\normalfont}
+\setkomafont{pageheadfoot}{\normalfont}
+\setkomafont{pagenumber}{\normalfont\scshape}
+\setkomafont{disposition}{\normalfont\bfseries\scshape}
+%\renewcommand{\labelenumi}{\oldstylenums{\arabic{enumi}}
 
 \title{Komplexität von Algorithmen\\
        Sommersemester 2011 \\
