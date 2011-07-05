@@ -3,12 +3,13 @@
 
 \renewcommand{\H}{\mathcal{H}}
 \begin{enumerate}[1.]
+% aufgabe 1.
 	\item Z.z.: Für alle $k \geq 0$ gilt:
 	\[ \H_{k+1} = \begin{bmatrix}
 		\H_k & \H_k \\
 		\H_k & -\H_k \\
 	\end{bmatrix} \]
-	Mit der Definition, dass die Werte der Hadamardmatrix $\H_k$ über die Indizierung 
+	Mit der Definition, dass die Einträge der Hadamardmatrix $\H_k$ über die Indizierung
 	mittels der Binärvektoren der Länge $k$ bestimmt sind
 	\[ \left( \H_k \right)_{u,v} = (-1)^{u \cdot v} \text{ für } u,v \in \mathds{B}^k \]
 	lässt sich die Matrix $\H_{k+1}$ schreiben als:
@@ -21,6 +22,7 @@
 	\[ \left( D \right)_{1u, 1v} = (-1)^{1 + u \cdot v} = - \H_k \]
 	stimmt also die Behauptung.
 
+% aufgabe 2.
 	\item Nach Aufgabenteil (1) gilt für jedes $k \geq 0$
 	\[ \H_{k+1} = \begin{bmatrix}
 		\H_k & \H_k \\
@@ -58,6 +60,7 @@
 			Somit erfüllt der Algorithmus die gewünschte Bedingung.
 	\end{itemize}
 
+% aufgabe 3.
 	\item Induktion:
 		\begin{itemize}
 			\item \textit{I.A.}: Für $k = 0$ gilt 
@@ -87,5 +90,4 @@
 					2^{k+1} \mathds{1}_{k+1}
 				\end{eqnarray*}
 		\end{itemize}
-
 \end{enumerate}
