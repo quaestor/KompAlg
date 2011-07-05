@@ -1,11 +1,12 @@
 \section*{Aufgabe 10 - Eingeschränkte Kanäle}
 \addcontentsline{toc}{subsection}{Aufgabe 10 - Eingeschränkte Kanäle}
-\begin{paragraph}{1)}
+\begin{enumerate}
+\item
   \[ L = (0 | 10)^* (1 | \epsilon) \]
   \[ K = (0 | 1 | \epsilon) (0 (0^+) | 1 (1^+))^* (0 | 1 | \epsilon) \]
   \[ M = (\epsilon | 1 | 11) ((0 | 00) (1 | 11))^* (\epsilon | 0 | 00) \]
-\end{paragraph}
-\begin{paragraph}{2)}
+
+\item
   Die umrahmten Bereiche enthalten die Zustände, die für
   das asymptotische Wachstum relevant sind.
 
@@ -61,8 +62,8 @@
                    edge              node [swap]            {1} (FM)
               (FM) edge [loop right] node                   {0,1} ();
   \end{tikzpicture}
-\end{paragraph}
-\begin{paragraph}{3)} Trellis-Diagramme:
+
+\item Trellis-Diagramme:
 \begin{itemize}
   \item $L$:
 
@@ -173,12 +174,12 @@
     \end{tikzpicture}
     \[ (m_n)_{0\leq n\leq8} = (1, 2, 4, 6, 10, 16, 26, 42, 68) \]
 \end{itemize}
-\end{paragraph}
-\begin{paragraph}{4)}
+
+\item
   Die Folgen $(l_n), (k_n)$ und $(m_n)$ wachsen wie die Fibonacci-Zahlen.
   $(l_n)$ ist sogar genau die Fibonacci-Folge.
-\end{paragraph}
-\begin{paragraph}{5)}
+
+\item
   \[ L = \begin{bmatrix} 1 & 1 \\ 1 & 0 \end{bmatrix} \]
   \[ \chi_L(\lambda) = det(L - \lambda \cdot \mathds{1}) 
      = (1 - \lambda)(-\lambda) - 1 = \lambda^2 - \lambda - 1 \]
@@ -233,3 +234,4 @@
   Der dem Betrag nach größte Eigenwert ist jeweils der goldene Schnitt $\Phi =
   \frac{1 + \sqrt{5}}{2}$.
 \end{paragraph}
+\end{enumerate}

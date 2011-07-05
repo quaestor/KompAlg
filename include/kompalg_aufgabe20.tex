@@ -1,0 +1,35 @@
+\section*{Aufgabe 20 - Aufwand für banale und schnelle Exponentiation im
+Vergleich}
+\addcontentsline{toc}{subsection}{Aufgabe 20 - Aufwand für banale und schnelle
+Exponentiation im Vergleich}
+\begin{paragraph}{1)}
+  Aus dem Algorithmus ergeben sich die rekursiven Folgen
+  \[ y_{n}^{'} = (a^{2^{n}})_{n\geq 0} \]
+  \[ x_{n}^{'} = x_{n-1}^{'} \cdot y_{n}^{'}, \quad x_{0}^{'} = a \]
+  Betrachtet man nur die Exponenten so erhält man
+  \[ y_{n} = 2y_{n-1} \]
+  \[ x_{n} = x_{n-1} + y_{n} \]
+  mit den Rekursionspolynomen
+  \[ a_{y}(z) = 1 - 2z \]
+  sowie
+  \[ a_{x}(z) = 1 - z \]
+  für den homogenen Teil von $(x_{n})$.
+  Laut Skript $3.11$ (Kap. $3$) genügt die inhomogene Rekursion $(x_{n})$ einer
+  homogenen Rekursion mit Rekursionspolynom
+  \[ a_{x}(z) \cdot a_{y}(z) = (1 - z)(1 - 2z) = 1 - 3z + 2z^{2} \]
+  und zugehörigem charakteristischen Polynom
+  \[ \chi(z)= z^{2} - 3z + 2 = (z - 1)(z - 2) \]
+  also den Eigenwerten $1$ und $2$; in Exponentialsummendarstellung:
+  \[ x_{n} = \alpha_{1}1^{n} + \alpha_{2}2^{n} \]
+  Mit den aus dem Algorithmus offensichtlichen Startwerten für die Exponenten
+  ergeben sich folgende Werte für $\alpha_{1}$ und $\alpha_{2}$:
+  \[ \begin{pmatrix} \alpha_{1} & \alpha_{2} \end{pmatrix} 
+     \begin{pmatrix} 1 & 1 \\ 1 & 2 \end{pmatrix} = \begin{pmatrix} 0 & 1
+     \end{pmatrix} \]
+  \[ \alpha_{1} = -1, \quad \alpha_{2} = 1 \]
+  \[ \Rightarrow x_{n} = 2^{n} - 1 \]
+  Der Algorithmus ist also korrekt und berechnet $a^{2^{n}-1}$
+\end{paragraph}
+\begin{paragraph}{2)}
+
+\end{paragraph}
