@@ -6,10 +6,12 @@
 \makeatother
 
 \begin{enumerate}[1.]
-	\item $DFT_N$ ist definiert als $DFT_N = [ \omega_N^{i \cdot j} ]_{i,j}$, wobei $\omega_N = e^{\imath \frac{2 \pi}{N}}$ 
-	die erste $N$-te Einheitswurzel ist. Da $\omega_N^{i \cdot j} = \omega_N^{j \cdot i}$ ist $DFT_N = DFT_N^T$ eine symmetrische
-	Matrix. Somit ist
-	
+	\item Die Transformationsmatrix der diskreten Fouriertransformation der
+		Länge $N$ ist definiert als $DFT_N = [ \omega_N^{i \cdot j}
+		]_{i,j}$, wobei $\omega_N = e^{\imath \frac{2 \pi}{N}}$ die
+		erste $N$-te Einheitswurzel ist. Da $\omega_N^{i \cdot j} =
+		\omega_N^{j \cdot i}$ ist $DFT_N = DFT_N^T$ eine symmetrische
+		Matrix. Somit ist
 	\begin{eqnarray*}
 	DFT_N^2 & = & DFT_N \cdot DTF_N^T = DFT_N \cdot DFT_N = 
 	\begin{bmatrix}
@@ -25,8 +27,7 @@
 	\end{bmatrix}_{i,l} = 
 	[ N \cdot \chi_{i + j \equiv 0 \mod N} ]_{i,j}
 	\end{eqnarray*}
-
-	Die Matrix $DFT_N^2$ schaut damit folgendermaßen aus:
+	Die Matrix $DFT_N^2$ sieht damit folgendermaßen aus:
 	\[ DFT_N^2 = 
 	\begin{bmatrix}
 		N      & 0      & \cdots & \cdots & \cdots & 0      \\
