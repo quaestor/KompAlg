@@ -9,8 +9,9 @@
 	\item $DFT_N$ ist definiert als $DFT_N = [ \omega_N^{i \cdot j} ]_{i,j}$, wobei $\omega_N = e^{\imath \frac{2 \pi}{N}}$ 
 	die erste $N$-te Einheitswurzel ist. Da $\omega_N^{i \cdot j} = \omega_N^{j \cdot i}$ ist $DFT_N = DFT_N^T$ eine symmetrische
 	Matrix. Somit ist
+	
 	\begin{eqnarray*}
-	DFT_N^2 &=& DFT_N \cdot DTF_N^T = DFT_N \cdot DFT_N = 
+	DFT_N^2 & = & DFT_N \cdot DTF_N^T = DFT_N \cdot DFT_N = 
 	\begin{bmatrix}
 		\sum_{l = 0}^{N-1} \left(\omega_N^{i \cdot l} \cdot \omega_N^{l \cdot j}\right)
 	\end{bmatrix}_{i, j} =
@@ -24,6 +25,7 @@
 	\end{bmatrix}_{i,l} = 
 	[ N \cdot \chi_{i + j \equiv 0 \mod N} ]_{i,j}
 	\end{eqnarray*}
+
 	Die Matrix $DFT_N^2$ schaut damit folgendermaßen aus:
 	\[ DFT_N^2 = 
 	\begin{bmatrix}
@@ -34,4 +36,60 @@
 		0      & \Ddots & N      & \Ddots &        & \vdots \\
 		0      & N      & 0      & \cdots & \cdots & 0      \\
 	\end{bmatrix} \]
+	Bei der Berechnung einer Determinante führt die Vertauschung zweier Zeilen
+	(eine elementare Zeilenumformung) zu einem Wechsel des Vorzeichens und das
+	Herausziehen eines Faktors $N$ aus {\bf einer} Zeile zu einem Faktor $N$ für die
+	resultierende Determinate; damit erhält man für ein $n \in \mathbb{N}$:
+	\begin{eqnarray*}
+	\det DFT_N^2 &=& \det \left( \begin{bmatrix}
+		N      & 0      & \cdots & \cdots & \cdots & 0      \\
+		0      &        &        &        & \Ddots & N      \\
+		\vdots &        &        & \Ddots & \Ddots & 0      \\
+		\vdots &        & \Ddots & \Ddots & \Ddots & \vdots \\
+		0      & \Ddots & N      & \Ddots &        & \vdots \\
+		0      & N      & 0      & \cdots & \cdots & 0      \\
+	\end{bmatrix} \right) = \\
+	& = & (-1)^n \cdot \det \left( \begin{bmatrix}
+		N      & 0      & \cdots & \cdots & \cdots & 0      \\
+		0      & N      &        &        &        & \vdots \\
+		\vdots &       & \ddots &        &        & \vdots \\
+		\vdots &        &        & \ddots &        & \vdots \\
+		\vdots &        &        &        & \ddots & 0      \\
+		0      & \cdots & \cdots & \cdots & 0      & N      \\
+	\end{bmatrix} \right) = \\
+	&=& (-1)^n N^N \det \mathds{1}_N = (-1)^n N^N \\
+	\end{eqnarray*}
+	Damit folgt wegen der Multiplikativität der Determinantenberechnung
+	\[ | \det DFT_N^2 | = |\det DFT_N \cdot \det DFT_N| \]
+	und somit:
+	\[ | \det DFT_N | = \sqrt{|\det DFT_N^2|} = N^{N/2} \]
+
+	\item Wie man leicht erkennen kann erfüllt die Matrix $DFT_N^2$ abgesehen vom dem
+	Faktor $N$ die lineare Transformation $S$, sodass
+	\[ S(a^T) = \frac{1}{N} DFT_N^2 \cdot a^T \]
+	gilt.
+	Folglich ist $DFT_N$ und die lineare Transformation $S$ kommutativ:
+	\begin{eqnarray*}
+	DFT_N \cdot S(a^T) &=& DFT_N \cdot \frac{1}{N}DFT_N^2 \cdot a^T = DFT_N \cdot \frac{1}{N} DFT_N \cdot DFT_N \cdot a^T = \\
+	&=& \frac{1}{N}DFT_N^2 \cdot DFT_N \cdot a^T = S(DFT_N \cdot a^T)
+	\end{eqnarray*}
+
+	\item Für das komplexe Skalarprodukt $<a, b>$ und eine Matrix $M$ gilt:
+	\[ c = <a, M \cdot b> = < M^\dagger \cdot a, b> \]
+	wobei $M^\dagger$ die adjungierte Matrix zu $M$ ist, also die Transponierten der komplex Konjugierten von $M$,
+	also $M = (m_{i,j})$ und $M^\dagger = (\overline{m}_{j,i})$.
+	Dies kann man folgendermaßen durch Vertauschung der SUmmation zeigen:
+	\begin{eqnarray*}
+	c &=& <a, M \cdot b> = \sum_{k=0}^{N-1} \overline{a}_k \cdot \left( M \cdot b \right)_k =
+	\sum_{k=0}^{N-1} \overline{a}_k \cdot \sum_{i=0}^{N-1} M_{k,i} \cdot b_i =
+	\sum_{k=0}^{N-1} \sum_{i=0}^{N-1} \overline{a}_k \cdot M_{k,i} \cdot b_i = \\
+	&=& \sum_{i=0}^{N-1} \left( \sum_{k=0}^{N-1} \left( \overline{a}_k \cdot M_{k,i}\right) \right) \cdot b_i =
+	\sum_{i=0}^{N-1} \overline{\left( \overline{M}^T \cdot a \right)}_i \cdot b_i = <\overline{M}^T \cdot a, b> = <M^\dagger \cdot a, b>
+	\end{eqnarray*}
+	Aus der Vorlesung ist bekannt: 
+	\[ DFT_N \cdot DFT_N^\dagger = DFT_N^\dagger \cdot DFT_N = N \cdot \mathds{1}_N \]
+	Damit erhält man:
+	\[ \frac{1}{N} < DFT_N \cdot a, DFT_N \cdot b> =
+	\frac{1}{N} < DFT_N^\dagger \cdot DFT_N \cdot a, b > =
+	\frac{1}{N} < N \cdot \mathds{1}\cdot a, b> = < a, b> \]
 \end{enumerate}
