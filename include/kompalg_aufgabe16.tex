@@ -12,7 +12,7 @@
 			\[ \chi_2(z) = \det \left( 
 				\begin{bmatrix}
 					z - 1 & -1 \\
-					-z    & z  \\
+					-2    & z  \\
 				\end{bmatrix} \right) =
 				z^2 - z - 2 = (z-2)(z+1) \]
 			Die Eigenwerte sind $\lambda_1 = 2$ und $\lambda_2 = -1$.
@@ -77,39 +77,39 @@
 					z-1    & -1     & 0      & \cdots & \cdots & \cdots & 0      \\
 					-1     & z      & -1     & 0      &        &        & \vdots \\
 					\vdots & 0      & \ddots & \ddots & \ddots &        & \vdots \\
-					\vdots & \vdots &        & \ddots & \ddots & \ddots & \vdots \\
-					\vdots & \vdots &        &        & \ddots & \ddots & 0      \\
-					-1     & \vdots &        &        &        & \ddots & -1     \\
-					-2     & 0      & \cdots & \cdots & \cdots & \cdots & z      \\
+					\vdots & \vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
+					\vdots & \vdots &        & \ddots & \ddots & \ddots & 0      \\
+					-1     & \vdots &        &        & \ddots & \ddots & -1     \\
+					-2     & 0      & \cdots & \cdots & \cdots & 0      & z      \\
 				\end{bmatrix} \right) = \\
 			&=& \det \left(
 				\begin{bmatrix}
 					z-2    & -1     & 0      & \cdots & \cdots & \cdots & 0      \\
 					z-1    & z      & -1     & 0      &        &        & \vdots \\
 					\vdots & 0      & \ddots & \ddots & \ddots &        & \vdots \\
-					\vdots & \vdots &        & \ddots & \ddots & \ddots & \vdots \\
-					\vdots & \vdots &        &        & \ddots & \ddots & 0      \\
-					-1     & \vdots &        &        &        & \ddots & -1     \\
-					-2     & 0      & \cdots & \cdots & \cdots & \cdots & z      \\
+					\vdots & \vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
+					\vdots & \vdots &        & \ddots & \ddots & \ddots & 0      \\
+					-1     & \vdots &        &        & \ddots & \ddots & -1     \\
+					-2     & 0      & \cdots & \cdots & \cdots & 0      & z      \\
 				\end{bmatrix} \right) = \\
 			&=& (z-2) \det \left(
 				\begin{bmatrix}
-					& z      & -1     & 0      &        &        & \vdots \\
+					& z      & -1     & 0      & \cdots & \cdots & 0      \\
                                         & 0      & \ddots & \ddots & \ddots &        & \vdots \\
-                                        & \vdots &        & \ddots & \ddots & \ddots & \vdots \\
-                                        & \vdots &        &        & \ddots & \ddots & 0      \\
-                                        & \vdots &        &        &        & \ddots & -1     \\
-                                        & 0      & \cdots & \cdots & \cdots & \cdots & z      \\
+                                        & \vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
+                                        & \vdots &        & \ddots & \ddots & \ddots & 0      \\
+                                        & \vdots &        &        & \ddots & \ddots & -1     \\
+                                        & 0      & \cdots & \cdots & \cdots & 0      & z      \\
 				\end{bmatrix} \right) + \\
 				& & \quad \quad \quad
 				\det \left(
 				\begin{bmatrix}
 					z-1    & -1     & 0      & \cdots & \cdots & 0      \\
-					-1     & z      & -1     & 0      &        & \vdots \\
+					-1     & z      & -1     & \ddots &        & \vdots \\
 					\vdots & 0      & \ddots & \ddots & \ddots & \vdots \\
-					\vdots & \vdots &        & \ddots & \ddots & 0      \\
-					-1     & \vdots &        &        & \ddots & -1     \\
-					-2     & 0      & \cdots & \cdots & \cdots & z      \\
+					\vdots & \vdots & \ddots & \ddots & \ddots & 0      \\
+					-1     & \vdots &        & \ddots & \ddots & -1     \\
+					-2     & 0      & \cdots & \cdots & 0      & z      \\
 				\end{bmatrix} \right) = \\
 			&=& (z-2) z^{k-1} + \chi_{k-1}(z)
 	\end{eqnarray*}
@@ -130,7 +130,26 @@
 	auf einem Kreis mit Radius $1$ um den Ursprung.
 
 \item 
+Da die Folgen $\left( Ak_{1,j}^{(n)} \right)_{n \geq 0}$ C-Rekursionen sind, die das charakteristische Polynom $\chi_k(z)$
+aus der vorigen Aufgabe haben ist der dominante Eigenwert $\lambda = \lambda_1 = 2$.
+Aus der Problembeschreibung ergibt sich 
+\[ Ak_{1,j}^{(n)} = Ak_{1,j-1}^{(n-1)} \quad \quad (1 < j \leq k) \]
+da der Betrunkene erst auf der Stufe $j-1$ nach $n-1$ Schritten gewesen sein muss, wenn er Stufe $j$ nach $n$ Schritten erreichen will.
+Auf Grund der Asymptotik ergibt sich somit:
+\[ Ak_{1,j}^{(n)} = \alpha_j \cdot 2^n = Ak_{1,j-1}^{(n-1)} = \alpha_{j-1} \cdot 2^{n-1} \quad \quad (1 < j \leq k) \]
+also $2 \cdot \alpha_j = \alpha_{j-1}$.
 
+\[ Ak_{1,1}^{(n)} + Ak_{1,2}^{(n)} + \ldots + Ak_{1,k}^{(n)} = \alpha_1 \cdot 2^n + \alpha_2 \cdot 2^n + \ldots + \alpha_k \cdot 2^n \]
+ist die Summe aller Pfade der Länge $n$ in dem Graphen, die bei $1$ beginnen und auf einer beliebigen Stufe zwischen $1$ und $k$ enden.
+Da der Graph einen Automaten beschreibt, der in jedem Zustand zwei Eingabewerte ($p$ und $q$) akzeptiert, sind dies offensichtlich
+$2^n$ mögliche Pfade.
+Somit folgt (*) $\alpha_1 + \alpha_2 + \ldots + \alpha_k = 1$.
+Mit $2 \cdot \alpha_j = \alpha_{j-1} $ erhält man weiterhin 
+\[ \alpha_1 + \alpha_2 + \ldots + \alpha_k = \alpha_1 \sum_{j=0}^{k-1} \left( \frac{1}{2}\right)^j 
+   = \alpha_1  \frac{1 - \left(\frac{1}{2}\right)^k}{1 - \frac{1}{2}}  = 1 \]
+Folglich ist 
+\[ \alpha_1 = \frac{1}{\left(\frac{1}{2}\right)^{k-1} - 2} = \frac{2^{k-1}}{2^k - 1} \]
+\[ \alpha_j = \left(\frac{1}{2}\right)^{j-1} \cdot \alpha_1 = \frac{2^{k-j}}{2^k - 1}\]
 
 \item
   $A_{k,p}$ für $k = 2, 3, 4$:
