@@ -1,6 +1,138 @@
 \section*{Aufgabe 16 - Devil's Staircase}
 \addcontentsline{toc}{subsection}{Aufgabe 16 - Devil's Staircase}
-\begin{paragraph}{1)}
+\begin{enumerate}
+% teil 1: automaten interpretation, Ak für k = 2,3,4
+\item
+	\begin{itemize}
+		\item $k= 2$: 
+			\[ A2 = \begin{bmatrix}
+					1 & 1 \\
+					2 & 0 \\
+				\end{bmatrix} \]
+			\[ \chi_2(z) = \det \left( 
+				\begin{bmatrix}
+					z - 1 & -1 \\
+					-z    & z  \\
+				\end{bmatrix} \right) =
+				z^2 - z - 2 = (z-2)(z+1) \]
+			Die Eigenwerte sind $\lambda_1 = 2$ und $\lambda_2 = -1$.
+		\item $k = 3$:
+			\[ A3 = \begin{bmatrix}
+					1 & 1 & 0 \\
+					1 & 0 & 1 \\
+					2 & 0 & 0 \\
+				\end{bmatrix} \]
+			\[ \chi_3(z) = \det \left(
+				\begin{bmatrix}
+					z-1 & -1 & 0 \\
+					-1 & z & -1 \\
+					-2 & 0 & z \\
+				\end{bmatrix} \right) =
+				z^3 - z^2 - z - 2 = (z-2)(z^2 + z + 1) \]
+			Die Eigenwerte sind $\lambda_1 = 2, \lambda_2 = \omega_3, \lambda_3 = \omega_3^2 $,
+			wobei $\omega_3$ die dritte Einheitswurzel $e^{\imath 2 \pi / 3}$ ist.
+		\item $k = 4$:
+			\[ A4 =	\begin{bmatrix}
+					1 & 1 & 0 & 0 \\
+					1 & 0 & 1 & 0 \\
+					1 & 0 & 0 & 1 \\
+					2 & 0 & 0 & 0 \\
+				\end{bmatrix} \]
+			\[ \chi_4(z) = \det \left(
+				\begin{bmatrix}
+					z-1 & -1 & 0 & 0 \\
+					-1 & z & -1 & 0 \\
+					-1 & 0 & z & -1 \\
+					-2 & 0 & 0 & z \\
+				\end{bmatrix} \right) = 
+				(z-1) z^3 + \det \left(
+					\begin{bmatrix}
+						-1 & -1 & 0 \\
+						-1 & z & -1 \\
+						-2 & 0 & z \\
+					\end{bmatrix} \right) = \] \[
+				(z-1)z^3 - z^2 - z  - 2 =
+				z^4 - z^3 - z^2 - z - 2 =
+				(z-2)(z^3 + z^2 + z + 1) \]
+			Die Eigenwerte sind $\lambda_1 = 2, \lambda_2 = \omega_4, \lambda_3 = \omega_4^2, \lambda_4 = \omega_4^3$,
+			wobei $\omega_4$ die vierte Einheitswurzel $e^{\imath 2 \pi / 4} = \imath$ ist.
+	\end{itemize}
+
+% teil 2: allgemeine Ak
+\item Allgemein sieht die Matrix $Ak$ folgendermaßen aus:
+	\[ Ak = \begin{bmatrix}
+			1      & 1      & 0      & \cdots & \cdots & \cdots & 0      \\
+			1      & 0      & 1      & 0      &        &        & \vdots \\
+			\vdots & \vdots & \ddots & \ddots & \ddots &        & \vdots \\
+			\vdots & \vdots &        & \ddots & \ddots & \ddots & \vdots \\
+			\vdots & \vdots &        &        & \ddots & \ddots & 0      \\
+			1      & \vdots &        &        &        & \ddots & 1      \\
+			2      & 0      & \cdots & \cdots & \cdots & \cdots & 0      \\
+		\end{bmatrix} \]
+	Das Charakteristische Polynom lässt sich rekursiv berechnen (Entwicklung nach erster Zeile,
+	nachdem 2. Spalte auf 1. Spalte addiert wurde):
+	\begin{eqnarray*}
+		\chi_k(z) &=& \det \left(
+				\begin{bmatrix}
+					z-1    & -1     & 0      & \cdots & \cdots & \cdots & 0      \\
+					-1     & z      & -1     & 0      &        &        & \vdots \\
+					\vdots & 0      & \ddots & \ddots & \ddots &        & \vdots \\
+					\vdots & \vdots &        & \ddots & \ddots & \ddots & \vdots \\
+					\vdots & \vdots &        &        & \ddots & \ddots & 0      \\
+					-1     & \vdots &        &        &        & \ddots & -1     \\
+					-2     & 0      & \cdots & \cdots & \cdots & \cdots & z      \\
+				\end{bmatrix} \right) = \\
+			&=& \det \left(
+				\begin{bmatrix}
+					z-2    & -1     & 0      & \cdots & \cdots & \cdots & 0      \\
+					z-1    & z      & -1     & 0      &        &        & \vdots \\
+					\vdots & 0      & \ddots & \ddots & \ddots &        & \vdots \\
+					\vdots & \vdots &        & \ddots & \ddots & \ddots & \vdots \\
+					\vdots & \vdots &        &        & \ddots & \ddots & 0      \\
+					-1     & \vdots &        &        &        & \ddots & -1     \\
+					-2     & 0      & \cdots & \cdots & \cdots & \cdots & z      \\
+				\end{bmatrix} \right) = \\
+			&=& (z-2) \det \left(
+				\begin{bmatrix}
+					& z      & -1     & 0      &        &        & \vdots \\
+                                        & 0      & \ddots & \ddots & \ddots &        & \vdots \\
+                                        & \vdots &        & \ddots & \ddots & \ddots & \vdots \\
+                                        & \vdots &        &        & \ddots & \ddots & 0      \\
+                                        & \vdots &        &        &        & \ddots & -1     \\
+                                        & 0      & \cdots & \cdots & \cdots & \cdots & z      \\
+				\end{bmatrix} \right) + \\
+				& & \quad \quad \quad
+				\det \left(
+				\begin{bmatrix}
+					z-1    & -1     & 0      & \cdots & \cdots & 0      \\
+					-1     & z      & -1     & 0      &        & \vdots \\
+					\vdots & 0      & \ddots & \ddots & \ddots & \vdots \\
+					\vdots & \vdots &        & \ddots & \ddots & 0      \\
+					-1     & \vdots &        &        & \ddots & -1     \\
+					-2     & 0      & \cdots & \cdots & \cdots & z      \\
+				\end{bmatrix} \right) = \\
+			&=& (z-2) z^{k-1} + \chi_{k-1}(z)
+	\end{eqnarray*}
+	Mit Hilfe dieses Zusammenhangs kann man per vollständiger Induktion die gewünschte Formel beweisen:
+	\begin{itemize}
+		\item \textit{I.A.}: $k=2$: \[ \chi_2(z) = (z-2)(z+1) = (z-2)\frac{(z+1)(z-1)}{z-1} = (z-2)\frac{z^2 - 1}{z-1} \]
+		\item \textit{I.V.}: Für ein $k \in \mathbb{N}$ gelte:
+			\[ \chi_k(z) = (z-2)\frac{z^k - 1}{z-1} \]
+		\item \textit{I.S.}: $k \rightarrow k+1$:
+			\begin{eqnarray*}
+			\chi_{k+1}(z) &=& (z-2) z^{k} + \chi_k(z) \overset{I.V.}{=} (z-2) z^k + (z-2) \frac{z^k - 1}{z-1} \\
+			   &=& (z-2) \frac{z^k (z-1)}{z-1} + (z-2)\frac{z^k - 1}{z-1} =
+			   (z-2) \frac{z^{k+1} - 1}{z-1}
+			\end{eqnarray*}
+	\end{itemize}
+	Die Eigenwerte sind zum einen $\lambda_1 = 2$ und zum anderen die Lösungen von $z^k - 1 = 0$ (außer $z = 1$), also den
+	$k$-ten Einheitswurzeln, $\lambda_i = e^{\imath 2 \pi \frac{j}{k}}$ mit $1 \leq j \leq k-1$, sie liegen
+	auf einem Kreis mit Radius $1$ um den Ursprung.
+
+\item 
+
+
+\item
   $A_{k,p}$ für $k = 2, 3, 4$:
 
   \begin{minipage}{0.4\linewidth}
@@ -38,8 +170,8 @@
      \lambda_{3}= ip, \quad
      \lambda_{4}= -ip\]
   \end{minipage}
-\end{paragraph}
-\begin{paragraph}{2)}
+  
+\item
   \[ A_{k,p} = \left[a_{ij}\right]_{1\leq i,j\leq k}, \]
   \[ a_{ij} = \begin{cases} 1-p &\text{wenn~} j = 0, i \not= k \\
                               1 &\text{wenn~} j = 0, i = k \\
@@ -134,16 +266,16 @@
       $p^{k}$, welche in der komplexen Ebene auf einem Kreis mit Radius $p$ um
       den Ursprung liegen.
   \end{itemize}
-\end{paragraph}
-\begin{paragraph}{3)}
+
+\item
   Da man die Stufe $S_{l}$ nur auf direktem Weg in $l - 1$ Schritten erreichen
   kann, muss man, um beim $n$-ten Schritt auf Stufe $S_{l}$ zu landen, zuvor
   nach $n - l - 1$ Schritten auf der ersten Stufe gestanden haben.
 
   Die Wahrscheinlichkeit ergibt sich aus dem Produkt der
   Einzelwahrscheinlichkeiten.
-\end{paragraph}
-\begin{paragraph}{4)}
+
+  \item
    \[ \lim_{n\rightarrow\infty} P_{1}^{(n)} = a, \quad
       1 = \sum_{i=1}^{k} a \cdot p^{l-1} = \sum_{i=0}^{k-1} a \cdot p^{l} = a
    \sum_{l=0}^{k-1} p^{l} = a \frac{1-p^{k}}{1-p} \]
@@ -151,4 +283,4 @@
 
   \[ (\pi_{i})_{1\leq l\leq k} = (a\cdot p^{l-1})_{1\leq l\leq k} 
      = (\frac{p^{l-1} - p^{l}}{1-p^{k}})_{1\leq l\leq k} \]
-\end{paragraph}
+\end{enumerate}
