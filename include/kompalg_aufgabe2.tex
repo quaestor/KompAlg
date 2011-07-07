@@ -1,0 +1,57 @@
+\section*{Aufgabe 2 - Laufzeitenvergleich}
+\addcontentsline{toc}{subsection}{Aufgabe 2 - Laufzeitenvergleich}
+\begin{enumerate}[a)]
+\item
+	Offensichtlich ist das asymptotische Verhalten der Algorithmen folgendes:
+	\[ t_\mathcal{A} \in \mathcal{O}(n) \]
+	\[ t_\mathcal{B} \in \mathcal{O}(n \log n) \]
+	\[ t_\mathcal{C} \in \mathcal{O}(n^2) \]
+	Und es gilt für große $n$, dass $t_\mathcal{A} < t_\mathcal{B} < t_\mathcal{C}$.
+	Für kleine $n$ muss man dies jedoch genauer analysieren:
+	\lstset{language=Mathematica}
+	\begin{lstlisting}
+		tA[n_] = 4 n + 20;
+		tB[n_] = n Log[2,n] + 2n + 4;
+		tC[n_] = n (n-1) + 4;
+		n/.Solve[tA[n] == tB[n], n]//N
+		n/.Solve[tA[n] == tC[n], n]//N
+		n/.Solve[tB[n] == tC[n], n]//N
+		  {10.9815}  (* A == B *)
+		  {-2.21699,7.21699}  (* A == C *)
+		  {0.1375,5.44491}  (* B == C *)
+	\end{lstlisting}
+	Damit erhält man folgende Abschätzungen:
+	\begin{itemize}
+		\item $n=0$: $t_\mathcal{B} = t_\mathcal{C} < t_\mathcal{A}$
+		\item $1 \leq n \leq 5$: $t_\mathcal{C} < t_\mathcal{B} < t_\mathcal{A}$
+		\item $6 \leq n \leq 7$: $t_\mathcal{B} < t_\mathcal{C} < t_\mathcal{A}$
+		\item $8 \leq n \leq 10$: $t_\mathcal{B} < t_\mathcal{A} < t_\mathcal{C}$
+		\item $n > 10$: $t_\mathcal{A} < t_\mathcal{B} < t_\mathcal{C}$
+	\end{itemize}
+
+\item 
+	\begin{enumerate}[1.]
+	\item
+		Bei dieser Aufgabe ist es sinnvoller von der Laufzeit der beiden Algorithmen den Logarithmus zu berechnen,
+		da die Ausdrücke so leichter zu vergleichen sind. Da der Logarithmus streng monoton ist,
+		sind die gefundenen Nullstellen und der Größenvergleich identisch mit dem der ursprünglichen Laufzeiten.
+		\[ \log_2 t_\mathcal{A}(n) = \frac{1}{2} \log_2 n \]
+		\[ \log_2 t_\mathcal{B}(n) = \sqrt{\log_2 n} \]
+		$\mathcal{B}$ ist damit der schnellere Algorithmus, da:
+		\[ \lim_{n \rightarrow \infty} \frac{\log_2 t_\mathcal{B}}{\log_2 t_\mathcal{A}} = 
+		   \lim_{n \rightarrow \infty} \frac{\sqrt{\log_2 n}}{\frac{1}{2} \log_2 n} =
+		   \lim_{n \rightarrow \infty} \frac{2}{\sqrt{\log_2 n}} = 0 \]
+	\item
+		\begin{lstlisting}
+			tA[n_] = 1/2 Log[2,n];
+			tB[n_] = Sqrt[Log[2,n]];
+			n/.Solve[tA[n] == tB[n], n]
+			  {1,16}
+		\end{lstlisting}
+		Für $n=1$ und $n=16$ sind beide Algorithmen gleich schnell, für $1 < n < 16$ ist $\mathcal{A}$ schneller,
+		für $n > 16$ ist $\mathcal{B}$ schneller.
+	
+	\item
+		Mit Teilaufgabe a) folgt $t_\mathcal{B} \in \mathcal{o}(t_\mathcal{A})$.
+	\end{enumerate}
+\end{enumerate}
