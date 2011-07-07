@@ -139,7 +139,7 @@ Auf Grund der Asymptotik ergibt sich somit:
 \[ Ak_{1,j}^{(n)} = \alpha_j \cdot 2^n = Ak_{1,j-1}^{(n-1)} = \alpha_{j-1} \cdot 2^{n-1} \quad \quad (1 < j \leq k) \]
 also $2 \cdot \alpha_j = \alpha_{j-1}$.
 
-\[ Ak_{1,1}^{(n)} + Ak_{1,2}^{(n)} + \ldots + Ak_{1,k}^{(n)} = \alpha_1 \cdot 2^n + \alpha_2 \cdot 2^n + \ldots + \alpha_k \cdot 2^n \]
+\[ Ak_{1,1}^{(n)} + Ak_{1,2}^{(n)} + \ldots + Ak_{1,k}^{(n)} = \alpha_1 \cdot 2^n + \alpha_2 \cdot 2^n + \ldots + \alpha_k \cdot 2^n = 2^n \]
 ist die Summe aller Pfade der Länge $n$ in dem Graphen, die bei $1$ beginnen und auf einer beliebigen Stufe zwischen $1$ und $k$ enden.
 Da der Graph einen Automaten beschreibt, der in jedem Zustand zwei Eingabewerte ($p$ und $q$) akzeptiert, sind dies offensichtlich
 $2^n$ mögliche Pfade.
