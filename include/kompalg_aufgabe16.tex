@@ -9,11 +9,11 @@
 					1 & 1 \\
 					2 & 0 \\
 				\end{bmatrix} \]
-			\[ \chi_2(z) = \det \left( 
-				\begin{bmatrix}
+			\[ \chi_2(z) = 
+				\begin{vmatrix}
 					z - 1 & -1 \\
 					-2    & z  \\
-				\end{bmatrix} \right) =
+				\end{vmatrix} =
 				z^2 - z - 2 = (z-2)(z+1) \]
 			Die Eigenwerte sind $\lambda_1 = 2$ und $\lambda_2 = -1$.
 		\item $k = 3$:
@@ -22,12 +22,12 @@
 					1 & 0 & 1 \\
 					2 & 0 & 0 \\
 				\end{bmatrix} \]
-			\[ \chi_3(z) = \det \left(
-				\begin{bmatrix}
+			\[ \chi_3(z) = 
+				\begin{vmatrix}
 					z-1 & -1 & 0 \\
 					-1 & z & -1 \\
 					-2 & 0 & z \\
-				\end{bmatrix} \right) =
+				\end{vmatrix} =
 				z^3 - z^2 - z - 2 = (z-2)(z^2 + z + 1) \]
 			Die Eigenwerte sind $\lambda_1 = 2, \lambda_2 = \omega_3, \lambda_3 = \omega_3^2 $,
 			wobei $\omega_3$ die dritte Einheitswurzel $e^{\imath 2 \pi / 3}$ ist.
@@ -38,19 +38,19 @@
 					1 & 0 & 0 & 1 \\
 					2 & 0 & 0 & 0 \\
 				\end{bmatrix} \]
-			\[ \chi_4(z) = \det \left(
-				\begin{bmatrix}
+			\[ \chi_4(z) = 
+				\begin{vmatrix}
 					z-1 & -1 & 0 & 0 \\
 					-1 & z & -1 & 0 \\
 					-1 & 0 & z & -1 \\
 					-2 & 0 & 0 & z \\
-				\end{bmatrix} \right) = 
-				(z-1) z^3 + \det \left(
-					\begin{bmatrix}
+				\end{vmatrix} = 
+				(z-1) z^3 + 
+					\begin{vmatrix}
 						-1 & -1 & 0 \\
 						-1 & z & -1 \\
 						-2 & 0 & z \\
-					\end{bmatrix} \right) = \] \[
+					\end{vmatrix} = \] \[
 				(z-1)z^3 - z^2 - z  - 2 =
 				z^4 - z^3 - z^2 - z - 2 =
 				(z-2)(z^3 + z^2 + z + 1) \]
@@ -72,8 +72,8 @@
 	Das Charakteristische Polynom lässt sich rekursiv berechnen (Entwicklung nach erster Zeile,
 	nachdem 2. Spalte auf 1. Spalte addiert wurde):
 	\begin{eqnarray*}
-		\chi_k(z) &=& \det \left(
-				\begin{bmatrix}
+		\chi_k(z) &=&
+				\begin{vmatrix}
 					z-1    & -1     & 0      & \cdots & \cdots & \cdots & 0      \\
 					-1     & z      & -1     & 0      &        &        & \vdots \\
 					\vdots & 0      & \ddots & \ddots & \ddots &        & \vdots \\
@@ -81,9 +81,9 @@
 					\vdots & \vdots &        & \ddots & \ddots & \ddots & 0      \\
 					-1     & \vdots &        &        & \ddots & \ddots & -1     \\
 					-2     & 0      & \cdots & \cdots & \cdots & 0      & z      \\
-				\end{bmatrix} \right) = \\
-			&=& \det \left(
-				\begin{bmatrix}
+				\end{vmatrix} = \\
+			&=&
+				\begin{vmatrix}
 					z-2    & -1     & 0      & \cdots & \cdots & \cdots & 0      \\
 					z-1    & z      & -1     & 0      &        &        & \vdots \\
 					\vdots & 0      & \ddots & \ddots & \ddots &        & \vdots \\
@@ -91,26 +91,25 @@
 					\vdots & \vdots &        & \ddots & \ddots & \ddots & 0      \\
 					-1     & \vdots &        &        & \ddots & \ddots & -1     \\
 					-2     & 0      & \cdots & \cdots & \cdots & 0      & z      \\
-				\end{bmatrix} \right) = \\
-			&=& (z-2) \det \left(
-				\begin{bmatrix}
+				\end{vmatrix} = \\
+			&=& (z-2) \cdot
+				\begin{vmatrix}
 					& z      & -1     & 0      & \cdots & \cdots & 0      \\
                                         & 0      & \ddots & \ddots & \ddots &        & \vdots \\
                                         & \vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
                                         & \vdots &        & \ddots & \ddots & \ddots & 0      \\
                                         & \vdots &        &        & \ddots & \ddots & -1     \\
                                         & 0      & \cdots & \cdots & \cdots & 0      & z      \\
-				\end{bmatrix} \right) + \\
+				\end{vmatrix} + \\
 				& & \quad \quad \quad
-				\det \left(
-				\begin{bmatrix}
+				\begin{vmatrix}
 					z-1    & -1     & 0      & \cdots & \cdots & 0      \\
 					-1     & z      & -1     & \ddots &        & \vdots \\
 					\vdots & 0      & \ddots & \ddots & \ddots & \vdots \\
 					\vdots & \vdots & \ddots & \ddots & \ddots & 0      \\
 					-1     & \vdots &        & \ddots & \ddots & -1     \\
 					-2     & 0      & \cdots & \cdots & 0      & z      \\
-				\end{bmatrix} \right) = \\
+				\end{vmatrix} = \\
 			&=& (z-2) z^{k-1} + \chi_{k-1}(z)
 	\end{eqnarray*}
 	Mit Hilfe dieses Zusammenhangs kann man per vollständiger Induktion die gewünschte Formel beweisen:
@@ -274,7 +273,7 @@ Folglich ist
                             1-p & \vdots  & \ddots & \ddots & \ddots & p \\
                             1 & 0 & \cdots & \cdots & 0 & -z
                            \end{vmatrix} = \]
-      \[ = -(z - 1) (-z)^{k-1} - p\chi_{A_{k-1}}(z-1) = \]
+      \[ = -(z - 1) (-z)^{k-1} - p\chi_{A_{k-1}}(z) = \]
       \[ = (-1)^{k}(z - 1) z^{k-1} - p(z-1)\frac{z^{k-1}-p^{k-1}}{z-p} = \]
       \[ = (-1)^{k}(z - 1) \left( z^{k-1} + \frac{pz^{k-1}-p^{k}}{z-p} \right) = \]
       \[ = (-1)^{k}(z - 1) \left( \frac{z^{k}-z^{k-1}p}{z-p} +

@@ -42,22 +42,22 @@
 	Herausziehen eines Faktors $N$ aus {\bf einer} Zeile zu einem Faktor $N$ für die
 	resultierende Determinate; damit erhält man für ein $n \in \mathbb{N}$:
 	\begin{eqnarray*}
-	\det DFT_N^2 &=& \det \left( \begin{bmatrix}
+	\det DFT_N^2 &=& \begin{vmatrix}
 		N      & 0      & \cdots & \cdots & \cdots & 0      \\
 		0      &        &        &        & \Ddots & N      \\
 		\vdots &        &        & \Ddots & \Ddots & 0      \\
 		\vdots &        & \Ddots & \Ddots & \Ddots & \vdots \\
 		0      & \Ddots & N      & \Ddots &        & \vdots \\
 		0      & N      & 0      & \cdots & \cdots & 0      \\
-	\end{bmatrix} \right) = \\
-	& = & (-1)^n \cdot \det \left( \begin{bmatrix}
+	\end{vmatrix} = \\
+	& = & (-1)^n \cdot \begin{vmatrix}
 		N      & 0      & \cdots & \cdots & \cdots & 0      \\
 		0      & N      &        &        &        & \vdots \\
 		\vdots &       & \ddots &        &        & \vdots \\
 		\vdots &        &        & \ddots &        & \vdots \\
 		\vdots &        &        &        & \ddots & 0      \\
 		0      & \cdots & \cdots & \cdots & 0      & N      \\
-	\end{bmatrix} \right) = \\
+	\end{vmatrix} = \\
 	&=& (-1)^n N^N \det \mathds{1}_N = (-1)^n N^N \\
 	\end{eqnarray*}
 	Damit folgt wegen der Multiplikativität der Determinantenberechnung
