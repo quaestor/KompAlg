@@ -1,0 +1,42 @@
+\section*{Aufgabe 7 - Eine zweite Folge zur \textsc{Fibonacci}-Rekursion}
+\addcontentsline{toc}{subsection}{Aufgabe 7 - Eine zweite Folge zur \textsc{Fibonacci}-Rekursion}
+
+\begin{enumerate}[(a)]
+
+\item
+	Da die Folge $(L_n)_n$ die gleiche Rekursion erfüllt wie die \textsc{Fibonacci}-Rekursion
+	ist auch $L_n$ eine Linearkombination von $\phi^n$ und $\hat\phi^n$; mit den Startwerten
+	können die Koeffizienten bestimmt werden:
+	\[ L_0 = a + b = 2 \]
+	\[ L_1 = a \cdot \phi + b\cdot \hat\phi = 1 \]
+	Mit $\phi = \frac{1 + \sqrt{5}}{2}$ und $\hat\phi = \frac{1 - \sqrt{5}}{2}$ ist das offensichtlich für $a = b = 1$ erfüllt.
+
+\item 
+	Da $L_n = L_{n-1} + L_{n-2}$ für alle $n \geq 2$ wie für die \textsc{Fibonacci}-Folge gilt, folgt nach Aufgabe 4. b):
+	\[ L_{n+2}L_n  - L_{n+1}^2 = -1 \cdot (L_{n+1}L_{n-1} - L_n^2) \]
+	Mittels Induktion folgt dann sofort, dass $L_{n+1}L_{n-1} - L_n^2 = (-1)^{n-1}5$:
+	\begin{itemize}
+		\item \textit{I.A.}: $n = 1$: $L_2L_0 - L_1^2 = 3 \cdot 2 - 1^2 = 5$
+		\item \textit{I.V.}: Für ein $n \geq 1$ gilt:
+			\[ L_{n+1}L_{n-1} - L_n^2 = (-1)^{n-1} 5 \]
+		\item \textit{I.S.}: $n \rightarrow n+1$:
+			\[ L_{n+1}L_n - L_{n+1}^2 = -1 \cdot (L_{n+1}L_{n-1} - L_n^2) \overset{I.V.}{=} (-1)^n 5 \]
+	\end{itemize}
+
+\item
+	\[ \lim_{n \rightarrow \infty} \frac{L_{n+1}}{L_n} =
+	   \lim_{n \rightarrow \infty} \frac{\phi^{n+1} + \hat\phi^{n+1}}{\phi^n + \phi^n} =
+	   \lim_{n \rightarrow \infty} \frac{\phi^n \left(\phi + \hat\phi \left( \frac{\hat\phi}{\phi}\right)^n \right)}
+	   				    {\phi^n \left( 1 + \left(\frac{\hat\phi}{\phi}\right)^n \right)} =
+	   \frac{\phi + \hat\phi \cdot 0}{1 + 0} = \phi \]
+
+\item Da $|\hat\phi^n| < 1$ kann man die Anzahl der Ziffern folgendermaßen abschätzen:
+	\[ \log_ {10} L_n \approx \log_{10} \phi^n = n \log_{10} \phi \approx 0.21 \cdot n \]
+
+\item
+	\[ F_n = \frac{\phi^n - \hat\phi^n}{\sqrt{5}} \Leftrightarrow \sqrt{5} F_n = \phi^n - \hat\phi^n \]
+	\[ L_n = \phi^n + \hat\phi^n \]
+	Damit folgt unmittelbar:
+	\[ \phi^n = \frac{L_n + \sqrt{5} F_n}{2} \]
+	\[ \hat\phi^n = \frac{L_n - \sqrt{5} F_n}{2} \]
+\end{enumerate}
