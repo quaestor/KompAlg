@@ -1,0 +1,116 @@
+\section*{Aufgabe 8 - Die Begleitmatrix einer linearen Rekursion}
+\addcontentsline{toc}{subsection}{Aufgabe 8 - Die Begleitmatrix einer linearen Rekursion}
+
+\begin{enumerate}[(a)]
+
+\item
+	Nach Definition ist
+	\[ {\bf x}^{(n)} = \left[ x_n \quad x_{n+1} \quad x_{n+2} \quad \ldots \quad x_{n+k-1} \right] \]
+	\[ {\bf x}^{(n+1)} =  \left[ x_{n+1} \quad x_{n+2} \quad x_{n+3} \quad \ldots \quad x_{n+k} \right] \]
+
+	Die lineare Rekursion liefert für 
+	\[ x_{n+k} = \sum_{l = 1}^{k} a_l \cdot x_{n+k-l} = \sum_{l=0}^{k-1} a_{k-l} \cdot x_{n+l} \]
+
+	Damit erhält man sofort für $n \geq 0$:
+	\[ {\bf x}^{(n)} \cdot C_a = \left[  x_{n+1} \quad x_{n+2} \quad x_{n+3} \quad \ldots \quad \sum_{l=0}^{k-1} a_{k-l} x_{n+l} \right] = {\bf x}^{(n+1)} \]
+
+\item
+	\[ \chi_{C_a, k}(z) = \det ( z\cdot \mathds{1} - C_a) = 
+		\begin{vmatrix}
+			z      & 0      & \cdots & \cdots & \cdots & 0      & -a_k     \\
+			-1     & z      & \ddots &        &        & \vdots & -a_{k-1} \\
+			0      & \ddots & \ddots & \ddots &        & \vdots & \vdots   \\
+			\vdots & \ddots & \ddots & \ddots & \ddots & \vdots & \vdots   \\
+			\vdots &        & \ddots & \ddots & \ddots & 0      & \vdots   \\
+			\vdots &        &        & \ddots & \ddots & z      & -a_2     \\
+			0      & \cdots & \cdots & \cdots & 0      & -1     & z - a_1  \\
+		\end{vmatrix} = \]
+	Entwicklung nach der ersten Zeile.
+	\[ = z \cdot \begin{vmatrix}
+			z      & 0      & \cdots & \cdots & 0      & -a_{k-1} \\
+			-1     & \ddots & \ddots &        & \vdots & \vdots   \\
+			0      & \ddots & \ddots & \ddots & \vdots & \vdots   \\
+			\vdots & \ddots & \ddots & \ddots & 0      & \vdots   \\
+			\vdots &        & \ddots & \ddots & z      & -a_2     \\
+			0      & \cdots & \cdots & 0      & -1     & z - a_1  \\
+		\end{vmatrix} + (-1)^{k+1}(-a_k) \cdot
+		\begin{vmatrix}
+			-1     & z      & 0      & \cdots & \cdots & 0      \\
+			0      & \ddots & \ddots & \ddots &        & \vdots \\
+			\vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
+			\vdots &        & \ddots & \ddots & \ddots & 0      \\
+			\vdots &        &        & \ddots & \ddots & z      \\
+			0      & \cdots & \cdots & \cdots & 0      & -1     \\
+		\end{vmatrix} = \]
+	\[ = z \cdot \chi_{C_a, k-1}(z) + (-1)^{k+1}(-a_k)(-1)^{k-1} = z \cdot \chi_{C_a, k-1}(z) - a_k \]
+	Dabei sei $\chi_{C_a, m}(z)$ das charakteristische Polynom der Rekursion, die die ersten $m$ Elemente der Folge ${\bf a} = ({\bf a}_l)_l$ als
+	Rekursionskoeffizienten hat.
+	Die gewünschte Charakteristische Funktion $\chi_{C_a}(z) = \chi_{C_a,k}(z)$ lässt sich somit rekursiv durch die
+	charakteristischen Polynome der Rekursionen kleinerer Ordnung mit der gleichen Rekursionskoeffizienten-Folge darstellen.
+	Per Induktion folgt dann:
+	\begin{itemize}
+		\item \textit{I.A.}: $k=1$: $x_{n} = a_1 \cdot x_{n-1}$ mit charakteristischem Polynom $\chi_{C_a, 1}(z) = z - a_1$.
+		\item \textit{I.V.}: Für ein $k$ gelte:
+				\[ \chi_{C_a, k}(z) = z^k - a_1 \cdot z^{k-1} \ldots - a_k \]
+		\item \textit{I.S.}: $k \rightarrow k+1$:
+				\begin{eqnarray*}
+					\chi_{C_a,k+1}(z) &=& z \cdot \chi_{C_a,k} - a_{k+1} = z (z^k - a_1 \cdot z^{k-1} \ldots - a_k) - a_{k+1} \\
+					&=& z^{k+1} - a_1 \cdot z^k \ldots - a_{k+1} \\
+				\end{eqnarray*}
+	\end{itemize}
+	Alternativ kann man die Determinante auch nach der letzten Spalte entwickeln (Hinweis):
+	\begin{eqnarray*}
+	\chi_{C_a}(z) &=& \det ( z\cdot \mathds{1} - C_a) = 
+		\begin{vmatrix}
+			z      & 0      & \cdots & \cdots & \cdots & 0      & -a_k     \\
+			-1     & z      & \ddots &        &        & \vdots & -a_{k-1} \\
+			0      & \ddots & \ddots & \ddots &        & \vdots & \vdots   \\
+			\vdots & \ddots & \ddots & \ddots & \ddots & \vdots & \vdots   \\
+			\vdots &        & \ddots & \ddots & \ddots & 0      & \vdots   \\
+			\vdots &        &        & \ddots & \ddots & z      & -a_2     \\
+			0      & \cdots & \cdots & \cdots & 0      & -1     & z - a_1  \\
+		\end{vmatrix} = \\
+	&=& (-1)^{k+1}(-a_k) 	\begin{vmatrix}
+					-1     & z      & 0      & \cdots & \cdots & 0      \\
+                                        0      & \ddots & \ddots & \ddots &        & \vdots \\
+                                        \vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
+                                        \vdots &        & \ddots & \ddots & \ddots & 0      \\
+                                        \vdots &        &        & \ddots & \ddots & z      \\
+                                        0      & \cdots & \cdots & \cdots & 0      & -1     \\
+				\end{vmatrix} + \\
+	& & + (-1)^{k+2}(-a_{k-1})
+				\begin{vmatrix}
+					z      & 0      & 0      & \cdots & \cdots & 0      \\
+                                        0      & -1     & z      & \ddots &        & \vdots \\
+                                        \vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
+                                        \vdots &        & \ddots & \ddots & \ddots & 0      \\
+                                        \vdots &        &        & \ddots & \ddots & z      \\
+                                        0      & \cdots & \cdots & \cdots & 0      & -1     \\
+
+				\end{vmatrix} + \ldots \\
+	& & \ldots + (-1)^{k+k}(z - a_1)	\begin{vmatrix}
+					z      & 0      & \cdots & \cdots & \cdots & 0      \\
+					-1     & z      & \ddots &        &        & \vdots \\
+					0      & \ddots & \ddots & \ddots &        & \vdots \\
+					\vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
+					\vdots &        & \ddots & \ddots & \ddots & 0      \\
+					0      & \cdots & \cdots & 0      & -1     & z      \\
+				\end{vmatrix} \\
+	&=& (-1)^{k+1} \left( -a_k - a_{k-1}\cdot z \ldots - a_1 \cdot z^{k-1} + z^k \right) \\
+	\end{eqnarray*}
+	Da das Vorzeichen des charakteristischen Polynoms irrelevant ist (es geht nur um Berechnung von Nullstellen),
+	erhält man so direkt das gewünschte Ergebnis.
+
+\item
+	Da die Folgen ${\bf \lambda}_j$ der Rekursion genügen (Hinweis), gilt nach Teilaufgabe a) für jede Zeile der \textsc{Vandermonde}-Matrix:
+	\[ \left[ 1 \quad \lambda_j \quad \lambda_j^2 \quad \ldots \quad \lambda_j^{k-1} \right] \cdot C_a =
+	   \left[ \lambda_j \quad \lambda_j^2 \quad \lambda_j^3 \quad \ldots \quad \lambda_j^k\right] \]
+	Damit folgt unmittelbar:
+	\[ V(\lambda_1, \lambda_2, \ldots \lambda_k) \cdot C_a = 
+		\begin{bmatrix}
+			\lambda_1 & \lambda_1^2 & \cdots & \lambda_1^k \\
+			\lambda_2 & \lambda_2^2 & \cdots & \lambda_2^k \\
+			\vdots    & \vdots      &        & \vdots      \\
+			\lambda_k & \lambda_k^2 & \cdots & \lambda_k^k \\
+		\end{bmatrix} = \text{diag}(\lambda_1, \lambda_2, \ldots, \lambda_k) \cdot V(\lambda_1, \lambda_2, ..., \lambda_k) \]
+\end{enumerate}
