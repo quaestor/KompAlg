@@ -1,0 +1,87 @@
+\section*{Aufgabe 22 - Quickselect}
+\addcontentsline{toc}{subsection}{Aufgabe 22 - Quickselect}
+  \newcommand{\meanv}{\overline{v}}
+  \lstset{ %
+    language=Mathematica,
+    basicstyle=\small,
+    numbers=left,
+    numberstyle=\small,
+    numbersep=-9pt
+  }
+  \begin{lstlisting}
+    QUICKSELECT[A_, k_] :=
+      Module[
+        {
+          left, (* linke Teilliste *)
+          right, (* rechte Teilliste *)
+          p = RandomInteger[{1, Length[A]}] (* zufaelliges Pivot-Element *)
+        },
+        left = Select[A, # > A[[p]] &]; (* alle Elemente groesser als Pivot *)
+        right = Select[A, # < A[[p]] &]; (* alle Elemente kleiner als Pivot *)
+        Return[
+          With[
+            (* Groesse von 'links' + derjenigen Elemente a mit a = A[p] *)
+            {n = Length[A] - Length[right]},
+            Which[
+              (* gesuchtes Element ist in der linken Liste *)
+              k <= Length[left], QUICKSELECT[left, k],
+              (* gesuchtes Element ist in der rechten Liste *)
+              k > n, QUICKSELECT[right, k - n],
+              (* Pivot-Element ist bereits das Gesuchte *)
+              True, A[[p]]
+            ]
+          ]
+        ]
+      ]
+  \end{lstlisting}
+\begin{paragraph}{1)}
+  Wird bei der Pivot-Wahl zufällig immer das größte Element gewählt, so wird
+  die Liste in jedem Schritt lediglich um ein Element kleiner. Für die
+  Aufteilung in die Teil-Listen sind bei Listenlänge $n$ genau $n-1$ Vergleiche
+  notwendig. Insgesamt sind dies also $\sum_{i<n}i = \frac{1}{2}n(n-1) \in
+  \mathbb{O}(n^2)$ Vergleiche.
+\end{paragraph}
+\begin{paragraph}{2)}
+\[ \meanv(n) \leq \overbrace{(n-1)}^{(1)} +
+\underbrace{\frac{1}{n}\sum_{1\leq k \leq n}}_{(3)}
+\overbrace{\max\left\{\meanv(k-1),\meanv(n-k)\right\}}^{(2)} \]
+\begin{itemize}
+	\item[(1)] Anzahl der Vergleiche zur Aufteilung in die Teil-Listen
+	\item[(2)] Da mit $\meanv(n) =
+		\max_{1\leq k\leq n}\meanv(n,k)$ dasjenige $k$ gesucht ist, für das
+		der mittlere Aufwand maximal ist, muss in dieser Summe
+		ebenfalls aus den beiden Möglichkeiten (linke oder rechte
+		Teil-Liste durchsuchen) das Maximum gewählt werden
+	\item[(3)] Schließlich wird noch über alle möglichen Pivot-Elemente gemittelt
+\end{itemize}
+Zum Beweis des asymptotischen Verhaltens wird diese Ungleichung ein wenig
+umgeformt. Sei o.B.d.A $n$ gerade. Da der Aufwand mit der Inputlänge wächst ist
+$\max\left\{\meanv(k-1), \meanv(n-k)\right\} =
+\meanv(\max\{k-1,n-k\})$. Damit lässt sich die Summe auch schreiben als
+\begin{align} \nonumber \sum_{1\leq k\leq n} \max\left\{\meanv(k-1),\meanv(n-k)\right\}
+&= 2 \cdot \sum_{k=\frac{n}{2}+1}^n \meanv(k-1) = 2 \cdot \sum_{k=\frac{n}{2}}^{n-1} \meanv(k) \\
+\intertext{oder, um angenehmere Grenzen zu erhalten}
+&= 2 \cdot \left(\sum_{k=0}^{n-1} \meanv(k) - \sum_{k=0}^{\frac{n}{2}-1} \meanv(k)\right) \label{eqn:sum}
+\end{align}
+Nun können wir per Induktion zeigen, dass $\meanv(n) \in \mathbb{O}(n)$:
+\begin{itemize}
+	\item \textit{Induktionsanfang:} \[ \meanv(0) = 0 \leq c \cdot 0 \]
+		wird von beliebigen positiven Konstanten $c$ erfüllt.
+	\item \textit{Induktionsannahme:} \[ \meanv(k) \leq c \cdot k \text{ für } k < n \]
+		für ein festes, positives $c$
+	\item \textit{Induktionsschritt:} mit Gleichung \eqref{eqn:sum} folgt
+		\begin{align*}
+			\meanv(n) &\leq (n-1) + \frac{2}{n}
+			\left(\sum_{k=0}^{n-1} \meanv(k) -
+			\sum_{k=0}^{\frac{n}{2}-1} \meanv(k)\right) \\
+			\intertext{Dies wird unter Verwendung der Induktionsannahme zu}
+			&\leq (n-1) + \frac{2}{n} \left(\sum_{k=0}^{n-1}
+			c \cdot k - \sum_{k=0}^{\frac{n}{2}-1} c \cdot k\right) \\
+			&= (n-1) + \frac{2\cdot c}{n} \left(\frac{n(n-1)}{2}-\frac{n(\frac{n}{2}-1)}{4}\right) = (n-1) + \frac{c}{4} (3n - 2)
+		\end{align*}
+		Wählt man nun z.B. $c = 4$, so ist die Ungleichung
+			\[ (n-1) + \frac{c}{4} (3n - 2) \leq c \cdot n \]
+			\[ 4n-3 \leq 4n \]
+		offensichtlich erfüllt und es folgt die Behauptung.
+\end{itemize}
+\end{paragraph}
