@@ -1,7 +1,8 @@
 \section*{Aufgabe 17 - inhomogene Rekursion}
 \addcontentsline{toc}{subsection}{Aufgabe 17 - inhomogene Rekursion}
 \[ x_{n} = 4x_{n-1} - 4x_{n-2} + f_{n} \quad (n\geq 2) \]
-\begin{paragraph}{1)}
+\begin{enumerate}
+\item
   Lösungen der homogenen Rekursion
   \[ x_{n} = 4x_{n-1} - 4x_{n-2} \]
   \[ \chi(z) = z^{2} - 4z + 4 = (z - 2)^{2} \]
@@ -13,8 +14,7 @@
   \[ \textnormal{für } \alpha_{2} = 0 \Rightarrow x_{n} \sim \alpha_{1}2^{n} \]
   \[ \textnormal{für } \alpha_{2} \not= 0 \Rightarrow x_{n} \sim \alpha_{2}n2^{n} \]
   \[ \textnormal{für } x_{0} = x_{1} = 0 \Rightarrow x_{n} = 0 \]
-\end{paragraph}
-\begin{paragraph}{2)}
+\item
   spezielle Lösungen der inhomogenen Rekursion
   \begin{enumerate}[(a)]
     \item $f = (1, 1, \dots) = (1^{n})_{n\geq 0}$
@@ -63,7 +63,7 @@
       Parameter $\alpha_{1} = 9$ eliminiert und es ergibt sich
       \[ x_{n} = \alpha 2^{n} + \beta n2^{n} + 3^{n+2} \]
   \end{enumerate}
-  \begin{subparagraph}{Asymptotisches Verhalten}
+  \begin{paragraph}{Asymptotisches Verhalten}
     \begin{enumerate}[(a)]
       \item \[ x_{n} = 1 + \alpha 2^{n} + \beta n2^{n} \]
         \begin{equation*}
@@ -78,8 +78,8 @@
       \item \[ x_{n} = \alpha 2^{n} + \beta n2^{n} + 3^{n+2} \]
         \[ x_{n} \sim 3^{n+2} \]
     \end{enumerate}
-  \end{subparagraph}
-  \begin{subparagraph}{Alternative Herangehensweise}
+  \end{paragraph}
+  \begin{paragraph}{Alternative Herangehensweise}
 	Alternativ lässt sich diese Aufgabe auch durch Überlegungen aus dem
 	Skript lösen:
 	\[ x_{n} = 4x_{n-1} - 4x_{n-2} + y_{n} \]
@@ -88,15 +88,15 @@
 	charakteristischem Polynom $\chi_x(z)\cdot\chi_y(z)$ (Skript S. 83).
 
 	Das charakteristische Polynom von $(y_n)_{n\geq 0}$ erhält man
-	beispielsweise über die Reihenent\-wicklung der $z$-Transformierten
+	beispielsweise über die Rei\-hen\-ent\-wicklung der $z$-Transformierten
 	\[ y(z) = \sum_{n\geq 0} y_n z^n = \frac{c(z)}{d(z)}. \]
 	Das Polynom $d(z)$ entspricht dabei dem \textit{Rekursionspolynom} zu
 	$(y_n)_{n\geq 0}$, aus dem sich unmittelbar das charakteristische
 	Polynom ableiten lässt.
 
 	Die resultierende Rekursion entspricht genau der homogenen Rekursion,
-	die in \textbf{2)} durch Eliminierung des inhomogenen Terms entstand.
+	die in \textbf{2.} durch Eliminierung des inhomogenen Terms entstand.
 	Nachdem die Eigenwerte dieser Rekursion bestimmt sind verfährt man wie
 	bisher.
-  \end{subparagraph}
-\end{paragraph}
+  \end{paragraph}
+\end{enumerate}

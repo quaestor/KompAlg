@@ -157,7 +157,8 @@ Folglich ist
   \[ A_{2,p} = \begin{bmatrix} 1-p & p \\ 1 & 0 \end{bmatrix} \]
   \[ \chi_{2,p}(z) = \begin{vmatrix} 1-p-z & p \\ 1 & -z \end{vmatrix} \]
   \[ = z^{2} + pz - z - p \]
-  \[ \lambda_{1} = 1, \quad \lambda_{2}= -p \] \\[0.5em]
+  \[ \lambda_{1} = 1, \quad \lambda_{2}= -p \]
+  \vspace{0.5em}
   \[ A_{3,p} = \begin{bmatrix} 1-p & p & 0 \\
                                1-p & 0 & p \\
                                  1 & 0 & 0 \end{bmatrix} \]
@@ -167,8 +168,7 @@ Folglich ist
   \[ = -z^{3} - pz^{2} + z^{2} - p^{2}z + pz + p^{2} = \]
   \[ = -(z - 1) (z^{2} + pz + p^{2}) \]
   \[ \lambda_{1}= 1 \]
-  \[ \lambda_{2}= -\frac{p}{2}(1 - i\sqrt{3}), \quad
-     \lambda_{3}= -\frac{p}{2}(1 + i\sqrt{3}) \]
+  \[ \lambda_{2/3}= -\frac{p}{2}(1 \pm i\sqrt{3}) \]
   \end{minipage}\hfill\begin{minipage}{0.5\linewidth}
   \[ A_{4,p} = \begin{bmatrix} 1-p & p & 0 & 0 \\
                                1-p & 0 & p & 0 \\
@@ -203,82 +203,33 @@ Folglich ist
       \[ \chi_{z,p}(z) = (z - 1) \frac{z^{2}-p^{2}}{z-p} = (z-1)(z+p) \]
     \item Induktionsvoraussetzung: Die Behauptung gelte für $k$.
     \item Induktionsschritt: $k \rightarrow k + 1$
-    
-      Sei $B_{k} = \left[b_{ij}\right]_{1\leq i,j\leq k},$
-      \[ b_{ij} = \begin{cases} 1-p &\text{wenn~} j = 0, i = k \\
-                                0 &\text{sonst} \end{cases} \]
-      \begin{tikzpicture}[every node/.style={anchor=west},decoration=brace]
-      \matrix (m) [matrix of math nodes,nodes in empty cells] {
-      \chi_{B_{k}}(z) &= \begin{vmatrix}
-                            1-p-z & p  & 0  & \cdots & 0 \\
-                            1-p & -z & p  & \ddots & \vdots \\
-                            \vdots & 0  & \ddots & \ddots & 0 \\
-                            \vdots & \vdots  & \ddots & \ddots & p \\
-                            1-p & 0 & \cdots & 0 & -z
-                           \end{vmatrix} = \\
-                        &= \begin{vmatrix}
-                            1-p-z & p  & 0  & \cdots & 0 \\
-                            1-p & -z & p  & \ddots & \vdots \\
-                            \vdots & 0  & \ddots & \ddots & 0 \\
-                            1-p & \vdots  & \ddots & \ddots & p \\
-                            1 & 0 & \cdots & 0 & -z
-                           \end{vmatrix} + \begin{vmatrix}
-                            1-p-z & p  & 0  & \cdots & 0 \\
-                            1-p & -z & p  & \ddots & \vdots \\
-                            \vdots & 0  & \ddots & \ddots & 0 \\
-                            1-p & \vdots  & \ddots & -z & p \\
-                            -p & 0 & \cdots & 0 & 0
-                           \end{vmatrix} = \\};
-        \begin{scope}[draw=black!70,color=black!70]
-        \node[below delimiter=\{,minimum height=0pt,minimum width=3.6cm,text
-            width=3.5cm] at (10.85, 1.5) {bidiagonale Unterdeterminante mit dem
-            Wert $\prod_{i=1}^{k-1} a_{ii}$, wobei $a_{ii}$ die
-            Diagonalelemente sind};
-        \end{scope};
-        \draw[fill=blue,opacity=0.2] (10.8, -2.52) rectangle (14.53, -0.1);
-      \end{tikzpicture}
-      \[ \chi_{A_{k}}(z) + (-1)^{k+1}(-p)(p^{k-1})
-         = \chi_{A_{k}}(z) + (-1)^{k}p^{k} \]
 
+      Addition der zweiten auf die erste Spalte:
       \begin{equation*}
-        \begin{split}
-          \chi_{A_{k+1}}(z) &= -z \chi_{B_{k}}(z) - (-1)^{k+1}p^{k} = \\
-          &= -z(\chi_{A_{k}}(z) + (-1)^{k}p^{k}) - (-1)^{k+1}p^{k} = \\
-          &= -z \chi_{A_{k}}(z) + (-1)^{k+1}zp^{k} - (-1)^{k+1}p^{k} = \\
-          &= -z \chi_{A_{k}}(z) + (-1)^{k+1}p^{k} (z - 1) = \\
-          &\overset{IV}{=} -z ((-1)^{k}(z - 1)\frac{z^{k}-p^{k}}{z-p}) +
-          (-1)^{k+1}p^{k}(z-1) = \\
-          &= (-1)^{k+1} (z-1) (z \frac{z^{k}-p^{k}}{z-p} + p^{k}) \\
-          &= (-1)^{k+1} (z-1) \frac{z^{k+1}-zp^{k}+zp^{k}-p^{k+1}}{z-p} = \\
-          &= (-1)^{k+1} (z-1) \frac{z^{k+1}-p^{k+1}}{z-p} 
-        \end{split}
-      \end{equation*}
-      Damit ist die Behauptung bewiesen, da das Vorzeichen des
-      charakteristischen Polynoms keine Rolle spielt.
-
-      Alternative Lösung (Addition der zweiten auf die erste Spalte):
-      \[ \chi_{A_{k}}(z) = \begin{vmatrix}
+      \begin{split} \chi_{A_{k}}(z) & = \begin{vmatrix}
                             1-p-z & p  & 0  & \cdots & \cdots & 0 \\
                             1-p & -z & p  & \ddots & \ddots & \vdots \\
                             \vdots & 0  & \ddots & \ddots & \ddots & \vdots \\
                             \vdots & \vdots  & \ddots & \ddots & \ddots & 0 \\
                             1-p & \vdots  & \ddots & \ddots & \ddots & p \\
                             1 & 0 & \cdots & \cdots & 0 & -z
-                           \end{vmatrix}
-                        = \begin{vmatrix}
+                           \end{vmatrix} \\
+                       & = \begin{vmatrix}
                             1-z & p  & 0  & \cdots & \cdots & 0 \\
                             1-p-z & -z & p  & \ddots & \ddots &\vdots \\
                             1-p & 0  & \ddots & \ddots & \ddots & \vdots \\
                             \vdots & \vdots  & \ddots & \ddots & \ddots & 0 \\
                             1-p & \vdots  & \ddots & \ddots & \ddots & p \\
                             1 & 0 & \cdots & \cdots & 0 & -z
-                           \end{vmatrix} = \]
-      \[ = -(z - 1) (-z)^{k-1} - p\chi_{A_{k-1}}(z) = \]
-      \[ = (-1)^{k}(z - 1) z^{k-1} - p(z-1)\frac{z^{k-1}-p^{k-1}}{z-p} = \]
-      \[ = (-1)^{k}(z - 1) \left( z^{k-1} + \frac{pz^{k-1}-p^{k}}{z-p} \right) = \]
-      \[ = (-1)^{k}(z - 1) \left( \frac{z^{k}-z^{k-1}p}{z-p} +
-                          \frac{pz^{k-1}-p^{k}}{z-p} \right) = \]
-      \[ = (-1)^{k}(z - 1) \left( \frac{z^{k}-p^{k}}{z-p} \right) \]
+                           \end{vmatrix} = \\
+       & = -(z - 1) (-z)^{k-1} - p\chi_{A_{k-1}}(z) = \\
+       & = (-1)^{k}(z - 1) z^{k-1} - p(z-1)\frac{z^{k-1}-p^{k-1}}{z-p} = \\
+       & = (-1)^{k}(z - 1) \left( z^{k-1} + \frac{pz^{k-1}-p^{k}}{z-p} \right) = \\
+       & = (-1)^{k}(z - 1) \left( \frac{z^{k}-z^{k-1}p}{z-p} +
+                          \frac{pz^{k-1}-p^{k}}{z-p} \right) = \\
+       & = (-1)^{k}(z - 1) \left( \frac{z^{k}-p^{k}}{z-p} \right)
+       \end{split}
+       \end{equation*}
 
       $\chi_{A_{k,p}}$ hat die Nullstellen $1$ und die $k$-ten Wurzeln von
       $p^{k}$, welche in der komplexen Ebene auf einem Kreis mit Radius $p$ um

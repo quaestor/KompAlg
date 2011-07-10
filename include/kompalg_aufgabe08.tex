@@ -12,7 +12,9 @@
 	\[ x_{n+k} = \sum_{l = 1}^{k} a_l \cdot x_{n+k-l} = \sum_{l=0}^{k-1} a_{k-l} \cdot x_{n+l} \]
 
 	Damit erhält man sofort für $n \geq 0$:
-	\[ {\bf x}^{(n)} \cdot C_a = \left[  x_{n+1} \quad x_{n+2} \quad x_{n+3} \quad \ldots \quad \sum_{l=0}^{k-1} a_{k-l} x_{n+l} \right] = {\bf x}^{(n+1)} \]
+	\[ {\bf x}^{(n)} \cdot C_a = \left[  x_{n+1} \quad x_{n+2} \quad
+	x_{n+3} \quad \ldots \quad \sum_{l=0}^{k-1} a_{k-l} x_{n+l} \right] =
+	{\bf x}^{(n+1)} \]
 
 \item
 	\[ \chi_{C_a, k}(z) = \det ( z\cdot \mathds{1} - C_a) = 
@@ -43,11 +45,15 @@
 			0      & \cdots & \cdots & \cdots & 0      & -1     \\
 		\end{vmatrix} = \]
 	\[ = z \cdot \chi_{C_a, k-1}(z) + (-1)^{k+1}(-a_k)(-1)^{k-1} = z \cdot \chi_{C_a, k-1}(z) - a_k \]
-	Dabei sei $\chi_{C_a, m}(z)$ das charakteristische Polynom der Rekursion, die die ersten $m$ Elemente der Folge ${\bf a} = ({\bf a}_l)_l$ als
-	Rekursionskoeffizienten hat.
-	Die gewünschte Charakteristische Funktion $\chi_{C_a}(z) = \chi_{C_a,k}(z)$ lässt sich somit rekursiv durch die
-	charakteristischen Polynome der Rekursionen kleinerer Ordnung mit der gleichen Rekursionskoeffizienten-Folge darstellen.
-	Per Induktion folgt dann:
+	Dabei sei $\chi_{C_a, m}(z)$ das charakteristische Polynom der
+	Rekursion, die die ersten $m$ Elemente der Folge ${\bf a} = ({\bf
+	a}_l)_l$ als Rekursionskoeffizienten hat.
+
+	Die gewünschte charakteristische Funktion $\chi_{C_a}(z) =
+	\chi_{C_a,k}(z)$ lässt sich somit rekursiv durch die charakteristischen
+	Polynome der Rekursionen kleinerer Ordnung mit der gleichen
+	Rekursionsko\-ef\-fi\-zien\-ten-Folge darstellen.  Per Induktion folgt
+	dann:
 	\begin{itemize}
 		\item \textit{I.A.}: $k=1$: $x_{n} = a_1 \cdot x_{n-1}$ mit charakteristischem Polynom $\chi_{C_a, 1}(z) = z - a_1$.
 		\item \textit{I.V.}: Für ein $k$ gelte:

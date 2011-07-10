@@ -7,7 +7,8 @@
 	\log_b c^{\log_c y} = \log_b y \Leftrightarrow \log_c y =
 	\frac{\log_b y}{\log_b c}\]
 \item Nach Aufgabenteil 1.:
-	\[ \log_{10} 2 = \frac{\log_2 2}{\log_2 10} = \frac{1}{\log_2 10} \Rightarrow \frac{\log_{10} 2}{\log_2 10} = \frac{1}{\log_2^2 10} \]
+	\[ \log_{10} 2 = \frac{\log_2 2}{\log_2 10} = \frac{1}{\log_2 10}
+	\Rightarrow \frac{\log_{10} 2}{\log_2 10} = \frac{1}{\log_2^2 10} \]
 
 \item 47 Ziffern \[ \log_2 10^{14} = 14 \log_2 10 \approx 46.5 \]
 
@@ -15,10 +16,12 @@
 
 \item Der relative Fehler ist unabhängig von $x$:
 	\[ \left| \frac{\log_2 x - \ln x - \log_{10} x}{\log_2 x} \right| =
-	\left| \frac{\frac{\ln x}{\ln 2} - \ln x - \frac{\ln x}{\ln 10}}{\frac{\ln x}{\ln 2}} \right| = \frac{\ln 2}{\ln 10} \]
+	\left| \frac{\frac{\ln x}{\ln 2} - \ln x - \frac{\ln x}{\ln
+	10}}{\frac{\ln x}{\ln 2}} \right| = \frac{\ln 2}{\ln 10} \]
 
 \item
-	\[ \log_b \log_b x = \frac{\ln \log_b x}{\ln b} = \frac{\ln \frac{\ln x}{\ln b}}{\ln b} = \frac{\ln \ln x - \ln \ln b}{\ln b}\]
+	\[ \log_b \log_b x = \frac{\ln \log_b x}{\ln b} = \frac{\ln \frac{\ln
+	x}{\ln b}}{\ln b} = \frac{\ln \ln x - \ln \ln b}{\ln b}\]
 
 \item Da $b > 1$ ist das Minimum der Funktion bei $x = \frac{1}{e}$:
 	\lstset{language=Mathematice}
@@ -49,10 +52,14 @@
 		  {E/Log[n]} (* > 0 *)
 	\end{lstlisting}
 
-\item Annahme $\log_{10} 2 = \frac{p}{q} \in \mathbb{Q}$ mit $p,q \in \mathbb{N}$ ($\log_{10} 2$ > 0, da
-die Logarithmusfunktion streng monoton steigend ist und bei $1$ eine Nullstelle hat). Dann folgt:
+\item Annahme $\log_{10} 2 = \frac{p}{q} \in \mathbb{Q}$ mit $p,q \in
+\mathbb{N}$ ($\log_{10} 2$ > 0, da die Logarithmusfunktion streng monoton
+steigend ist und bei $1$ eine Nullstelle hat). Dann folgt:
+
 \[ 10^{\frac{p}{q}} = 2 \Leftrightarrow 10^p = 5^p 2^p = 2^q \]
-Die linke Seite hat Primteiler $5$, die rechte jedoch nicht; da die Primteilerzerlegung eindeutig ist
-führt dies zu einem Widerspruch, also ist $\log_{10} 2 \not\in \mathbb{Q}$.
+
+Die linke Seite hat Primteiler $5$, die rechte jedoch nicht; da die
+Primteilerzerlegung eindeutig ist führt dies zu einem Widerspruch, also ist
+$\log_{10} 2 \not\in \mathbb{Q}$.
 \end{enumerate}
 

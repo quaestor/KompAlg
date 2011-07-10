@@ -14,13 +14,13 @@
         {
           left, (* linke Teilliste *)
           right, (* rechte Teilliste *)
-          p = RandomInteger[{1, Length[A]}] (* zufaelliges Pivot-Element *)
+          p = RandomInteger[{1, Length[A]}] (* zuf. Pivot-Element *)
         },
-        left = Select[A, # > A[[p]] &]; (* alle Elemente groesser als Pivot *)
-        right = Select[A, # < A[[p]] &]; (* alle Elemente kleiner als Pivot *)
+        left = Select[A, # > A[[p]] &]; (* alle Elem. > Pivot *)
+        right = Select[A, # < A[[p]] &]; (* alle Elem. < Pivot *)
         Return[
           With[
-            (* Groesse von 'links' + derjenigen Elemente a mit a = A[p] *)
+            (* Groesse von 'links' + { a | a = A[p] } *)
             {n = Length[A] - Length[right]},
             Which[
               (* gesuchtes Element ist in der linken Liste *)
@@ -55,9 +55,11 @@
 	\item[(3)] Schließlich wird noch über alle möglichen Pivot-Elemente gemittelt
 \end{itemize}
 Zum Beweis des asymptotischen Verhaltens wird diese Ungleichung ein wenig
-umgeformt. Sei o.B.d.A $n$ gerade. Da der Aufwand mit der Inputlänge wächst ist
-$\max\left\{\meanv(k-1), \meanv(n-k)\right\} =
-\meanv(\max\{k-1,n-k\})$. Damit lässt sich die Summe auch schreiben als
+umgeformt. Sei o.B.d.A $n$ gerade. Da der Aufwand mit der Inputlänge
+wächst ist
+\[ \max\left\{\meanv(k-1), \meanv(n-k)\right\} =
+\meanv(\max\{k-1,n-k\}). \]
+Damit lässt sich die Summe auch schreiben als
 \begin{align} \nonumber \sum_{1\leq k\leq n} \max\left\{\meanv(k-1),\meanv(n-k)\right\}
 &= 2 \cdot \sum_{k=\frac{n}{2}+1}^n \meanv(k-1) = 2 \cdot \sum_{k=\frac{n}{2}}^{n-1} \meanv(k) \\
 \intertext{oder, um angenehmere Grenzen zu erhalten}
@@ -84,3 +86,4 @@ Nun können wir per Induktion zeigen, dass $\meanv(n) \in \mathcal{O}(n)$:
 			\[ 4n-3 \leq 4n \]
 		offensichtlich erfüllt und es folgt die Behauptung.
 \end{itemize}
+\end{enumerate}

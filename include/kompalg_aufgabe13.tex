@@ -13,13 +13,14 @@
 		\omega_N^{j \cdot i}$ ist $DFT_N = DFT_N^T$ eine symmetrische
 		Matrix. Somit ist
 	\begin{eqnarray*}
-	DFT_N^2 & = & DFT_N \cdot DTF_N^T = DFT_N \cdot DFT_N = 
+	DFT_N^2 & = & DFT_N \cdot DTF_N^T = DFT_N \cdot DFT_N \\
+	& = &
 	\begin{bmatrix}
 		\sum_{l = 0}^{N-1} \left(\omega_N^{i \cdot l} \cdot \omega_N^{l \cdot j}\right)
 	\end{bmatrix}_{i, j} =
 	\begin{bmatrix}
 		\sum_{l=0}^{N-1} \omega_N^{l \cdot (i + j)}
-	\end{bmatrix}_{i,j} = \\
+	\end{bmatrix}_{i,j} \\
 	& = &
 	\begin{bmatrix}
 		N & \text{ für } i + j \equiv 0 \mod N \\
