@@ -34,14 +34,14 @@
         ]
       ]
   \end{lstlisting}
-\begin{paragraph}{1)}
+\begin{enumerate}
+\item
   Wird bei der Pivot-Wahl zufällig immer das größte Element gewählt, so wird
   die Liste in jedem Schritt lediglich um ein Element kleiner. Für die
   Aufteilung in die Teil-Listen sind bei Listenlänge $n$ genau $n-1$ Vergleiche
   notwendig. Insgesamt sind dies also $\sum_{i<n}i = \frac{1}{2}n(n-1) \in
-  \mathbb{O}(n^2)$ Vergleiche.
-\end{paragraph}
-\begin{paragraph}{2)}
+  \mathcal{O}(n^2)$ Vergleiche.
+\item
 \[ \meanv(n) \leq \overbrace{(n-1)}^{(1)} +
 \underbrace{\frac{1}{n}\sum_{1\leq k \leq n}}_{(3)}
 \overbrace{\max\left\{\meanv(k-1),\meanv(n-k)\right\}}^{(2)} \]
@@ -63,7 +63,7 @@ $\max\left\{\meanv(k-1), \meanv(n-k)\right\} =
 \intertext{oder, um angenehmere Grenzen zu erhalten}
 &= 2 \cdot \left(\sum_{k=0}^{n-1} \meanv(k) - \sum_{k=0}^{\frac{n}{2}-1} \meanv(k)\right) \label{eqn:sum}
 \end{align}
-Nun können wir per Induktion zeigen, dass $\meanv(n) \in \mathbb{O}(n)$:
+Nun können wir per Induktion zeigen, dass $\meanv(n) \in \mathcal{O}(n)$:
 \begin{itemize}
 	\item \textit{Induktionsanfang:} \[ \meanv(0) = 0 \leq c \cdot 0 \]
 		wird von beliebigen positiven Konstanten $c$ erfüllt.
@@ -84,4 +84,3 @@ Nun können wir per Induktion zeigen, dass $\meanv(n) \in \mathbb{O}(n)$:
 			\[ 4n-3 \leq 4n \]
 		offensichtlich erfüllt und es folgt die Behauptung.
 \end{itemize}
-\end{paragraph}
