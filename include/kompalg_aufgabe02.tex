@@ -1,6 +1,14 @@
-\section*{Aufgabe 2 - Laufzeitenvergleich}
-\addcontentsline{toc}{subsection}{Aufgabe 2 - Laufzeitenvergleich}
-\begin{flushalpha}
+\section*{Laufzeitenvergleich}
+\addcontentsline{toc}{subsection}{Laufzeitenvergleich}
+\subsection*{Angabe}
+\input{include/kompalg_angabe02}
+
+%%%
+% Lösung
+%%%
+\subsection*{Lösung}
+
+\begin{flushenum}
 \item
 	Offensichtlich ist das asymptotische Verhalten der Algorithmen folgendes:
 	\[ t_\mathcal{A} \in \mathcal{O}(n) \]
@@ -30,7 +38,7 @@
 	\end{itemize}
 
 \item 
-	\begin{enumerate}[1.]
+	\begin{flushalpha}
 	\item
 		Bei dieser Aufgabe ist es sinnvoller von der Laufzeit der beiden Algorithmen den Logarithmus zu berechnen,
 		da die Ausdrücke so leichter zu vergleichen sind. Da der Logarithmus streng monoton ist,
@@ -52,6 +60,6 @@
 		für $n > 16$ ist $\mathcal{B}$ schneller.
 	
 	\item
-		Mit Teilaufgabe b) 1. folgt $t_\mathcal{B} \in \hbox{o}(t_\mathcal{A})$.
-	\end{enumerate}
-\end{flushalpha}
+		Mit Teilaufgabe 2.a) folgt $t_\mathcal{B} \in \hbox{o}(t_\mathcal{A})$.
+	\end{flushalpha}
+\end{flushenum}
