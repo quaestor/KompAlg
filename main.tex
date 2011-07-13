@@ -54,11 +54,29 @@
   \vskip\belowcaptionskip}
 \makeatother
 
+% Enumerate ohne Einrückung
+\newcounter{itemcounter}
+\newenvironment{flushenum}{
+\begin{list}
+{\textbf{\arabic{itemcounter}.}}
+{\usecounter{itemcounter}\leftmargin=1.4em}}{\end{list}}
+
+% Alphanumerische Aufzählung ohne Einr.
+\newenvironment{flushalpha}{
+\begin{list}
+{\alph{itemcounter})}
+{\usecounter{itemcounter}\leftmargin=1.4em}}{\end{list}}
+
+% Alphanumerische Aufzählung ohne Einr. mit Klammerung
+\newenvironment{flushalphb}{
+\begin{list}
+{(\alph{itemcounter})}
+{\usecounter{itemcounter}\leftmargin=1.4em}}{\end{list}}
+
 \setkomafont{title}{\normalfont}
 \setkomafont{pageheadfoot}{\normalfont}
 \setkomafont{pagenumber}{\normalfont\scshape}
 \setkomafont{disposition}{\normalfont\bfseries\scshape}
-%\renewcommand{\labelenumi}{\oldstylenums{\arabic{enumi}}
 
 \widowpenalty=300
 \clubpenalty=300

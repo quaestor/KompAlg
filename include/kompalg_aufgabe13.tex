@@ -5,7 +5,7 @@
 \def\Ddots{\mathinner{\mkern1mu\raise\p@\vbox{\kern7\p@\hbox{.}}\mkern2mu\raise4\p@\hbox{.}\mkern2mu\raise7\p@\hbox{.}\mkern1mu}}
 \makeatother
 
-\begin{enumerate}[1.]
+\begin{flushenum}
 	\item Die Transformationsmatrix der diskreten Fouriertransformation der
 		Länge $N$ ist definiert als $DFT_N = [ \omega_N^{i \cdot j}
 		]_{i,j}$, wobei $\omega_N = e^{\imath \frac{2 \pi}{N}}$ die
@@ -85,7 +85,7 @@
 	\item Für das komplexe Skalarprodukt $\langle a, b\rangle$ und eine
 	Matrix $M$ gilt:
 	\[ c = \langle a, M \cdot b\rangle = \langle M^\dagger \cdot a, b\rangle \]
-	wobei $M^\dagger$ die adjungierte Matrix zu $M$ ist, also die Transponierten der komplex Konjugierten von $M$,
+	wobei $M^\dagger$ die adjungierte Matrix zu $M$ ist, also die Transponierte der komplex Konjugierten von $M$,
 	i.e. $M = (m_{i,j})$ und $M^\dagger = (\overline{m}_{j,i})$.
 	Dies kann man folgendermaßen durch Vertauschung der Summation zeigen:
 	\begin{equation*}
@@ -105,4 +105,4 @@
 	\[ \frac{1}{N} \langle DFT_N \cdot a, DFT_N \cdot b\rangle =
 	\frac{1}{N} \langle DFT_N^\dagger \cdot DFT_N \cdot a, b \rangle =
 	\frac{1}{N} \langle N \cdot \mathds{1}\cdot a, b\rangle = \langle a, b\rangle \]
-\end{enumerate}
+\end{flushenum}
