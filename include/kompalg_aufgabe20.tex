@@ -1,7 +1,74 @@
-\section*{Aufgabe 20 - Aufwand für banale und schnelle Exponentiation im
-Vergleich}
-\addcontentsline{toc}{subsection}{Aufgabe 20 - Aufwand für banale und schnelle
+\section*{Aufwand für banale und schnelle Exponentiation im Vergleich}
+\addcontentsline{toc}{subsection}{Aufwand für banale und schnelle
 Exponentiation im Vergleich}
+
+%%%
+% Angabe
+%%%
+\subsection*{Angabe}
+Betrachten Sie in dieser Aufgabe die Exponentiation im Bereich der natürlichen
+Zahlen (die Argumente übertragen sich auf andere Halbgruppen, aber das ist
+weniger relevant).
+
+Für $a \in \mathbb{N}$ bezeichne $\|a\|$ die ``Größe'' von $a$, also  $\|a\| =
+\log|a|$  = die Anzahl der Ziffern in der Binärdarstellung von $a$. Sie wissen
+(oder überzeigen sich davon),
+\begin{itemize}
+\item
+dass sich die \underline{Größe} bei der Multiplikation additiv verhält, d.h.
+$\|a*b\|=\|a\|+\|b\|$ \\(also insbesondere gilt bei Exponentiation: $\|a^k\|= k
+\cdot \|a\|$);
+\item
+dass der \underline{Aufwand} für eine  Multiplikation $(a,b) \mapsto a*b$
+multiplikativ  von den Größen der Operanden abhängt, d.h.  wie $c \cdot \|a\|
+\cdot \|b\|$ mit einer Konstanten $c$. Das gilt jedenfalls für die
+``Schulmethode''.  Der Einfachheit halber können Sie $c=1$ annehmen.
+\end{itemize}
+
+Sei nun $a \in \mathbb{N}$ und $N = 2^n-1$. Betrachten Sie die Aufgabe, die
+Zahl $a^N = a^{2^n-1}$ zu berechnen.  Man kann das entweder mit der ``banalen''
+oder mit der ``schnellen'' Methode machen:
+
+\begin{itemize}
+\item[a)]
+\begin{algorithmic}
+\STATE{$x \leftarrow a$}
+\FOR{$i$ from $1$ to $N-1$}
+\STATE{$x \leftarrow x*a$}
+\ENDFOR
+\STATE{Return($x$)}
+\end{algorithmic}
+
+\item[b)]
+\begin{algorithmic}
+\STATE{$x \leftarrow a, y \leftarrow a$}
+\FOR{$i$ from $1$ to $n-1$}
+\STATE{$y \leftarrow y*y$}
+\STATE{$x \leftarrow x*y$}
+\ENDFOR
+\STATE{Return($x$)}
+\end{algorithmic}
+\end{itemize}
+
+Beachten Sie: die \underline{Anzahl} der Schleifendurchläufe bei Algorithmus a)
+ist exponentiell größer als die bei Algorithmus b).  Entsprechend ist die
+\underline{Anzahl} der Multiplikationen bei Algorithmus a) gleich $N-1$ und bei
+Algorithmus b) gleich $2(n-1)$, ebenfalls ein exponentieller Sprung.
+
+\begin{flushenum}
+\item Zeigen Sie, dass der Algorithmus b) korrekt ist!
+\item Bestimmen Sie nun den Aufwand der beiden Verfahren, indem Sie
+	feststellen, welche Operanden in den jeweiligen Schleifendurchläufen
+	miteinander multipliziert werden, wie gross sie sind und was die
+	Multiplikation in Abhängigkeit von ihrer Größe demnach kostet.\\
+	Hinweis: Sie sollten herausfinden, dass die Kosten in beiden Fällen
+	$\mathcal{O}(N^2)$ betragen!
+\end{flushenum}
+
+%%%
+% Lösung
+%%%
+\subsection*{Lösung}
 \begin{flushenum}
 \item
   Aus dem Algorithmus ergeben sich die rekursiven Folgen
@@ -30,5 +97,27 @@ Exponentiation im Vergleich}
   \[ \alpha_{1} = -1, \quad \alpha_{2} = 1 \]
   \[ \Rightarrow x_{n} = 2^{n} - 1 \]
   Der Algorithmus ist also korrekt und berechnet $a^{2^{n}-1}$
-\item \dots
+\item
+  Mit der Definition des Aufwands ($c = 1$) für eine Multiplikation aus der
+  Angabe gilt für den Aufwand $t_a$ des Algorithmus a)
+  \begin{align*}
+	  t_a(N) & = \sum_{i=1}^{N-1} \|x_i\| \cdot \|a\| = \sum_{i=1}^{N-1} \|a^i\|
+	  \cdot \|a\| = \|a\|^2 \sum_{i=1}^{N-1} i = \|a\|^2 \frac{N(N-1)}{2} \in
+	  \mathcal{O}(N^2). \\
+	  \intertext{\noindent Analog verfährt man mit Algorithmus b):}
+	  t_b(n) & = \sum_{i=1}^{n-1} \|y_{i-1}\| \cdot \|y_{i-1}\| + \|x_i\|
+	  \cdot \|y_i\| = \sum_{i=1}^{n-1} \|a^{2^{i-1}}\|^2 + \|a^{2^i - 1}\|
+	  \cdot \|a^{2^i}\| \\
+	  & = \|a\|^2 \sum_{i=1}^{n-1} 2^{2(i-1)} + 2^{2i} - 2^i \\
+	  \intertext{\noindent Einzeln summieren und zusammenfassen ergibt}
+	  & = \|a\|^2 \left(\frac{5}{12}4^n -2^n -\frac{1}{3}\right)
+	  = \frac{\|a\|^2}{12} \left(5N^2 - 2N - 3\right) \in
+	  \mathcal{O}(N^2).
+  \end{align*}
+  Man sieht folglich, dass der Aufwand für beide Algorithmen quadratisch im
+  Exponenten ist. Der eigentliche Vorteil von Algorithmus b) zeigt sich jedoch,
+  wenn man Multiplikationen von Zahlen fester Länge betrachtet, beispielsweise
+  $32$-bit-Multiplikationen. Dann spielt für den Aufwand lediglich die Anzahl
+  der Multiplikationen eine Rolle, die, wie in der Angabe bereits bemerkt,
+  exponentiell kleiner ist als bei Algorithmus a).
 \end{flushenum}

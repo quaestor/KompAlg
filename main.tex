@@ -13,6 +13,7 @@
 \usetikzlibrary{positioning}
 \usepackage{dsfont}
 \usepackage{amsmath, amsthm, amssymb}
+\usepackage{algorithmic}
 \usepackage{color}
 \usepackage{scrpage2}
 \usepackage[T1]{fontenc}
@@ -37,7 +38,7 @@
 % Different format for headings
 \def\section{\@startsection{section}{1}%
   \z@{.7\baselineskip\@plus\baselineskip}{.5\baselineskip}%
-  {\normalfont\large\scshape\centering}}
+  {\normalfont\Large\scshape\centering}}
 % This does spacing around caption.
 \setlength{\abovecaptionskip}{0.5em}
 \setlength{\belowcaptionskip}{0.5em}
@@ -76,7 +77,7 @@
 \setkomafont{title}{\normalfont}
 \setkomafont{pageheadfoot}{\normalfont}
 \setkomafont{pagenumber}{\normalfont\scshape}
-\setkomafont{disposition}{\normalfont\bfseries\scshape}
+\setkomafont{disposition}{\normalfont\bfseries}
 
 \widowpenalty=300
 \clubpenalty=300
@@ -99,5 +100,6 @@
 \include{include/kompalg_aufgabe13}
 \include{include/kompalg_aufgabe16}
 \include{include/kompalg_aufgabe17}
+\include{include/kompalg_aufgabe20}
 \include{include/kompalg_aufgabe22}
 \end{document}
