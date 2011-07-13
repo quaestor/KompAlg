@@ -1,10 +1,69 @@
-\section*{Aufgabe 13 - Eigenschaften der DFT}
-\addcontentsline{toc}{subsection}{Aufgabe 13 - Eigenschaften der DFT}
+\section*{Eigenschaften der DFT}
+\addcontentsline{toc}{subsection}{Eigenschaften der DFT}
 
 \makeatletter
 \def\Ddots{\mathinner{\mkern1mu\raise\p@\vbox{\kern7\p@\hbox{.}}\mkern2mu\raise4\p@\hbox{.}\mkern2mu\raise7\p@\hbox{.}\mkern1mu}}
 \makeatother
 
+%%%
+% Angabe
+%%%
+\subsection*{Angabe}
+\begin{flushenum}
+\item Mit $\text{DFT}_N$  wird die Matrix der Diskreten Fouriertransformation
+	der Ordnung $N$ bezeichnet.  Zeigen Sie, dass
+	\[
+	\text{DFT}_N^2 = \begin{bmatrix} N \cdot \chi_{i+j=0\, (N)} \end{bmatrix}_{0 \leq i,j < N}~~~
+	\text{mit}~~
+	\chi_{i+j=0\,(N)} =
+	\begin{cases}
+	1 &\text{falls}~i+j \equiv 0 \mod N \cr
+	0 &\text{falls}~i+j \not\equiv 0 \mod N
+	\end{cases}
+	\]
+	gilt und folgern Sie daraus
+	\[
+	\left| \, \det \text{DFT}_N \, \right|= N^{N/2}.
+	\]
+
+\item Für einen (Zeilen-)Vektor $\mathbf{a} = (a_0,a_1,a_2\ldots,a_{N-1}) \in
+	\mathbb{C}^N$ sei $S(\mathbf{a}) = (s_0,s_1,s_2,\ldots,s_{N-1})=
+	(a_0,a_{N-1}, \ldots,a_2,a_1)$ derjenige (Zeilen-)Vektor, der aus
+	$\mathbf{a}$ durch Umkehrung und zyklischen Rechts-Shift  entsteht,
+	d.h. es gilt $s_j = a_{N-j \mod N}$ für $0 \leq j < N$.  Für
+	Spaltenvektoren gilt entsprechend $S(\mathbf{a}^t) = S(\mathbf{a})^t$.
+	
+	Zeigen Sie, dass die beiden Operationen $\mathbf{a} \mapsto
+	\text{DFT}_N \cdot \mathbf{a}^t$ und $\mathbf{a} \mapsto S(\mathbf{a})$
+	miteinander vertauschbar sind, d.h., es gilt
+	\[
+	\text{DFT}_N\cdot S(\mathbf{a}^t) = S(\text{DFT}_N \cdot \mathbf{a}^t)
+	\]
+	
+	Tip: überlegen sie sich, welche Matrix die lineare Transformation
+	$\mathbf{a} \mapsto \widetilde{\mathbf{a}}$ realisiert und verwenden
+	Sie den vorigen Aufgabenteil.
+ \item
+Auf dem Vektorraum $\mathbb{C}^N$ definiert man das komplexe
+\emph{Skalarprodukt}  für Vektoren ${\mathbf a} = (a_0 \ldots a_{N-1})$,
+${\mathbf b} = (b_0 \ldots b_{N-1})$ durch
+\[
+\begin{array}{l} \langle {\mathbf a},{\bf b} \rangle := \sum\limits^{N-1}_{i=0}
+	\overline{a}_i \cdot b_i  \end{array}
+\]
+Zeigen Sie:
+\[
+\langle {\bf a},{\bf b} \rangle = \frac{1}{N} \, \langle \text{DFT}_N \,{\bf a}^t,   \text{DFT}_N \,{\bf b}^t \rangle.
+\]
+Anmerkung: Dies ist das diskrete Analogon zu  der berühmten
+\textsc{Parseval-Plancherel}-Gleichung im kontinuierlichen Fall der
+Fouriertransformation.
+\end{flushenum}
+
+%%%
+% Lösung
+%%%
+\subsection*{Lösung}
 \begin{flushenum}
 	\item Die Transformationsmatrix der diskreten Fouriertransformation der
 		Länge $N$ ist definiert als $DFT_N = [ \omega_N^{i \cdot j}
