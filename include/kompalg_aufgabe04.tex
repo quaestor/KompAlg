@@ -1,52 +1,56 @@
-\section*{Aufgabe 4 - Fibonacci}
-\addcontentsline{toc}{subsection}{Aufgabe 4 - Fibonacci}
-\begin{paragraph}{a)}
+\section*{Fibonacci}
+\addcontentsline{toc}{subsection}{Fibonacci}
+\subsection*{Angabe}
+\input{include/kompalg_angabe04}
+%%%
+% Lösung
+%%%
+\subsection*{Lösung}
+\begin{flushenum}
+\item
   zu zeigen:
-  \[ f_n = \frac{\Phi^n - \hat \Phi^n}{\sqrt{5}} \quad n \geq 0 \]
+  \[ f_n = \frac{\Phi^n - \widehat \Phi^n}{\sqrt{5}} \quad n \geq 0 \]
   \begin{itemize}
-    \item Induktionsanfang:
-    \begin{itemize}
-      \item[$n = 0$]
-        \[ f_0 = \frac{\Phi^0 - \hat \Phi^0}{\sqrt{5}} 
+    \item \textit{I.A.}:
+
+      $n = 0$
+        \[ f_0 = \frac{\Phi^0 - \widehat \Phi^0}{\sqrt{5}} 
                = \frac{1 - 1}{\sqrt{5}} = 0 \]
-      \item[$n = 1$]
-        \[ f_1 = \frac{\Phi - \hat \Phi}{\sqrt{5}} 
+      $n = 1$
+        \[ f_1 = \frac{\Phi - \widehat \Phi}{\sqrt{5}} 
                = \frac{1 + \sqrt{5} - 1 + \sqrt{5}}{2 \sqrt{5}} = 1 \]
-    \end{itemize}
-    \item Induktionsvoraussetzung: Die Behauptung gelte für $n$.
-    \item Induktionsschritt: $n \rightarrow n + 1$
-    
-    Da $\Phi$ und $\hat \Phi$ die beiden Lösungen der quadratischen Gleichung
+    \item \textit{I.V.}: Die Behauptung gelte für $n$.
+    \item \textit{I.S}: $n \rightarrow n + 1$
+
+    Da $\Phi$ und $\widehat \Phi$ die beiden Lösungen der quadratischen Gleichung
     $x^2 - x - 1 = 0$ sind, gilt offensichtlich $\Phi + 1 = \Phi^2$ sowie
-    $\hat \Phi + 1 = \hat \Phi^2$.
+    $\widehat \Phi + 1 = \widehat \Phi^2$.
 %    \[ \Phi + 1 = \frac{3 + \sqrt{5}}{2} = \frac{6 + 2 \sqrt{5}}{4} 
 %                = \frac{1 + s \sqrt{5} + 5}{4} = (\frac{1 + \sqrt{5}}{2})^2 
 %                = \Phi^2 \]
 %    analog gilt:
-%    \[ \hat \Phi + 1 = \hat \Phi^2 \]
+%    \[ \widehat \Phi + 1 = \widehat \Phi^2 \]
     
     Damit folgt:
-    \[ f_{n+1} = f_n + f_{n-1} \overset{IV}{=} \frac{\Phi^n - \hat
-       \Phi^n}{\sqrt{5}} + \frac{\Phi^{n-1} - \hat \Phi^{n-1}}{\sqrt{5}} = \]
-    \[ = \frac{(\Phi^n + \Phi^{n-1}) - (\hat \Phi^n + \hat \Phi^{n-1})}{\sqrt{5}}
+    \[ f_{n+1} = f_n + f_{n-1} \overset{IV}{=} \frac{\Phi^n - \widehat
+       \Phi^n}{\sqrt{5}} + \frac{\Phi^{n-1} - \widehat \Phi^{n-1}}{\sqrt{5}} = \]
+    \[ = \frac{(\Phi^n + \Phi^{n-1}) - (\widehat \Phi^n + \widehat \Phi^{n-1})}{\sqrt{5}}
        = \frac{(\Phi^{n-1} \cdot \Phi + \Phi^{n-1}) - 
-         (\hat \Phi^{n-1} \cdot \hat \Phi + \hat \Phi^{n-1})}{\sqrt{5}} = \]
-    \[ = \frac{(\Phi^{n-1} (\Phi + 1)) - (\hat \Phi^{n-1} (\hat \Phi + 1))}{\sqrt{5}} 
-       = \frac{\Phi^{n-1} \Phi^2 - \hat \Phi^{n-1} \hat \Phi^2}{\sqrt{5}} = \]
-    \[ = \frac{\Phi^{n+1} - \hat \Phi^{n+1}}{\sqrt{5}} \]
+         (\widehat \Phi^{n-1} \cdot \widehat \Phi + \widehat \Phi^{n-1})}{\sqrt{5}} = \]
+    \[ = \frac{(\Phi^{n-1} (\Phi + 1)) - (\widehat \Phi^{n-1} (\widehat \Phi + 1))}{\sqrt{5}} 
+       = \frac{\Phi^{n-1} \Phi^2 - \widehat \Phi^{n-1} \widehat \Phi^2}{\sqrt{5}} = \]
+    \[ = \frac{\Phi^{n+1} - \widehat \Phi^{n+1}}{\sqrt{5}} \]
     $\hfill \square$
   \end{itemize}
-\end{paragraph}
-\begin{paragraph}{b)}
-  zu zeigen:
+
+\item
+zu zeigen:
   \[ f_{n+1} f_{n-1} - f_n^2 = (-1)^n \quad n \geq 1 \]
   \begin{itemize}
-    \item Induktionsanfang:
-    \begin{itemize}
-      \item[$n = 1$] \[ f_2f_0 - f_1^2 = 1 \cdot 0 - 1^2 = (-1)^1 \]
-    \end{itemize}
-    \item Induktionsvoraussetzung: Die Annahme gelte für $n$.
-    \item Induktionsschritt: $n \rightarrow n + 1$
+    \item \textit{I.A.}: $n = 1$
+      \[ f_2f_0 - f_1^2 = 1 \cdot 0 - 1^2 = (-1)^1 \]
+    \item \textit{I.V.}: Die Annahme gelte für $n$.
+    \item \textit{I.S.}: $n \rightarrow n + 1$
 
     Mit dem Zusammenhang $f_{n} = f_{n-1} + f_{n-2}$ für alle $n \geq 2$ folgt:
     \[ f_{n+2}f_n - f_{n+1}^2 = (f_{n+1} + f_n)(f_{n+1} - f_{n-1}) - f_{n+1}^2
@@ -56,24 +60,23 @@
     \[ = -1(f_{n+1}f_{n-1} - f_n^2) \overset{IV}{=} -1(-1)^n = (-1)^{n+1} \]
     $\hfill \square$
   \end{itemize}
-\end{paragraph}
-\begin{paragraph}{c)}
+\item
   zu zeigen:
   \[ \lim_{n \rightarrow \infty} \frac{f_{n+1}}{f_n} = \Phi \]
   Vorbemerkung:
-  \[ \lim_{n \rightarrow \infty} (\overbrace{\frac{\hat \Phi}{\Phi}}^{< 1})^n = 0 \]
+  \[ \lim_{n \rightarrow \infty} (\overbrace{\frac{\widehat \Phi}{\Phi}}^{< 1})^n = 0 \]
   Beweis:
   \[ \lim_{n \rightarrow \infty} \frac{f_{n+1}}{f_n} 
      = \lim_{n \rightarrow \infty} \frac{\Phi^{n+1} - 
-       \hat \Phi^{n+1}}{\Phi^n - \hat \Phi^n} = \]
-  \[ = \lim_{n \rightarrow \infty} \frac{\Phi^{n+1}}{\Phi^n - \hat \Phi^n} - 
-       \lim_{n \rightarrow \infty} \frac{\hat \Phi^{n+1}}{\Phi^n - \hat \Phi^n} = \]
-  \[ = \lim_{n \rightarrow \infty} \frac{\Phi^n \cdot \Phi}{\Phi^n (1 - \frac{\hat \Phi^n}{\Phi^n})} - 
-       \lim_{n \rightarrow \infty} \frac{\frac{\hat \Phi^{n+1}}{\Phi^{n+1}}}
-                                        {\Phi^{n+1}(\Phi^{-1} - \frac{\hat \Phi^n}{\Phi^{n+1}})} = \]
-  \[ = \lim_{n \rightarrow \infty} \frac{\Phi}{1 - (\frac{\hat \Phi}{\Phi})^n} - 
-       \lim_{n \rightarrow \infty} \frac{(\frac{\hat \Phi}{\Phi})^{n+1}}
-                                        {\Phi^{-1} (1 - (\frac{\hat \Phi}{\Phi})^n)} 
+       \widehat \Phi^{n+1}}{\Phi^n - \widehat \Phi^n} = \]
+  \[ = \lim_{n \rightarrow \infty} \frac{\Phi^{n+1}}{\Phi^n - \widehat \Phi^n} - 
+       \lim_{n \rightarrow \infty} \frac{\widehat \Phi^{n+1}}{\Phi^n - \widehat \Phi^n} = \]
+  \[ = \lim_{n \rightarrow \infty} \frac{\Phi^n \cdot \Phi}{\Phi^n (1 - \frac{\widehat \Phi^n}{\Phi^n})} - 
+       \lim_{n \rightarrow \infty} \frac{\frac{\widehat \Phi^{n+1}}{\Phi^{n+1}}}
+                                        {\Phi^{n+1}(\Phi^{-1} - \frac{\widehat \Phi^n}{\Phi^{n+1}})} = \]
+  \[ = \lim_{n \rightarrow \infty} \frac{\Phi}{1 - (\frac{\widehat \Phi}{\Phi})^n} - 
+       \lim_{n \rightarrow \infty} \frac{(\frac{\widehat \Phi}{\Phi})^{n+1}}
+                                        {\Phi^{-1} (1 - (\frac{\widehat \Phi}{\Phi})^n)} 
      = \Phi - 0 = \Phi \] $\hfill \square$
   \begin{table}[h!b!p!]
   \caption{Wertetabelle:}
@@ -106,8 +109,8 @@
     \draw[->] (D.south) to [out=270,in=300] ($(E.south) +(0.0,-15pt)$);
   \end{scope}
   \end{tikzpicture}
-\end{paragraph}
-\begin{paragraph}{d)}
+
+\item
 $f_n$ wächst wie $\frac{\Phi^n}{\sqrt{5}}$ (siehe Vorlesung)
 \[ \Rightarrow \frac{\Phi^n}{\sqrt{5}} = b^x \] wobei $b$ die Basis und $x$ die Anzahl der Stellen ist.
 \[ x = \log_b \frac{\Phi^n}{\sqrt{5}} = n \log_b \Phi - \log_b \sqrt{5} \]
@@ -125,4 +128,4 @@ Binärziffern   &  69 & 138& 208& 277
 \end{tabular}
 \end{center}
 \end{table}
-\end{paragraph}
+\end{flushenum}

@@ -1,57 +1,52 @@
-\section*{Aufgabe 1 - Fingerübungen zum Rechnen mit Logarithmen}
-\addcontentsline{toc}{subsection}{Aufgabe 1 - Fingerübungen zum Rechnen mit Logarithmen}
+\section*{Fingerübungen zum Rechnen mit Logarithmen}
+\addcontentsline{toc}{subsection}{Fingerübungen zum Rechnen mit Logarithmen}
+\subsection*{Angabe}
+\input{include/kompalg_angabe01}
 
+%%%
+% Lösung
+%%%
+\subsection*{Lösung}
 \begin{flushenum}
+%1
 \item
 	\[ c^{\log_c y} = y \Leftrightarrow 
 	\log_b c^{\log_c y} = \log_b y \Leftrightarrow \log_c y =
 	\frac{\log_b y}{\log_b c}\]
+%2
 \item Nach Aufgabenteil 1.:
 	\[ \log_{10} 2 = \frac{\log_2 2}{\log_2 10} = \frac{1}{\log_2 10}
 	\Rightarrow \frac{\log_{10} 2}{\log_2 10} = \frac{1}{\log_2^2 10} \]
-
+%3
 \item 47 Ziffern \[ \log_2 10^{14} = 14 \log_2 10 \approx 46.5 \]
-
+%4
 \item 39 Ziffern \[ \log_{10} (2^{128} + 1) \approx 128 \log_{10} 2 \approx 38.5 \]
-
+%5
 \item Der relative Fehler ist unabhängig von $x$:
 	\[ \left| \frac{\log_2 x - \ln x - \log_{10} x}{\log_2 x} \right| =
 	\left| \frac{\frac{\ln x}{\ln 2} - \ln x - \frac{\ln x}{\ln
 	10}}{\frac{\ln x}{\ln 2}} \right| = \frac{\ln 2}{\ln 10} \]
-
+%6
 \item
 	\[ \log_b \log_b x = \frac{\ln \log_b x}{\ln b} = \frac{\ln \frac{\ln
 	x}{\ln b}}{\ln b} = \frac{\ln \ln x - \ln \ln b}{\ln b}\]
-
-\item Da $b > 1$ ist das Minimum der Funktion bei $x = \frac{1}{e}$:
-	\lstset{language=Mathematice}
-	\begin{lstlisting}
-		f[x_] = x Log[b,x];
-		x/.Solve[f'[x] == 0, x]
-		  {1/E}
-		f''[1/E]
-		  E/Log[b] (* > 0 fuer b > 1 *)
-	\end{lstlisting}
-
-\item Für $x > 1$ nimmt die Funktion ihr Minimum bei $b = e$ an:
-	\begin{lstlisting}
-		f[b_]= b Log[b,x];
-		b/.Solve[f'[b] == 0, b]
-		  {E}
-		f''[E]
-		  Log[x]/E (* > 0 fuer x > 1*)
-	\end{lstlisting}
-
-\item Das Minimum der Funktion wird bei $x = \log n$ erreicht:
-	\begin{lstlisting}
-		f[x_] = x n^{1/x};
-		f'[x]//Simplify
-		  {(n^(1/x) (x-Log[n]))/x}
-		  (* Nullstelle bei x = Log[n] *)
-		f''[Log[n]]
-		  {E/Log[n]} (* > 0 *)
-	\end{lstlisting}
-
+%7
+\item Da $b > 1$ ist das Minimum der Funktion $f(x) = x \cdot \log_b x$ bei $x = e^{-1}$:
+	\[ f'(x) = \frac{1}{\ln b} + \frac{\ln x}{\ln b} \]
+	\[ f''(x) = \frac{1}{x \cdot \ln b} \]
+	Die zweite Ableitung ist bei $x = e^{-1}$ positiv, somit ist dort das Minimum.
+\item Für $x > 1$ nimmt die Funktion $f(b) = b \cdot \log_b x$ ihr Minimum bei $b = e$ an:
+	\[ f'(b) = -\frac{\ln x}{\ln^2 b} + \frac{\ln x}{\ln b} \]
+	\[f''(b) = \frac{2 \cdot \ln x}{b \cdot \ln^3 b} - \frac{\ln x}{b \cdot \ln^2 b} \]
+	Die zweite Ableitung ist positiv, also Minimum.
+\item Das Minimum der Funktion $f(x) = x \cdot n^(1/x)$ wird bei $x = \ln n$ erreicht:
+	Ist $n = 0$ gibt es kein Minimum in engeren Sinn, da die Funktion $f \equiv 0$ ist.
+	Da $x > 0$ gilt ist fü $n>0$ die Funktion immer positiv und man kann den Logarithmus dieser Funktion betrachen um die Nullstelle zu finden;
+	da der Logarithmus streng monoton steigend ist, ist die Nullstelle von $\ln f(x)$ equivalent mit der Nullstelle von $f(x)$
+	\[ g(x) = \ln f(x) = \ln x + \frac{1}{x} \ln n \]
+	\[ g'(x) = \frac{1}{x} - \frac{\ln n}{x^2} \]
+	\[ g''(x) = -\frac{1}{x^2} + \frac{2 \cdot \ln n}{x^3} \]
+	Die zweite Ableitung ist bei $x = \ln n$ positiv, also ist hier das Minimum.
 \item Annahme $\log_{10} 2 = \frac{p}{q} \in \mathbb{Q}$ mit $p,q \in
 \mathbb{N}$ ($\log_{10} 2$ > 0, da die Logarithmusfunktion streng monoton
 steigend ist und bei $1$ eine Nullstelle hat). Dann folgt:

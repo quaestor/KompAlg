@@ -1,0 +1,43 @@
+%%%
+% Angabe: Laufzeitenvergleich
+%%%
+
+\begin{flushenum}
+\item
+Ihnen liegen zur Lösung eines Problems drei
+Algorithmen $\mathcal{A}, \mathcal{B}, \mathcal{C}$
+vor, deren Laufzeit bei inputs der Grösse $n \in \mathbb{N}$
+jeweils
+\[
+t_{\mathcal{A}}(n) = 4 \cdot n + 20~~~
+t_{\mathcal{B}}(n) = n \cdot \log_2(n) + 2 \cdot n + 4~~~
+t_{\mathcal{C}}(n) = n \cdot (n-1) + 4
+\]
+beträgt.
+Welcher Algorithmus ist in Abhängigkeit von der
+input-Grösse $n$ der Beste bzw. Schlechteste?
+
+\item
+
+Zur Berechung eines Problems stehen zwei Algorithmen $\mathcal{A}$ und
+$\mathcal{B}$ zur Verfügung. Für deren jeweilige Komplexität (= Laufzeit auf
+Instanzen der Grösse $n$) gelte
+\[
+t_\mathcal{A}(n) = \sqrt{n}~~~\text{bzw.}~~~t_\mathcal{B}(n) = 2^{\sqrt{\log_2 n}}
+\]
+\begin{flushalpha}
+\item
+Welcher der beiden Algorithmen ist asymptotisch besser (= schneller), d.h. gilt
+
+$t_\mathcal{A}(n) \leq t_\mathcal{B}(n)$ oder 
+$t_\mathcal{B}(n) \leq t_\mathcal{A}(n)$ für $n \rightarrow{\infty}$ ?
+\item
+Wo liegt der break-even-point, d.h. von welchem Wert der Instanzengrösse $n$ an ist der
+asymptotisch bessere Algorithmus immer im Vorteil?
+\item
+Wie vergleichen sich die beiden Funktionen $t_\mathcal{A}(n)$ und $t_\mathcal{B}(n)$
+in der Landau-Notation?
+\end{flushalpha}
+
+\end{flushenum}
+ 

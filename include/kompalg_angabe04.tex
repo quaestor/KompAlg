@@ -1,0 +1,65 @@
+%%%
+% Angabe
+%%%
+
+Die durch die Rekursion
+\[
+F_0=0,~ F_1=1,~ F_{n+1}=F_n+F_{n-1}~(n \geq 1)
+\]
+definierte Folge
+$
+(F_n)_{n \geq 0} = (0,1,1,2,3,5,8,13,21,34,\ldots)
+$
+der {\sc Fibonacci}-Zahlen (siehe auch Abschnit 3.1.1 des Skriptums)
+muss immer wieder als Ur-Beispiel einer rekursiven Definition herhalten.
+Tatsächlich hat diese Zahlenfolge aber so interessante Eigenschaften und ist
+so häufig vorkommend in Natur, Wissenschaft, Kunst, Architektur, etc., dass
+man ihr ganze Bücher, eine Serie von Tagungen und sogar eine eigene Zeitschrift 
+(\textsc {The Fibonacci Quarterly}) gewidmet hat.
+Der tiefere Grund ist der Zusammenhang mit dem \textit{Goldenen Schnitt},
+also der reellen Zahl
+\[
+\phi = \frac{1 + \sqrt{5}}{2} = 1.61803\ldots,
+\]
+die positive Lösung der quadratischen Gleichung
+\[
+X^2=X+1.
+\]
+Die andere (negative) Lösung $(1-\sqrt{5})/2 = -0.61803\ldots$ wird mit
+$\widehat{\phi}$ bezeichnet.
+
+Im Zusammenhang mit dem euklidischen Algorithmus spielen die
+{\sc Fibonacci}-Zahlen auch eine bedeutsame Rolle -- mehr davon später.
+
+Beweise über rekursive Programme bzw. rekursiv definierte Objekte
+führt man mittels Induktion. Trainieren Sie hier Ihre Fertigkeiten in dieser Technik,
+
+\begin{flushenum}
+\item Beweisen Sie per Induktion
+\[
+F_n = \frac{\phi^n - (\widehat{\phi})^n}{\sqrt{5}}~~(n \geq 0) 
+ \]
+\item Beweisen Sie per Induktion
+ \[
+F_{n+1} F_{n-1} - F_n^2 = (-1)^n~~(n \geq 1)
+\]
+\item Beweisen Sie ebenso sorgf\"altig (im Sinne der Analysis), dass
+\[
+\lim_{n \rightarrow \infty} \frac{F_{n+1}}{F_n} = \phi
+\] 
+gilt. Veranschaulichen Sie grafisch das Konvergenzverhalten der Folge der Quotienten 
+\[
+\left(\frac{F_{n+1}}{F_n}\right)_{n \geq 1}
+\]
+d.h. tragen Sie die ersten numerischen Werte auf einer Zahlengeraden ab und beobachten Sie,
+wie sich die Folge entwickelt.
+
+\item
+Wie gross sind $F_{100}, F_{200}, F_{300}, F_{400}$? Damit ist gemeint: wieviel
+Dezimalziffern bzw. Bin\"arziffern braucht man, um diese Zahlen hinzuschreiben?
+Sie sollen diese Zahlen nicht ausrechnen, sondern eine gute Sch\"atzung abgeben,
+ohne viel zu rechnen!
+\end{flushenum}
+
+
+
