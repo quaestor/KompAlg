@@ -1,5 +1,6 @@
 \section*{Aufgabe 22 - Quickselect}
 \addcontentsline{toc}{subsection}{Aufgabe 22 - Quickselect}
+
   \newcommand{\meanv}{\overline{v}}
   \lstset{ %
     language=Mathematica,
@@ -8,6 +9,46 @@
     numberstyle=\small,
     numbersep=-9pt
   }
+%%%
+% Angabe (aus u9.tex)
+%%%
+\subsection*{Angabe}
+Man kann die Idee von \textsc{Quicksort} und dessen Prozedur \textsc{Split}
+(alias \textsc{Partition}) dazu benutzen, einen Algorithmus
+\textsc{Quickselect} konstruieren, der für ein Feld $A$ der Länge $n$ und eine
+Zahl $k$ mit $1 \leq k \leq n$ bei Aufruf von \textsc{quickselect}$(A,k)$ das
+$k$-grösste Element von $A$ zurückgibt -- ohne $A$ vollständig zu sortieren!
+\begin{flushenum}
+\item
+Formulieren Sie \textsc{Quickselect} in pseudocode und zeigen Sie, dass die
+Anzahl der benötigten Vergleichsoperationen im \textit{worst-case} quadratisch
+mit $n$ wächst.
+\item
+Bezeichnet $\overline{v}(n,k)$ die mittlere Anzahl von 
+Vergleichen von \textsc{Quickselect}$(A,k)$ im Permutationsmodell
+und $\overline{v}(n) = \max_{1 \leq k \leq n} \overline{v}(n,k)$,
+so wird man (in Analogie zur Situation bei \textsc{Quicksort})
+auf die Rekursions(un)gleichung
+\begin{equation*}
+	\tag{$*$} \overline{v}(n) \leq (n-1)+ \frac{1}{n} \sum_{1 \leq k \leq
+	n} \max\{\overline{v}(k-1),\overline{v}(n-k)\}
+\end{equation*}
+geführt, wobei verständlicherweise $\overline{v}(0)=\overline{v}(1)=0$.
+
+Erläutern Sie diese Ungleichung und zeigen Sie, dass sich
+daraus das asymptotische Verhalten $\overline{v}(n) \in O(n)$ ergibt.
+
+Hinweis: Machen Sie einen Induktionsbeweis, wobei Sie annehmen, dass
+$\overline{v}(k) \leq c \cdot k$ für $k < n$ und eine Konstante $c$ gilt. Der
+angestrebte Induktionsschluss liefert eine (von $n$ unabhängige) Bedingung für
+die Konstante $c$, die sich erfüllen lässt.
+
+\end{flushenum}
+
+%%%
+% Lösung
+%%%
+\subsection*{Lösung}
   \begin{lstlisting}
     QUICKSELECT[A_, k_] :=
       Module[
