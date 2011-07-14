@@ -1,6 +1,15 @@
-\section*{Aufgabe 12 - Eine weitere schnelle Transformation}
-\addcontentsline{toc}{subsection}{Aufgabe 12 - Eine weitere schnelle Transformation}
+\section*{Eine weitere schnelle Transformation}
+\addcontentsline{toc}{subsection}{Eine weitere schnelle Transformation}
+%%%
+% Angabe
+%%%
+\subsection*{Angabe}
+\input{include/kompalg_angabe12}
 
+%%%
+% Lösung
+%%%
+\subsection*{Lösung}
 \renewcommand{\H}{\mathcal{H}}
 \begin{flushenum}
 % aufgabe 1.
@@ -48,8 +57,10 @@
 	halben Größe (i.e. $T(k-1)$) sowie $2^k$ Additionen bzw. Subtraktionen
 	durchgeführt werden:
 	\[ T(k) = 2 T(k-1) + 2^k \]
-	Induktion:
 
+	\pagebreak
+
+	Induktion:
 	\begin{itemize}
 		\item \textit{I.A.}: $k = 0$: $\H_k = [1] \Rightarrow \H_0 \cdot a = a$ benötigt $0 = 0\cdot 2^0 = k\cdot 2^k$ Operationen.
 
