@@ -72,15 +72,15 @@
 \item Allgemein sieht die Matrix $Ak$ folgendermaßen aus:
 	\[ Ak = \begin{bmatrix}
 			1      & 1      & 0      & \cdots & 0      \\
-			1      & 0      & 1      &        & \vdots \\
+			1      & 0      & \ddots & \ddots & \vdots \\
 			\vdots & \vdots & \ddots & \ddots & 0      \\
 			1      & \vdots &        & \ddots & 1      \\
 			2      & 0      & \cdots & \cdots & 0      \\
 		\end{bmatrix} \]
 	Das Charakteristische Polynom lässt sich rekursiv berechnen (Entwicklung nach erster Zeile,
 	nachdem 2. Spalte auf 1. Spalte addiert wurde):
-	\begin{eqnarray*}
-		\chi_k(z) & = &
+	\begin{align*}
+		\chi_k(z) & =
 				\begin{vmatrix}
 					z-1    & -1     & 0      & \cdots & \cdots & 0      \\
 					-1     & z      & \ddots & \ddots &        & \vdots \\
@@ -98,7 +98,7 @@
 					-1     & \vdots &        & \ddots & \ddots & -1     \\
 					-2     & 0      & \cdots & \cdots & 0      & z      \\
 				\end{vmatrix} = \\%\displaybreak \\
-			& = & (z-2) \cdot
+			& = (z-2) \cdot
 				\begin{vmatrix}
 					& z      & -1     & 0      & \cdots & 0      \\
 					& 0      & \ddots & \ddots & \ddots & \vdots \\
@@ -113,8 +113,8 @@
 					-1     & \vdots & \ddots & \ddots & -1     \\
 					-2     & 0      & \cdots & 0      & z      \\
 				\end{vmatrix} = \\%\\[1.5em]
-			&=& (z-2) z^{k-1} + \chi_{k-1}(z)
-	\end{eqnarray*}
+			&= (z-2) z^{k-1} + \chi_{k-1}(z)
+	\end{align*}
 	Mit Hilfe dieses Zusammenhangs kann man per vollständiger Induktion die gewünschte Formel beweisen:
 	\begin{itemize}
 		\item \textit{I.A.}: $k=2$: \[ \chi_2(z) = (z-2)(z+1) = (z-2)\frac{(z+1)(z-1)}{z-1} = (z-2)\frac{z^2 - 1}{z-1} \]

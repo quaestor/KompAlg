@@ -25,30 +25,27 @@
 \item
 	\[ \chi_{C_a, k}(z) = \det ( z\cdot \mathds{1} - C_a) = 
 		\begin{vmatrix}
-			z      & 0      & \cdots & \cdots & \cdots & 0      & -a_k     \\
-			-1     & z      & \ddots &        &        & \vdots & -a_{k-1} \\
-			0      & \ddots & \ddots & \ddots &        & \vdots & \vdots   \\
-			\vdots & \ddots & \ddots & \ddots & \ddots & \vdots & \vdots   \\
-			\vdots &        & \ddots & \ddots & \ddots & 0      & \vdots   \\
-			\vdots &        &        & \ddots & \ddots & z      & -a_2     \\
-			0      & \cdots & \cdots & \cdots & 0      & -1     & z - a_1  \\
+			z      & 0      & \cdots & \cdots & 0      & -a_k     \\
+			-1     & z      & \ddots &        & \vdots & -a_{k-1} \\
+			0      & \ddots & \ddots &        & \vdots & \vdots   \\
+			\vdots &        & \ddots & \ddots & 0      & \vdots   \\
+			\vdots &        &        & \ddots & z      & -a_2     \\
+			0      & \cdots & \cdots & 0      & -1     & z - a_1  \\
 		\end{vmatrix} = \]
 	Entwicklung nach der ersten Zeile.
 	\[ = z \cdot \begin{vmatrix}
-			z      & 0      & \cdots & \cdots & 0      & -a_{k-1} \\
-			-1     & \ddots & \ddots &        & \vdots & \vdots   \\
-			0      & \ddots & \ddots & \ddots & \vdots & \vdots   \\
-			\vdots & \ddots & \ddots & \ddots & 0      & \vdots   \\
-			\vdots &        & \ddots & \ddots & z      & -a_2     \\
-			0      & \cdots & \cdots & 0      & -1     & z - a_1  \\
+			z      & 0      & \cdots & 0      & -a_{k-1} \\
+			-1     & \ddots & \ddots & \vdots & \vdots   \\
+			0      & \ddots & \ddots & 0      & \vdots   \\
+			\vdots & \ddots & \ddots & z      & -a_2     \\
+			0      & \cdots & 0      & -1     & z - a_1  \\
 		\end{vmatrix} + (-1)^{k+1}(-a_k) \cdot
 		\begin{vmatrix}
-			-1     & z      & 0      & \cdots & \cdots & 0      \\
-			0      & \ddots & \ddots & \ddots &        & \vdots \\
-			\vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
-			\vdots &        & \ddots & \ddots & \ddots & 0      \\
-			\vdots &        &        & \ddots & \ddots & z      \\
-			0      & \cdots & \cdots & \cdots & 0      & -1     \\
+			-1     & z      & 0      & \cdots & 0      \\
+			0      & \ddots & \ddots & \ddots & \vdots \\
+			\vdots & \ddots & \ddots & \ddots & 0      \\
+			\vdots &        & \ddots & \ddots & z      \\
+			0      & \cdots & \cdots & 0      & -1     \\
 		\end{vmatrix} = \]
 	\[ = z \cdot \chi_{C_a, k-1}(z) + (-1)^{k+1}(-a_k)(-1)^{k-1} = z \cdot \chi_{C_a, k-1}(z) - a_k \]
 	Dabei sei $\chi_{C_a, m}(z)$ das charakteristische Polynom der
@@ -71,45 +68,40 @@
 				\end{eqnarray*}
 	\end{itemize}
 	Alternativ kann man die Determinante auch nach der letzten Spalte entwickeln (Hinweis):
-	\begin{eqnarray*}
-	\chi_{C_a}(z) &=& \det ( z\cdot \mathds{1} - C_a) = 
+	\begin{align*}
+	\chi_{C_a}(z) &= \det ( z\cdot \mathds{1} - C_a) = 
 		\begin{vmatrix}
-			z      & 0      & \cdots & \cdots & \cdots & 0      & -a_k     \\
-			-1     & z      & \ddots &        &        & \vdots & -a_{k-1} \\
-			0      & \ddots & \ddots & \ddots &        & \vdots & \vdots   \\
-			\vdots & \ddots & \ddots & \ddots & \ddots & \vdots & \vdots   \\
-			\vdots &        & \ddots & \ddots & \ddots & 0      & \vdots   \\
-			\vdots &        &        & \ddots & \ddots & z      & -a_2     \\
-			0      & \cdots & \cdots & \cdots & 0      & -1     & z - a_1  \\
-		\end{vmatrix} = \\
-	&=& (-1)^{k+1}(-a_k) 	\begin{vmatrix}
-					-1     & z      & 0      & \cdots & \cdots & 0      \\
-                                        0      & \ddots & \ddots & \ddots &        & \vdots \\
-                                        \vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
-                                        \vdots &        & \ddots & \ddots & \ddots & 0      \\
-                                        \vdots &        &        & \ddots & \ddots & z      \\
-                                        0      & \cdots & \cdots & \cdots & 0      & -1     \\
-				\end{vmatrix} + \\
-	& & + (-1)^{k+2}(-a_{k-1})
+			z      & 0      & \cdots & \cdots & 0      & -a_k     \\
+			-1     & z      & \ddots &        & \vdots & -a_{k-1} \\
+			0      & \ddots & \ddots & \ddots & \vdots & \vdots   \\
+			\vdots & \ddots & \ddots & \ddots & 0      & \vdots   \\
+			\vdots &        & \ddots & \ddots & z      & -a_2     \\
+			0      & \cdots & \cdots & 0      & -1     & z - a_1  \\
+		\end{vmatrix} =  \\
+	&= (-1)^{k+1}(-a_k) 	\begin{vmatrix}
+					-1     & z      & 0      & \cdots & 0      \\
+                                        0      & \ddots & \ddots & \ddots & \vdots \\
+                                        \vdots & \ddots & \ddots & \ddots & 0      \\
+                                        \vdots &        & \ddots & \ddots & z      \\
+                                        0      & \cdots & \cdots & 0      & -1     \\
+				\end{vmatrix} +  \\
+	& + (-1)^{k+2}(-a_{k-1})
 				\begin{vmatrix}
-					z      & 0      & 0      & \cdots & \cdots & 0      \\
-                                        0      & -1     & z      & \ddots &        & \vdots \\
-                                        \vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
-                                        \vdots &        & \ddots & \ddots & \ddots & 0      \\
-                                        \vdots &        &        & \ddots & \ddots & z      \\
-                                        0      & \cdots & \cdots & \cdots & 0      & -1     \\
-
-				\end{vmatrix} + \ldots \\
-	& & \ldots + (-1)^{k+k}(z - a_1)	\begin{vmatrix}
-					z      & 0      & \cdots & \cdots & \cdots & 0      \\
-					-1     & z      & \ddots &        &        & \vdots \\
-					0      & \ddots & \ddots & \ddots &        & \vdots \\
-					\vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
-					\vdots &        & \ddots & \ddots & \ddots & 0      \\
-					0      & \cdots & \cdots & 0      & -1     & z      \\
-				\end{vmatrix} \\
-	&=& (-1)^{k+1} \left( -a_k - a_{k-1}\cdot z \ldots - a_1 \cdot z^{k-1} + z^k \right) \\
-	\end{eqnarray*}
+					z      & 0      & 0      & \cdots & 0      \\
+                                        0      & -1     & z      & \ddots & \vdots \\
+                                        \vdots & \ddots & \ddots & \ddots & 0      \\
+                                        \vdots &        & \ddots & \ddots & z      \\
+                                        0      & \cdots & \cdots & 0      & -1     \\
+				\end{vmatrix} + \ldots  \\
+	& \ldots + (-1)^{k+k}(z - a_1)	\begin{vmatrix}
+					z      & 0      & \cdots & \cdots & 0      \\
+					-1     & \ddots & \ddots &        & \vdots \\
+					0      & \ddots & \ddots & \ddots & \vdots \\
+					\vdots & \ddots & \ddots & \ddots & 0      \\
+					0      & \cdots & 0      & -1     & z      \\
+					\end{vmatrix}  = \displaybreak \\
+	&= (-1)^{k+1} \left( -a_k - a_{k-1}\cdot z \ldots - a_1 \cdot z^{k-1} + z^k \right) \\
+	\end{align*}
 	Da das Vorzeichen des charakteristischen Polynoms irrelevant ist (es geht nur um Berechnung von Nullstellen),
 	erhält man so direkt das gewünschte Ergebnis.
 
