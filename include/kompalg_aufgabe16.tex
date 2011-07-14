@@ -71,54 +71,48 @@
 % teil 2: allgemeine Ak
 \item Allgemein sieht die Matrix $Ak$ folgendermaßen aus:
 	\[ Ak = \begin{bmatrix}
-			1      & 1      & 0      & \cdots & \cdots & \cdots & 0      \\
-			1      & 0      & 1      & 0      &        &        & \vdots \\
-			\vdots & \vdots & \ddots & \ddots & \ddots &        & \vdots \\
-			\vdots & \vdots &        & \ddots & \ddots & \ddots & \vdots \\
-			\vdots & \vdots &        &        & \ddots & \ddots & 0      \\
-			1      & \vdots &        &        &        & \ddots & 1      \\
-			2      & 0      & \cdots & \cdots & \cdots & \cdots & 0      \\
+			1      & 1      & 0      & \cdots & 0      \\
+			1      & 0      & \ddots & \ddots & \vdots \\
+			\vdots & \vdots & \ddots & \ddots & 0      \\
+			1      & \vdots &        & \ddots & 1      \\
+			2      & 0      & \cdots & \cdots & 0      \\
 		\end{bmatrix} \]
 	Das Charakteristische Polynom lässt sich rekursiv berechnen (Entwicklung nach erster Zeile,
 	nachdem 2. Spalte auf 1. Spalte addiert wurde):
 	\begin{align*}
 		\chi_k(z) & =
 				\begin{vmatrix}
-					z-1    & -1     & 0      & \cdots & \cdots & \cdots & 0      \\
-					-1     & z      & -1     & 0      &        &        & \vdots \\
-					\vdots & 0      & \ddots & \ddots & \ddots &        & \vdots \\
-					\vdots & \vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
-					\vdots & \vdots &        & \ddots & \ddots & \ddots & 0      \\
-					-1     & \vdots &        &        & \ddots & \ddots & -1     \\
-					-2     & 0      & \cdots & \cdots & \cdots & 0      & z      \\
-				\end{vmatrix} = \\[2em]
-				& \hspace{\0.3\linewidth} =
-				\begin{vmatrix}
-					z-2    & -1     & 0      & \cdots & \cdots & \cdots & 0      \\
-					z-1    & z      & -1     & 0      &        &        & \vdots \\
-					\vdots & 0      & \ddots & \ddots & \ddots &        & \vdots \\
-					\vdots & \vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
-					\vdots & \vdots &        & \ddots & \ddots & \ddots & 0      \\
-					-1     & \vdots &        &        & \ddots & \ddots & -1     \\
-					-2     & 0      & \cdots & \cdots & \cdots & 0      & z      \\
-				\end{vmatrix} = \displaybreak \\
-			& = (z-2) \cdot
-				\begin{vmatrix}
-					& z      & -1     & 0      & \cdots & \cdots & 0      \\
-					& 0      & \ddots & \ddots & \ddots &        & \vdots \\
-					& \vdots & \ddots & \ddots & \ddots & \ddots & \vdots \\
-					& \vdots &        & \ddots & \ddots & \ddots & 0      \\
-					& \vdots &        &        & \ddots & \ddots & -1     \\
-					& 0      & \cdots & \cdots & \cdots & 0      & z      \\
-				\end{vmatrix} +
-				\begin{vmatrix}
 					z-1    & -1     & 0      & \cdots & \cdots & 0      \\
-					-1     & z      & -1     & \ddots &        & \vdots \\
+					-1     & z      & \ddots & \ddots &        & \vdots \\
 					\vdots & 0      & \ddots & \ddots & \ddots & \vdots \\
 					\vdots & \vdots & \ddots & \ddots & \ddots & 0      \\
 					-1     & \vdots &        & \ddots & \ddots & -1     \\
 					-2     & 0      & \cdots & \cdots & 0      & z      \\
-				\end{vmatrix} = \\[1.5em]
+				\end{vmatrix} = %\\[2em]
+				%& \hspace{\0.3\linewidth} =
+				\begin{vmatrix}
+					z-2    & -1     & 0      & \cdots & \cdots & 0      \\
+					z-1    & z      & \ddots & \ddots &        & \vdots \\
+					-1     & 0      & \ddots & \ddots & \ddots & \vdots \\
+					\vdots & \vdots & \ddots & \ddots & \ddots & 0      \\
+					-1     & \vdots &        & \ddots & \ddots & -1     \\
+					-2     & 0      & \cdots & \cdots & 0      & z      \\
+				\end{vmatrix} = \\%\displaybreak \\
+			& = (z-2) \cdot
+				\begin{vmatrix}
+					& z      & -1     & 0      & \cdots & 0      \\
+					& 0      & \ddots & \ddots & \ddots & \vdots \\
+					& \vdots & \ddots & \ddots & \ddots & 0      \\
+					& \vdots &        & \ddots & \ddots & -1     \\
+					& 0      & \cdots & \cdots & 0      & z      \\
+				\end{vmatrix} +
+				\begin{vmatrix}
+					z-1    & -1     & 0      & \cdots & 0      \\
+					-1     & z      & \ddots & \ddots & \vdots \\
+					\vdots & 0      & \ddots & \ddots & 0      \\
+					-1     & \vdots & \ddots & \ddots & -1     \\
+					-2     & 0      & \cdots & 0      & z      \\
+				\end{vmatrix} = \\%\\[1.5em]
 			&= (z-2) z^{k-1} + \chi_{k-1}(z)
 	\end{align*}
 	Mit Hilfe dieses Zusammenhangs kann man per vollständiger Induktion die gewünschte Formel beweisen:

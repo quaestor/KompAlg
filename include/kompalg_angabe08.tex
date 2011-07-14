@@ -2,7 +2,7 @@
 % Angabe: Die Begleitmatrix einer linearen Rekursion
 %%%
 
-Ist $\bs{a} = (a_1,a_2,\ldots,a_k)$ der Vektor der Rekursionskoeffizienten zu
+Ist ${\mathbf a} = (a_1,a_2,\ldots,a_k)$ der Vektor der Rekursionskoeffizienten zu
 der linearen Rekursion der Ordnung $k$
 \begin{equation*}
 x_{n} = a_1 \, x_{n-1} + a_2 \, x_{n-2} + \cdots + a_k \, x_{n-l}~~~(n \geq k)
@@ -10,7 +10,7 @@ x_{n} = a_1 \, x_{n-1} + a_2 \, x_{n-2} + \cdots + a_k \, x_{n-l}~~~(n \geq k)
 \end{equation*}
 so bezeichnet man die $(k \times k)$-Matrix
 \[
-C_{\bs{a}} = \begin{bmatrix}
+C_{{\mathbf a}} = \begin{bmatrix}
 0 & 0 & 0 &    \ldots & 0& 0& 0  & a_k \cr
 1 & 0 & 0 &    \ldots & 0& 0& 0  & a_{k-1} \cr
 0 & 1 & 0 &   \ldots & 0& 0& 0 & a_{k-2} \cr
@@ -24,31 +24,31 @@ C_{\bs{a}} = \begin{bmatrix}
 als die \emph{Begleitmatrix} (engl. \emph{companion matrix}) zu der Rekursion $(*)$.
 
 \begin{flushenum}
-\item Zeigen Sie: ist $\bs{x} = (x_n)_{n \geq 0}$  eine Folge, die der Rekursion $(*)$
-	genügt, also  $\bs{x} \in \mathcal{V}_{\bs{a}}$, 
-	und bezeichnet man für jedes $n \geq 0$ mit $\bs{x}^{(n)}$ den Abschnitt
+\item Zeigen Sie: ist ${\mathbf x} = (x_n)_{n \geq 0}$  eine Folge, die der Rekursion $(*)$
+	genügt, also  ${\mathbf x} \in \mathcal{V}_{{\mathbf a}}$, 
+	und bezeichnet man für jedes $n \geq 0$ mit ${\mathbf x}^{(n)}$ den Abschnitt
 	\[
-	\bs{x}^{(n)} = \begin{bmatrix} x_n & x_{n+1}  & x_{n+2} & \ldots & x_{n+k-1} \end{bmatrix}
+	{\mathbf x}^{(n)} = \begin{bmatrix} x_n & x_{n+1}  & x_{n+2} & \ldots & x_{n+k-1} \end{bmatrix}
 	\]
-	der Folge $\bs{x}$, so gilt für jedes $n \geq 0$:
+	der Folge ${\mathbf x}$, so gilt für jedes $n \geq 0$:
 	\[
-	\bs{x}^{(n+1)} = \bs{x}^{(n)} \cdot C_{\bs{a}}
+	{\mathbf x}^{(n+1)} = {\mathbf x}^{(n)} \cdot C_{{\mathbf a}}
 	\]
 	und somit auch (per Induktion)
 	\[
-	\bs{x}^{(n)} = \bs{x}^{(0)} \cdot C_{\bs{a}}^n = 
-	\begin{bmatrix} x_{0} & x_{1}  & x_{2} & \ldots & x_{k-1} \end{bmatrix}\cdot C_{\bs{a}}^n .
+	{\mathbf x}^{(n)} = {\mathbf x}^{(0)} \cdot C_{{\mathbf a}}^n = 
+	\begin{bmatrix} x_{0} & x_{1}  & x_{2} & \ldots & x_{k-1} \end{bmatrix}\cdot C_{{\mathbf a}}^n .
 	\]
-\item Zeigen Sie, dass das charakteristische Polynom der Matrix $C_{\bs{a}}$ 
+\item Zeigen Sie, dass das charakteristische Polynom der Matrix $C_{{\mathbf a}}$ 
 	gleich dem charakteristischen Polynom der Rekursion $(*)$ ist, d.h.
 	\[
-	\chi_{C_{\bs{a}}}(z) = \chi_{\bs{a}}(z),
+	\chi_{C_{{\mathbf a}}}(z) = \chi_{{\mathbf a}}(z),
 	\]
 	also explizit geschrieben
 	\[
-	\det (z \cdot I - C_{\bs{a}}) = z^k - a_1 z^{k-1}- \cdots - a_k.
+	\det (z \cdot I - C_{{\mathbf a}}) = z^k - a_1 z^{k-1}- \cdots - a_k.
 	\]
-	\underline{Hinweis}: $\det (z \cdot I - C_{\bs{a}})$ nach der letzten Spalte entwickeln.
+	\underline{Hinweis}: $\det (z \cdot I - C_{{\mathbf a}})$ nach der letzten Spalte entwickeln.
 	
 \item Für  komplexe Zahlen $\alpha_1, \ldots , \alpha_k$ wird mit
 	$V(\alpha_1,\alpha_2,\ldots,\alpha_k)$ die \textsc{Vandermonde}-Matrix
@@ -66,27 +66,27 @@ als die \emph{Begleitmatrix} (engl. \emph{companion matrix}) zu der Rekursion $(
 	\]
 	bezeichnet.
 	
-	Jetzt wird angenommen, dass das charakteristische Polynom $\chi_{\bs{a}}(z)$
+	Jetzt wird angenommen, dass das charakteristische Polynom $\chi_{{\mathbf a}}(z)$
 	$k$ verschiedene Nullstellen $\lambda_1,\lambda_2,\ldots,\lambda_k$ hat, das sind 
-	wegen 2. die Eigenwerte von der Begleitmatrix $C_{\bs{a}}$.
+	wegen 2. die Eigenwerte von der Begleitmatrix $C_{{\mathbf a}}$.
 	
 	Zeigen Sie (Teil 1. beachten), dass
 	\[
-	V(\lambda_1,\lambda_2,\ldots,\lambda_k) \cdot C_{\bs{a}} =
+	V(\lambda_1,\lambda_2,\ldots,\lambda_k) \cdot C_{{\mathbf a}} =
 	diag(\lambda_1,\lambda_2,\ldots,\lambda_k) \cdot V(\lambda_1,\lambda_2,\ldots,\lambda_k)
 	\]
 	gilt, wobei die Diagonalmatrix $diag(\lambda_1,\lambda_2,\ldots,\lambda_k)$ der Eigenwerte ist.
 	Anders geschrieben:
 	\[
-	V(\lambda_1,\lambda_2,\ldots,\lambda_k) \cdot C_{\bs{a}} \cdot V(\lambda_1,\lambda_2,\ldots,\lambda_k)^{-1}= 
+	V(\lambda_1,\lambda_2,\ldots,\lambda_k) \cdot C_{{\mathbf a}} \cdot V(\lambda_1,\lambda_2,\ldots,\lambda_k)^{-1}= 
 	diag(\lambda_1,\lambda_2,\ldots,\lambda_k)
 	\]
 	d.h. die \textsc{Vandermonde}-Matrix $V(\lambda_1,\lambda_2,\ldots,\lambda_k)$
-	diagonalisiert die Begleitmatrix $C_{\bs{a}}$.
+	diagonalisiert die Begleitmatrix $C_{{\mathbf a}}$.
 	
 	
 	\underline{Hinweis}:  Die $k$ geometrischen Folgen 
-	$\bs{\lambda}_j = (1,\lambda_j,\lambda_j^2, \ldots)$
+	${\boldsymbol \lambda}_j = (1,\lambda_j,\lambda_j^2, \ldots)$
 	$(1 \leq j \leq k)$ genügen der Rekursion $(*)$.
 
 \end{flushenum}
