@@ -1,0 +1,105 @@
+Für $k \geq 1$ bezeichne $\mathcal{H}_k$ die reelle $(2^k \times 2^k)$-Matrix,
+deren Zeilen und Spalten mit den $2^k$ binären Vektoren aus
+$\mathbb{B}^k=\{0,1\}^k$ indiziert sind und deren Einträge sich mittels des
+Skalarproduktes für Bitvektoren
+\[
+\mathbf{u}\cdot\mathbf{v}= \sum_{1 \leq i \leq n} u_i v_i
+~~~(\mathbf{u}=u_1u_2\ldots u_k, \mathbf{v}=v_1v_2\ldots v_k \in \mathbb{B}^k)
+\]
+wie folgt darstellen:
+\[
+\left( \mathcal{H}_k\right)_{\mathbf{u},\mathbf{v}} =
+(-1)^{\mathbf{u}\cdot \mathbf{v}}~~~\text{für}~
+\mathbf{u},\mathbf{v} \in \mathbb {B}^k
+\]
+Beachten Sie: es ist egal, ob man das Skalarprodukt binär oder reell
+ausrechnet. Auf alle Fälle sollen die Einträge der Matrix, die $\pm 1$ sind,
+als reelle Zahlen interpretiert werden.
+Für $k=0$ setzt man $\mathcal{H}_0 = (1)$. Es ist sinnvoll anzunehmen, dass die
+Elemente von $\mathbb{B}^k$ in lexikografischer Ordnung zum Indizieren
+herangezogen werden -- damit die nachfolgenden Formeln stimmen.
+
+Beispiele (mit Zeilen- und Spaltenindizierung)
+\begin{align*}
+n=1&&
+\begin{array}{c|rr}
+   & 0 & 1 \\ \hline
+0 & 1 & 1 \cr
+1 & 1 & -1
+\end{array}
+&\text{~~also~~}
+\mathcal{H}_1 = \begin{bmatrix} 1 & 1 \cr 1 & -1 \end{bmatrix}
+\cr
+n=2&&
+\begin{array}{c|rrrr}
+      & 00 & 01 & 10 & 11 \\ \hline
+ 00 & 1 & 1 & 1 & 1 \cr
+ 01 & 1 & -1 & 1 & -1 \cr
+ 10 & 1 & 1 & -1 & -1 \cr
+ 11 &  1 & -1 & -1 & 1 
+ \end{array}
+ &\text{~~also~~}
+\mathcal{H}_2 =
+\begin{bmatrix}
+	1 & 1 & 1 & 1 \cr
+	1 & -1 & 1 & -1\cr
+	1 & 1 & -1 & -1 \cr
+	1 & -1 & -1 & 1
+\end{bmatrix}
+\cr
+n=3&&
+\begin{array}{c|rrrrrrrr}
+     & 000 & 001 & 010 & 011& 100 & 101 & 110 & 111 \\ \hline
+ 000 & 1 & 1  & 1  & 1  & 1 & 1  & 1  & 1 \cr
+ 001 & 1 & -1 & 1  & -1 &1  & -1 & 1  & -1 \cr
+ 010 & 1 & 1  & -1 & -1 & 1 & 1  & -1  & -1 \cr
+ 011 &  1 & -1 & -1 & 1 &  1 & -1 & -1 & 1 \cr
+ 100 & 1 & 1 & 1 & 1 & -1 & -1 & -1 & -1 \cr
+ 101 & 1 & -1 & 1 & -1 & -1 & 1 & -1 & 1 \cr
+ 110 & 1 & 1 & -1 & -1  & -1 & -1 & 1 & 1 \cr
+ 111 &  1 & -1 & -1 & 1 & -1 & 1 & 1 & -1
+ \end{array}
+ &
+ \end{align*}
+
+\begin{flushenum}
+\item Zeigen Sie, dass für $k \geq 0$ stets gilt:
+\[
+\mathcal{H}_{k+1} =
+\begin{bmatrix}
+\mathcal{H}_k & \mathcal{H}_k \cr
+\mathcal{H}_k & - \mathcal{H}_k
+\end{bmatrix}
+\]
+
+\item
+Entwerfen Sie einen Algorithmus, der diese rekursive Struktur ausnutzt und es
+erlaubt, die lineare Transformation von (Spalten-)Vektoren $\mathbf{a} \in
+\mathbb{R}^{2^k}$
+\[
+\mathcal{H}_k :
+\mathbb{R}^{2^k}\longrightarrow \mathbb{R}^{2^k}: 
+\mathbf{a} \longmapsto\mathcal{H}_k \cdot \mathbf{a}
+\]
+mit $k \cdot 2^k$ reellen Additionen und Subtraktionen zu berechnen --- und
+damit wesentlich effizienter, als wenn man das Produkt $\mathcal{H}_k \cdot
+\mathbf{a}$ nach üblicher (Schul-)Methode ausrechnet.
+
+\item Zeigen Sie (am einfachsten per Induktion), dass die Zeilen der Matrix
+	$\mathcal{H}_k$ paarweise orthogonal sind, genauer:
+\[
+\mathcal{H}_k^2 = \mathcal{H}_k  \cdot \mathcal{H}_k^t = 2^k \,\, \mathbb{I}_k,
+\]
+wobei $\mathbb{I}_k$ die Einheitsmatrix vom Format ist.  Anders gesagt: die
+Matrix $2^{k/2}\, \mathcal{H}_k$ ist eine \emph{orthogonale} Matrix und die
+Transformation in 2. eine \emph{orthogonale} Transformation.
+\end{flushenum}
+
+Eine weiterführende Bemerkung zu dieser Aufgabe: Sollte Sie diese Situation
+irgendwie an die DFT und FFT erinnern, so hat das sehr viel für sich.  Man
+nennt die Matrizen $\mathcal{H}_k$ (spezielle) \textsc{Hadamard}-Matrizen und
+die Transformation von Vektoren (wie in Teil 2.) die
+\textsc{Fourier-Hadamard}-Transformation.  Die Rolle der zyklischen Gruppen bei
+der Fourier-Transformation wird hier von (den nicht-zyklischen) Gruppen
+$(\mathbb{F}_2^k,\oplus)$ übernommen -- aber sonst geht man ganz analog vor.
+Diese Matrizen spielen beim Quantencomputing eine ganz wichtige Rolle!
