@@ -1,5 +1,5 @@
-\section*{Fibonacci}
-\addcontentsline{toc}{subsection}{Fibonacci}
+\section*{Rekursion und Induktion mit Fibonacci}
+\addcontentsline{toc}{subsection}{Rekursion und Induktion mit Fibonacci}
 \subsection*{Angabe}
 \input{include/kompalg_angabe04}
 %%%
@@ -9,37 +9,36 @@
 \begin{flushenum}
 \item
   zu zeigen:
-  \[ f_n = \frac{\Phi^n - \widehat \Phi^n}{\sqrt{5}} \quad n \geq 0 \]
+  \[ f_n = \frac{\phi^n - \widehat{\phi}^n}{\sqrt{5}} \quad n \geq 0 \]
   \begin{itemize}
     \item \textit{I.A.}:
 
       $n = 0$
-        \[ f_0 = \frac{\Phi^0 - \widehat \Phi^0}{\sqrt{5}} 
+        \[ f_0 = \frac{\phi^0 - \widehat{\phi}^0}{\sqrt{5}} 
                = \frac{1 - 1}{\sqrt{5}} = 0 \]
       $n = 1$
-        \[ f_1 = \frac{\Phi - \widehat \Phi}{\sqrt{5}} 
+        \[ f_1 = \frac{\phi - \widehat{\phi}}{\sqrt{5}} 
                = \frac{1 + \sqrt{5} - 1 + \sqrt{5}}{2 \sqrt{5}} = 1 \]
     \item \textit{I.V.}: Die Behauptung gelte für $n$.
     \item \textit{I.S}: $n \rightarrow n + 1$
 
-    Da $\Phi$ und $\widehat \Phi$ die beiden Lösungen der quadratischen Gleichung
-    $x^2 - x - 1 = 0$ sind, gilt offensichtlich $\Phi + 1 = \Phi^2$ sowie
-    $\widehat \Phi + 1 = \widehat \Phi^2$.
-%    \[ \Phi + 1 = \frac{3 + \sqrt{5}}{2} = \frac{6 + 2 \sqrt{5}}{4} 
+    Da $\phi$ und $\widehat{\phi}$ die beiden Lösungen der quadratischen Gleichung
+    $x^2 - x - 1 = 0$ sind, gilt offensichtlich $\phi + 1 = \phi^2$ sowie
+    $\widehat{\phi} + 1 = \widehat{\phi}^2$.
+%    \[ \phi + 1 = \frac{3 + \sqrt{5}}{2} = \frac{6 + 2 \sqrt{5}}{4} 
 %                = \frac{1 + s \sqrt{5} + 5}{4} = (\frac{1 + \sqrt{5}}{2})^2 
-%                = \Phi^2 \]
+%                = \phi^2 \]
 %    analog gilt:
-%    \[ \widehat \Phi + 1 = \widehat \Phi^2 \]
+%    \[ \widehat{\phi} + 1 = \widehat{\phi}^2 \]
     
     Damit folgt:
-    \[ f_{n+1} = f_n + f_{n-1} \overset{IV}{=} \frac{\Phi^n - \widehat
-       \Phi^n}{\sqrt{5}} + \frac{\Phi^{n-1} - \widehat \Phi^{n-1}}{\sqrt{5}} = \]
-    \[ = \frac{(\Phi^n + \Phi^{n-1}) - (\widehat \Phi^n + \widehat \Phi^{n-1})}{\sqrt{5}}
-       = \frac{(\Phi^{n-1} \cdot \Phi + \Phi^{n-1}) - 
-         (\widehat \Phi^{n-1} \cdot \widehat \Phi + \widehat \Phi^{n-1})}{\sqrt{5}} = \]
-    \[ = \frac{(\Phi^{n-1} (\Phi + 1)) - (\widehat \Phi^{n-1} (\widehat \Phi + 1))}{\sqrt{5}} 
-       = \frac{\Phi^{n-1} \Phi^2 - \widehat \Phi^{n-1} \widehat \Phi^2}{\sqrt{5}} = \]
-    \[ = \frac{\Phi^{n+1} - \widehat \Phi^{n+1}}{\sqrt{5}} \]
+    \[ f_{n+1} = f_n + f_{n-1} \overset{IV}{=} \frac{\phi^n - \widehat{\phi}^n}{\sqrt{5}} + \frac{\phi^{n-1} - \widehat{\phi}^{n-1}}{\sqrt{5}} = \]
+    \[ = \frac{(\phi^n + \phi^{n-1}) - (\widehat{\phi}^n + \widehat{\phi}^{n-1})}{\sqrt{5}}
+       = \frac{(\phi^{n-1} \cdot \phi + \phi^{n-1}) - 
+         (\widehat{\phi}^{n-1} \cdot \widehat{\phi} + \widehat{\phi}^{n-1})}{\sqrt{5}} = \]
+    \[ = \frac{(\phi^{n-1} (\phi + 1)) - (\widehat{\phi}^{n-1} (\widehat{\phi} + 1))}{\sqrt{5}} 
+       = \frac{\phi^{n-1} \phi^2 - \widehat{\phi}^{n-1} \widehat{\phi}^2}{\sqrt{5}} = \]
+    \[ = \frac{\phi^{n+1} - \widehat{\phi}^{n+1}}{\sqrt{5}} \]
     $\hfill \square$
   \end{itemize}
 
@@ -62,22 +61,22 @@ zu zeigen:
   \end{itemize}
 \item
   zu zeigen:
-  \[ \lim_{n \rightarrow \infty} \frac{f_{n+1}}{f_n} = \Phi \]
+  \[ \lim_{n \rightarrow \infty} \frac{f_{n+1}}{f_n} = \phi \]
   Vorbemerkung:
-  \[ \lim_{n \rightarrow \infty} (\overbrace{\frac{\widehat \Phi}{\Phi}}^{< 1})^n = 0 \]
+  \[ \lim_{n \rightarrow \infty} (\overbrace{\frac{\widehat{\phi}}{\phi}}^{< 1})^n = 0 \]
   Beweis:
   \[ \lim_{n \rightarrow \infty} \frac{f_{n+1}}{f_n} 
-     = \lim_{n \rightarrow \infty} \frac{\Phi^{n+1} - 
-       \widehat \Phi^{n+1}}{\Phi^n - \widehat \Phi^n} = \]
-  \[ = \lim_{n \rightarrow \infty} \frac{\Phi^{n+1}}{\Phi^n - \widehat \Phi^n} - 
-       \lim_{n \rightarrow \infty} \frac{\widehat \Phi^{n+1}}{\Phi^n - \widehat \Phi^n} = \]
-  \[ = \lim_{n \rightarrow \infty} \frac{\Phi^n \cdot \Phi}{\Phi^n (1 - \frac{\widehat \Phi^n}{\Phi^n})} - 
-       \lim_{n \rightarrow \infty} \frac{\frac{\widehat \Phi^{n+1}}{\Phi^{n+1}}}
-                                        {\Phi^{n+1}(\Phi^{-1} - \frac{\widehat \Phi^n}{\Phi^{n+1}})} = \]
-  \[ = \lim_{n \rightarrow \infty} \frac{\Phi}{1 - (\frac{\widehat \Phi}{\Phi})^n} - 
-       \lim_{n \rightarrow \infty} \frac{(\frac{\widehat \Phi}{\Phi})^{n+1}}
-                                        {\Phi^{-1} (1 - (\frac{\widehat \Phi}{\Phi})^n)} 
-     = \Phi - 0 = \Phi \] $\hfill \square$
+     = \lim_{n \rightarrow \infty} \frac{\phi^{n+1} - 
+       \widehat{\phi}^{n+1}}{\phi^n - \widehat{\phi}^n} = \]
+  \[ = \lim_{n \rightarrow \infty} \frac{\phi^{n+1}}{\phi^n - \widehat{\phi}^n} - 
+       \lim_{n \rightarrow \infty} \frac{\widehat{\phi}^{n+1}}{\phi^n - \widehat{\phi}^n} = \]
+  \[ = \lim_{n \rightarrow \infty} \frac{\phi^n \cdot \phi}{\phi^n (1 - \frac{\widehat{\phi}^n}{\phi^n})} - 
+       \lim_{n \rightarrow \infty} \frac{\frac{\widehat{\phi}^{n+1}}{\phi^{n+1}}}
+                                        {\phi^{n+1}(\phi^{-1} - \frac{\widehat{\phi}^n}{\phi^{n+1}})} = \]
+  \[ = \lim_{n \rightarrow \infty} \frac{\phi}{1 - (\frac{\widehat{\phi}}{\phi})^n} - 
+       \lim_{n \rightarrow \infty} \frac{(\frac{\widehat{\phi}}{\phi})^{n+1}}
+                                        {\phi^{-1} (1 - (\frac{\widehat{\phi}}{\phi})^n)}
+     = \phi - 0 = \phi \] $\hfill \square$
   \begin{table}[h!b!p!]
   \caption{Wertetabelle:}
   \begin{center}
@@ -111,12 +110,12 @@ zu zeigen:
   \end{tikzpicture}
 
 \item
-$f_n$ wächst wie $\frac{\Phi^n}{\sqrt{5}}$ (siehe Vorlesung)
-\[ \Rightarrow \frac{\Phi^n}{\sqrt{5}} = b^x \] wobei $b$ die Basis und $x$ die Anzahl der Stellen ist.
-\[ x = \log_b \frac{\Phi^n}{\sqrt{5}} = n \log_b \Phi - \log_b \sqrt{5} \]
+$f_n$ wächst wie $\frac{\phi^n}{\sqrt{5}}$ (siehe Vorlesung)
+\[ \Rightarrow \frac{\phi^n}{\sqrt{5}} = b^x \] wobei $b$ die Basis und $x$ die Anzahl der Stellen ist.
+\[ x = \log_b \frac{\phi^n}{\sqrt{5}} = n \log_b \phi - \log_b \sqrt{5} \]
 \begin{itemize}
-  \item $\log_{10} \Phi \approx 0.20898,\quad \log_{10} \sqrt{5} \approx 0.34949\quad \Rightarrow 0.209\cdot n - 0.35 \textnormal{ Dezimalziffern}$
-  \item $\log_{2}  \Phi \approx 0.69424,\quad \log_{2} \sqrt{5} \approx 1.16096\quad \Rightarrow 0.694\cdot n - 1.161 \textnormal{ Binärziffern}$
+  \item $\log_{10} \phi \approx 0.20898,\quad \log_{10} \sqrt{5} \approx 0.34949\quad \Rightarrow 0.209\cdot n - 0.35 \textnormal{ Dezimalziffern}$
+  \item $\log_{2}  \phi \approx 0.69424,\quad \log_{2} \sqrt{5} \approx 1.16096\quad \Rightarrow 0.694\cdot n - 1.161 \textnormal{ Binärziffern}$
 \end{itemize}
 \begin{table}[h!b!p!]
 \begin{center}

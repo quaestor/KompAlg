@@ -1,14 +1,20 @@
-\section*{Aufgabe 7 - Eine zweite Folge zur \textsc{Fibonacci}-Rekursion}
-\addcontentsline{toc}{subsection}{Aufgabe 7 - Eine zweite Folge zur \textsc{Fibonacci}-Rekursion}
+\section*{Eine zweite Folge zur \textsc{Fibonacci}-Rekursion}
+\addcontentsline{toc}{subsection}{Eine zweite Folge zur \textsc{Fibonacci}-Rekursion}
+\subsection*{Angabe}
+\input{include/kompalg_angabe07}
 
-\begin{flushalphb}
+%%%
+% Lösung
+%%%
+\subsection*{Lösung}
+\begin{flushenum}
 \item
 	Da die Folge $(L_n)_n$ die gleiche Rekursion erfüllt wie die \textsc{Fibonacci}-Rekursion
 	ist auch $L_n$ eine Linearkombination von $\phi^n$ und $\hat\phi^n$; mit den Startwerten
 	können die Koeffizienten bestimmt werden:
 	\[ L_0 = a + b = 2 \]
 	\[ L_1 = a \cdot \phi + b\cdot \hat\phi = 1 \]
-	Mit $\phi = \frac{1 + \sqrt{5}}{2}$ und $\hat\phi = \frac{1 - \sqrt{5}}{2}$ ist das offensichtlich für $a = b = 1$ erfüllt.
+	Mit $\phi = \frac{1 + \sqrt{5}}{2}$ und $\widehat{\phi} = \frac{1 - \sqrt{5}}{2}$ ist das offensichtlich für $a = b = 1$ erfüllt.
 
 \item 
 	Da $L_n = L_{n-1} + L_{n-2}$ für alle $n \geq 2$ wie für die \textsc{Fibonacci}-Folge gilt, folgt nach Aufgabe 4. b):
@@ -38,4 +44,4 @@
 	Damit folgt unmittelbar:
 	\[ \phi^n = \frac{L_n + \sqrt{5} F_n}{2} \]
 	\[ \hat\phi^n = \frac{L_n - \sqrt{5} F_n}{2} \]
-\end{flushalphb}
+\end{flushenum}
