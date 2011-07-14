@@ -1,0 +1,65 @@
+Das Szenario zu dieser Aufgabe ist im Problem 2.4 beschrieben.
+\footnote{
+Für alle drei hier behandelten (und ähnlich spezifizierte eingeschränkte
+Sprachen) gibt es übrigens technische Motivationen und Anwendungen: bei der
+Sprache $L$ etwa kann man sich unter einer ``1'' einen elektromagnetischen
+Impuls vorstellen, unter einer ``0'' die Abwesenheit eines solchen. Das Verbot
+von zwei aufeinanderfolgenden Einsen kann durch die Erholzeit des Impulsgebers
+bedingt sein. Die Sprache $K$ kann Magnetisierungen beschreiben (keine
+``Inseln''), die Sprache $M$ Synchronisation bei Rotation mit schwankender
+Umdrehungszahl.
+}
+
+Es sei $\mathbb{B} = \{0,1\}$ das zweielementige Alphabet. Ein Wort $w \in
+\mathbb{B}^+$ hat einen \emph{Faktor}~$v \in \mathbb{B}^+$, wenn es Wörter
+$x,y \in \mathbb{B}^*$ gibt mit $w=x \cdot v \cdot y$
+
+über dem Alphabet $\mathbb{B}$ werden die folgenden Sprachen betrachtet:
+\begin{itemize}
+\item[--] Die Sprache $L$ besteht aus allen Wörtern $w \in \mathbb{B}^*$, in
+	denen $v=11$ nicht als Faktor vorkommt. Ein typisches Wort in $L$ ist
+	beispielsweise $00100101001010100010$.
+
+\item[--] Die Sprache $K$ besteht aus allen Wörtern $w \in \mathbb{B}^*$, in
+	denen $u=010$ und $v=101$ nicht als Faktoren vorkommen.\\* Ein
+	typisches Wort in $L$ ist beispielsweise $00111001110011000011$.
+
+\item[--] Die Sprache $M$ besteht aus allen Wörtern $w \in \mathbb{B}^*$, in
+	denen $u=000$ und $v=111$ nicht als Faktoren vorkommen.\\* Ein
+	typisches Wort in $L$ ist beispielsweise $10010011011001101001$.
+\end{itemize}
+
+\begin{flushenum}
+\item Geben Sie für jede der Sprachen $K,L,M$ einen regulären Ausdruck an.
+
+\item Konstruieren Sie für jede der drei Sprachen $K,L,M$ einen endlichen
+	deterministischen Automaten, der diese Sprache akzeptiert.
+
+\item Verwenden Sie Trellis-Diagramme für diese Automaten, um herauszufinden,
+	wieviele Wörter gegebener Länge $n$ jede dieser Sprachen enthält. Sei
+	also
+	$k_n = \sharp (K \cap \mathbb{B}^n)$,
+	$\ell_n = \sharp (L \cap \mathbb{B}^n)$,
+	$m_n = \sharp (M \cap \mathbb{B}^n)$,
+	so bestimmen Sie $(k_n)_{0 \leq n \leq 8}$,
+	$(\ell_n)_{0 \leq n \leq 8}$,
+	$(m_n)_{0 \leq n \leq 8}$.
+
+\item Vergleiche Sie die numerische Resultate. Was fällt Ihnen auf?  Haben Sie
+	eine Erklärung dafür?
+
+\item Geben Sie zu jedem der drei endlichen deterministischen Automaten die
+	Transitionsmatrix an, die für jedes Paar $(i,j)$ von Zuständen angibt,
+	wieviele der Inputsymbole $\in \mathbb{B}$ eine Transition von $i$ nach
+	$j$ bewirken. Berechnen Sie das charakteristische Polynom zu jeder
+	dieser Matrizen und bestimmen Sie die Eigenwerte, insbesondere den (dem
+	Betrag nach) größten Eigenwert.\footnote{
+	Für $L$ ist das einfach, denn man hat es mit einer $(2 \times
+	2)$-Matrix zu tun.  Für $K$ und $M$ ist das weniger schwierig, als es
+	zunächst den Anschein hat, auch wenn die entsprechenden Matrizen $(4
+	\times 4)$-Matrizen sind. Das charakteristische Polynom vom Grad 4
+	lässt sich in zwei Polynome vom Grad 2 faktorisieren -- und
+	quadratische Gleichungen können Sie per Hand lösen. Sie können aber
+	auch geeignete Software zur Hilfe nehmen.
+	}
+\end{flushenum}
