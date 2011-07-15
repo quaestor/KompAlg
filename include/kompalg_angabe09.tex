@@ -1,0 +1,54 @@
+%%%
+% Angabe: Asymptotisches Verhalten von C-rekursiven Folgen
+%%%
+Ist $\boldsymbol{a}=(a_1,a_2, \ldots, a_k)$ und untersucht man Folgen
+$\boldsymbol{x}= (x_n)_{n \geq 0}$, die der  Rekursion
+\begin{equation*}
+x_n = a_1 \, x_{n-1} + a_2  \, x_{n-2} + \cdots + a_k  \, x_{n-k}~~~(n \geq k) \tag{$*$}
+\end{equation*}
+genügen, so lassen sich diese Folgen als Linearkombinationen von geometrischen
+Folgen darstellen, die zu den Nullstellen des charakteristischen Polynoms
+\[
+\chi_{\boldsymbol{a}}(z) = z^k -a_1  \, z^{k-1} - a_2  \, z^{k-2} - \cdots - a_k
+\]
+gehören. Ist
+\[
+\chi_{\boldsymbol{a}}(z)  = (z-\lambda_1)^{t_1}(z-\lambda_2)^{t_2} \cdots (z-\lambda_\ell)^{t_\ell}
+\]
+mit paarweise verschiedenen $\lambda_j~(1 \leq j \leq \ell)$, d.h. Nullstelle $\lambda_j$ hat die
+Vielfachheit $t_j$, so gilt für jede Folge $\boldsymbol{x}= (x_n)_{n \geq 0}$, die $(*)$ erfüllt,
+\[
+x_n = p_1(n)\cdot \lambda_1^n + p_2(n)\cdot \lambda_2^{n} + \cdots + p_\ell(n) \cdot \lambda_\ell^{n}~~~(n \geq 0),
+\]
+wobei jedes $p_j(n)$ ein Polynom in $n$ vom Grad $t_j-1$ ist. Diese Polynome sind  durch die 
+Anfangswerte $x_0,x_1, \ldots ,x_{k-1}$ eindeutig bestimmt.
+
+Betrachten Sie nun die folgenden vier Fälle von Rekursionen der Ordnung 3:
+\begin{flushalpha}
+\item Die Rekursion $x_n = 2 \, x_{n-1} + 5 \, x_{n-2} - 6 \, x_{n-3}$.
+\item Die Rekursion $x_n = 7 \, x_{n-1} - 16 \, x_{n-2} +12 \, x_{n-3}$.
+\item Die Rekursion $x_n = 6 \, x_{n-1} - 12 \, x_{n-2} +8 \, x_{n-3}$.
+\item Die Rekursion $x_n = 3 \, x_{n-1} - 3 \, x_{n-2} + \, x_{n-3}$.
+\end{flushalpha}
+
+Für diese vier Fälle sollen Sie folgendes tun:
+\begin{flushenum}
+\item Bestimmen Sie die Nullstellen des zugehörigen charakteristischen Polynoms und
+	deren Vielfachheiten.\footnote{
+	Die Beispiele sind so gewählt, dass die Nullstellen (kleine) ganze Zahlen sind, die
+	Sie notfalls durch Ausprobieren ermitteln können. Sie können auch erst mal die
+	Funktionsgraphen der charakteristischen Polynome plotten und inspizieren, wo sich
+	die Nullstellen befinden.}
+\item Wie lassen sich demnach die Folgen $\boldsymbol{x}= (x_n)_{n \geq 0}$, 
+	die dieser Rekursion genügen, als
+	Linearkombination von geometrischen Folgen darstellen?
+\item Welche Möglichkeiten für das asymptotische Verhalten ergeben sich daraus
+	(in Abhängigkeit von den Anfangswerten)?
+\item Geben Sie für jede der Möglichkeit in 3. Anfangswerte an, für die diese
+	Möglichkeit realisiert wird.
+\end{flushenum}
+Hinweis: alle Rekursionen haben die Ordnung $k=3$, es gibt also jeweils drei
+	unterschiedlich schnell wachsende Beiträge. Somit gibt es in jeder Situation
+	drei Möglichkeiten.
+
+
