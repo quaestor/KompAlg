@@ -14,7 +14,7 @@
 	\[ t_\mathcal{A} \in \mathcal{O}(n) \]
 	\[ t_\mathcal{B} \in \mathcal{O}(n \log n) \]
 	\[ t_\mathcal{C} \in \mathcal{O}(n^2) \]
-	Und es gilt für große $n$, dass $t_\mathcal{A} < t_\mathcal{B} < t_\mathcal{C}$.
+	Es gilt für große $n$, dass $t_\mathcal{A} < t_\mathcal{B} < t_\mathcal{C}$.
 	Für kleine $n$ muss man dies jedoch genauer analysieren:
 	\lstset{language=Mathematica}
 	\begin{lstlisting}
@@ -40,22 +40,26 @@
 \item 
 	\begin{flushalpha}
 	\item
-		Bei dieser Aufgabe ist es sinnvoller von der Laufzeit der beiden Algorithmen den Logarithmus zu berechnen (solang $n \neq 0$,
-		da die Ausdrücke so leichter zu vergleichen sind. Da der Logarithmus streng monoton ist,
-		sind die gefundenen Nullstellen und der Größenvergleich identisch mit dem der ursprünglichen Laufzeiten.
+		Bei dieser Aufgabe ist es sinnvoller, den Logarithmus der
+		Laufzeit der beiden Algorithmen zu betrachten (solange $n \neq
+		0$), da die Ausdrücke so leichter zu vergleichen sind. Da der
+		Logarithmus streng monoton ist, sind die gefundenen Nullstellen
+		und der Größenvergleich identisch mit dem der ursprünglichen
+		Laufzeiten.
 		\[ \log_2 t_\mathcal{A}(n) = \frac{1}{2} \log_2 n \]
 		\[ \log_2 t_\mathcal{B}(n) = \sqrt{\log_2 n} \]
-		$\mathcal{B}$ ist damit der schnellere Algorithmus, da:
-		\[ \lim_{n \rightarrow \infty} \frac{\log_2 t_\mathcal{B}}{\log_2 t_\mathcal{A}} = 
+		$\mathcal{B}$ ist damit der schnellere Algorithmus:
+		\[ \lim_{n \rightarrow \infty} \frac{\log_2 t_\mathcal{B}}{\log_2 t_\mathcal{A}} =
 		   \lim_{n \rightarrow \infty} \frac{\sqrt{\log_2 n}}{\frac{1}{2} \log_2 n} =
 		   \lim_{n \rightarrow \infty} \frac{2}{\sqrt{\log_2 n}} = 0 \]
 	\item
-		\[ t_\mathcal{A}(n) \lesseqgtr t_\mathcal{B}(n) \Leftrightarrow \sqrt{n} \lesseqgtr 2^{\log_2 n} 
+		\[ t_\mathcal{A}(n) \lesseqgtr t_\mathcal{B}(n) \Leftrightarrow \sqrt{n} \lesseqgtr 2^{\log_2 n}
 		   \Leftrightarrow \frac{1}{2} \log_2 n \lesseqgtr \sqrt{\log_2 n} \Leftrightarrow \frac{1}{4} \log_2^2 n\lesseqgtr \log_2 n \]
-		Hier ist zu sehen dass Gleichheit gilt wenn $n = 1$, ansonsten gilt weiter:
+		Hier ist zu sehen, dass Gleichheit gilt, wenn $n = 1$, ansonsten gilt weiter:
 		\[ \Leftrightarrow \log_2 n \lesseqgtr 4 \Leftrightarrow n \lesseqgtr 16 \]
-		Für $n=1$ und $n=16$ sind beide Algorithmen gleich schnell, für $1 < n < 16$ ist $\mathcal{A}$ schneller,
-		für $n > 16$ ist $\mathcal{B}$ schneller.
+		Für $n=1$ und $n=16$ sind beide Algorithmen gleich schnell, für
+		$1 < n < 16$ ist $\mathcal{A}$ schneller, für $n > 16$ ist
+		$\mathcal{B}$ schneller.
 	
 	\item
 		Mit Teilaufgabe 2.a) folgt $t_\mathcal{B} \in \hbox{o}(t_\mathcal{A})$.
