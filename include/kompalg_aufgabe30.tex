@@ -14,3 +14,135 @@
 %%%
 
 \subsection*{Lösung}
+
+\begin{flushenum}
+\newcommand{\lr}{\leftrightarrow}
+% 1.
+\item
+	Die $15$ perfekten Permutationen für $\{1, 2, 3, 4, 5, 6\}$ sind:
+	\[
+		123456 \lr
+		\begin{bmatrix}
+			1 & 3 & 5 \\
+			2 & 4 & 6\\
+		\end{bmatrix} \quad
+		123546 \lr
+		\begin{bmatrix}
+			1 & 3 & 4 \\
+			2 & 5 & 6 \\
+		\end{bmatrix} \quad
+		123645 \lr
+		\begin{bmatrix}
+			1 & 3 & 4 \\
+			2 & 6 & 5 \\
+		\end{bmatrix}
+	\]
+	\[
+		132456 \lr
+		\begin{bmatrix}
+			1 & 2 & 5 \\
+			3 & 4 & 6 \\
+		\end{bmatrix} \quad
+		132546 \lr
+		\begin{bmatrix}
+			1 & 2 & 4 \\
+			3 & 5 & 6 \\
+		\end{bmatrix} \quad
+		132645 \lr
+		\begin{bmatrix}
+			1 & 2 & 4 \\
+			3 & 6 & 5 \\
+		\end{bmatrix}
+	\]
+	\[
+		142356 \lr
+		\begin{bmatrix}
+			1 & 2 & 5 \\
+			4 & 3 & 6 \\
+		\end{bmatrix} \quad
+		142536 \lr
+		\begin{bmatrix}
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+		\end{bmatrix} \quad
+		142635 \lr
+		\begin{bmatrix}
+			1 & 2 & 3 \\
+			4 & 6 & 5 \\
+		\end{bmatrix}
+	\]
+	\[
+		152346 \lr
+		\begin{bmatrix}
+			1 & 2 & 4 \\
+			5 & 3 & 6 \\
+		\end{bmatrix} \quad
+		152436 \lr
+		\begin{bmatrix}
+			1 & 2 & 3 \\
+			5 & 4 & 6 \\
+		\end{bmatrix} \quad
+		152634 \lr
+		\begin{bmatrix}
+			1 & 2 & 3 \\
+			5 & 6 & 4 \\
+		\end{bmatrix}
+	\]
+	\[
+		162345 \lr
+		\begin{bmatrix}
+			1 & 2 & 4 \\
+			6 & 3 & 5 \\
+		\end{bmatrix} \quad
+		162435 \lr
+		\begin{bmatrix}
+			1 & 2 & 3 \\
+			6 & 4 & 5 \\
+		\end{bmatrix} \quad
+		162534 \lr
+		\begin{bmatrix}
+			1 & 2 & 3 \\
+			6 & 5 & 4 \\
+		\end{bmatrix}
+	\]
+
+%2.
+\item
+	Für die Position $\sigma_1$ gibt es nur eine Möglichkeit: $1$. Für $\sigma_2$ gibt es nur die Bedingung $\sigma_1 < \sigma_2$.
+	Damit ist $\sigma_2$ eine beliebige Zahl der verbleibenden $\{2, \ldots 2n\}$, i.e. $2n-1$ Möglichkeiten.
+	Für $\sigma_k$, $k \in \{3, \ldots 2n\}$ gelten die gleichen Bedingungen wie für $\sigma_j$, $j \in \{1, \ldots 2(n-1)\}$ und es gibt eine
+	Bijektion zwischen $\{3, \ldots 2n\}$ und $\{1, \ldots 2(n-1)\}$. Damit folgt, dass es für die restlichen Positionen $\sigma_k$, $k \in \{3, \ldots 2n\}$
+	$p(n-1)$ Möglichkeiten gibt. Insgesamt gibt es also $p(n) = (2n - 1)\cdot p(n-1)$ Möglichkeiten und eine perfekte Permutation kann rekursiv konstruiert werden.
+
+%3.
+\item
+	Per Induktion zeigt man:
+	\begin{enumerate}
+		\item \textit{I.A.}: \[ p(1) = \frac{(2 \cdot 1)!}{2^1 \cdot 1!} = 1 \]
+		\item \textit{I.V.}: \[ \exists n \in \mathbb{N}\backslash\{0\}: p(n) = \frac{(2n)!}{2^n \cdot n!} \]
+		\item \textit{I.S.}: $ n \rightarrow n+1$: Mit Aufgabenteil 2. gilt:
+			\[ p(n+1) = (2 (n+1) - 1) \cdot p(n) \overset{I.V.}{=} (2n + 1) \cdot \frac{(2n)!}{2^n \cdot n!} = \]
+			\[ (2n + 1) \cdot \frac{(2n)!}{2^n \cdot n!} \cdot \frac{(2n + 1)(2n + 2)\cdot 2 \cdot (n+1)}{(2n+1)(2n + 2) \cdot2 \cdot (n+1)} = 
+			   \frac{(2n+1) \cdot 2 \cdot (n+1)}{(2n + 1) (2n +2)}\frac{(2n+2)!}{2^{n+1} \cdot (n+1)!} \]
+			\[ = \frac{(2(n+1))!}{2^{n+1}\cdot (n+1)!} \]
+	\end{enumerate}
+
+%4.
+\item
+	Mit der Formel von \textsc{Stirling} folgt:
+	\[ p(n) \sim \frac{\left(\frac{2n}{e}\right)^{2n} \cdot \sqrt{2 \cdot \pi \cdot 2n}}{2^n \cdot \left(\frac{n}{e}\right)^n \cdot \sqrt{2 \cdot \pi \cdot n}} =
+	   \frac{4^n \cdot \left(\frac{n}{e}\right)^n \cdot \sqrt{2}}{2^n} = 2^n \cdot \left(\frac{n}{e}\right)^n \cdot \sqrt{2} \]
+	Dies ist keine C-Rekursion, da nicht $p(n) \in \mathcal{O}(n^k \lambda^n)$ für festes $k, \lambda$ gilt.
+	\newcommand{\limninf}{\underset{n\rightarrow \infty}{\lim}}
+	\[  \limninf \frac{n^k \cdot \lambda^n}{n^n} = \limninf \frac{\lambda^n}{n^{n-k}} = \limninf e^{n \ln \lambda - (n-k) \ln n} =
+	    \limninf e^{-n(\ln n - \ln \lambda) + k \ln n} = 0 \]
+	\[ \Rightarrow n^k \lambda^n \in \hbox{o}(n^n) \]
+
+%5.
+\item
+	Da das Sortierverfahren vergleichsbasierend arbeiten muss entsteht ein Entscheidungsbaum mit $e = p(n)$ Blättern.
+	Die Höhe dieses Baumes und damit die Laufzeit lässt sich nach unten abschätzen:
+	\[h \geq \log e = \log p(n) = \log \left( 2^n \left(\frac{n}{e}\right)^n \sqrt{2}\right) = 
+	 n \log \left( \frac{2n}{e}\right) + \frac{1}{2} \log 2 \in \Theta(n \log n)\]
+	Die untere Schranke gilt offensichtlich sowohl für den worst-case als auch average-case.
+\end{flushenum}
