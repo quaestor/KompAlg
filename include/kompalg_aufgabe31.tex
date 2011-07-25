@@ -3,6 +3,7 @@
 
 \subsection*{Angabe}
 %\input{include/kompalg_angabe31}
+/* \TeX sourcen fehlen */
 
 %%%
 % Lösung
@@ -38,9 +39,9 @@
 	\item Man erreicht $t$ von $s$ aus gehend, wenn $a \mid \gcd(s,t)$. Man benötigt (mindestens) $\frac{|t-s|}{a}$ Schritte.
 
 	%1.c
-	\item Es muss gelten $s + x\cdot a + y \cdot b = t$, also muss $x\cdot a + y\cdot b \mid s-t$ gelten,
-	und damit gilt $x\cdot a + \y \cdot b = k \cdot \gcd(s,t)$. Dies
-	löst man mit dem erweiterten Euklidischen Algorithmus. Man benötigt (mindestens) $x+y$ Schritte.
+	\item Es muss gelten $s + x\cdot a + y \cdot b = t$, also muss $x\cdot a + y\cdot b = t-s$ gelten,
+	und damit gilt $x'\cdot a + y' \cdot b = \gcd(s,t)$. Dies
+	löst man mittels EEA. Man benötigt (mindestens) $x+y$ Schritte.
 \end{flushalpha}
 
 %2.a
@@ -62,24 +63,24 @@ Die linke Seite (Summendarstellung) ist eine ganze Zahl, da $y^i$ und $x^{n-1-i}
 die rechte Seite auch eine ganze Zahl sein, also gilt die gewünschte Teilbarkeitsbeziehung.
 
 %2.b
-\item Da $q>1$ aus der Angabe folgt, gilt mit sukzessivem Ausklammern von $(n^b - 1)$:
+\item Für $q=0$ ist das offensichtlich. Sei nun $q>0$. Dann gilt mit sukzessivem Ausklammern von $(n^b - 1)$:
 \[ n^a - 1 = n^{b\cdotq + r} - 1 = (n^b - 1)n^{b(q-1) + r} + n^{b(q-1) + r} - 1 =\]\[=  (n^b - 1)n^{b(q-1) + r} + (n^b - 1)n^{b(q-2) + r} + n^{b(q-2) + r} + \ldots
 +n^{b(q-q) + r} - 1 =\]\[= k \cdot (n^b-1) + n^r - 1 \]
-Der Faktor $k$ ist somit \[ k = (n^a-1) \div (n^b -1) = \sum_{i=1}^{q-1} n^{b\cdot i + r} \]
+Der Faktor $k$ ist somit \[ k = (n^a-1) \text{div} (n^b -1) = \sum_{i=1}^{q-1} n^{b\cdot i + r} \]
 %2.c
 \item Es gilt $\gcd(a,b) = \gcd(b,r)$ und $\gcd(n^a-1,n^b-1) = \gcd(n^b-1,n^r-1)$ nach voriger Teilaufgabe.
-Da $gcd(a,b) = \ldots = gcd( gcd(a,b), 0)$ im letzten Schritt im Euklidischen Algorithmus gilt ist somit $\gcd(n^a -1,n^b-1) = n^{\gcd(a,b)}-1$.
+Da $gcd(a,b) = \ldots = gcd( gcd(a,b), 0)$ im letzten Schritt des Euklidischen Algorithmus gilt, ist somit $\gcd(n^a -1,n^b-1) = n^{\gcd(a,b)}-1$.
 \end{flushalpha}
 %3.
-\item Der Zusammenhang zwischen $\gcd(a,b)$ und $\lcm(a,b)$ ist: $\gcd(a,b) \cdot \lcm(a,b) = |a \cdot b|$. Mit einem effizienten Algorithmus für $\gcd$ (Euklid)
-hat man somit automatisch auch einen für $\lcm$.
+\item Der Zusammenhang zwischen $\gcd(a,b)$ und $\text{lcm}(a,b)$ ist: $\gcd(a,b) \cdot \text{lcm}(a,b) = |a \cdot b|$. Mit einem effizienten Algorithmus für $\gcd$ (Euklid)
+hat man somit automatisch auch einen für $\text{lcm}$.
 
 %4.
 \item $\gcd(F_n, F_{n+1}) = \gcd(F_n, F_n + F_{n-1}) = \gcd(F_{n-1}, F_n) = \ldots = \gcd(F_0, F_1) = 1$
 %5.
 \item Mittels EEA kann man die Bézout-Koeffizienten bestimmen:
 \[ s \cdot 17 \pm t \cdot 11 = \gcd(17,11) \]
-Sowie Koeffizienten:
+Sowie Koeffizienten $a,b \neq 0$:
 \[ a \cdot 17 \pm b \cdot 11 = 0 \]
 Wenn $k \cdot \gcd(17,11) = 542$ gilt, hat man die Lösungsmenge:
 \[ (s + i\cdot a)17 \pm (t + i\cdot b)11 = 542 \]
@@ -98,5 +99,15 @@ Die konkreten Zahlenwerte lassen dann erkennen wie groß die Lösungsmenge in $\
 \item EEA für $12$ und $236$, Bézout-Koeffizienten. Gilt $\gcd(236,12) \mid 30$, gibt es eine Lösung.
 
 %10.
+\item $\phi(46) = \phi(2) \cdot \phi(23) = 22$ ($\phi(p) = p-1$, $p$ prim).
+ Inverse von $13$ und $31$ mittels EEA für $\gcd(13,46)$ bzw. $\gcd(31,46)$ durchführen, der entsprechende Bézout-Koeffizient ist das Inverse.
+ Es gilt für alle $a$: $\text{ord}_{N} a \mid \phi(N)$ in $\mathbb{Z}_N^{\times}$. Damit ist die Ordnung von $a$ und $b$ entweder $11$ oder $22$.
+ Berechnung von $3^{11} \equiv 1 \bmod 46$, also Ordnung $11$. $5^{11} \equiv 45 \equiv -1 \bmod 46$, also Ordnung $22$.
+
+% 11.
+\item Es gilt in $\mathbb{Z}_N^{\times}$: $a^x \equiv a^{x \bmod \phi(N)} \equiv a^{x \bmod \text{ord}_N a} \bmod N$.
+
+% 12.
+\item Es gilt $n = p\cdot q$, $q = n/p$, $\phi(n) = (p-1)(q-1) = p\cdot q - p - q + 1$. $n - \phi(n) = p + n/p - 1$. Dies ist eine quadratische Gleichung in p.
 
 \end{flushenum}
