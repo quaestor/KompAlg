@@ -117,15 +117,15 @@
 %3.
 \item
 	Per Induktion zeigt man:
-	\begin{enumerate}
+	\begin{itemize}
 		\item \textit{I.A.}: \[ p(1) = \frac{(2 \cdot 1)!}{2^1 \cdot 1!} = 1 \]
-		\item \textit{I.V.}: \[ \exists n \in \mathbb{N}\backslash\{0\}: p(n) = \frac{(2n)!}{2^n \cdot n!} \]
+		\item \textit{I.V.}: \[ \exists n \in \mathbb{N}\setminus\{0\}: p(n) = \frac{(2n)!}{2^n \cdot n!} \]
 		\item \textit{I.S.}: $ n \rightarrow n+1$: Mit Aufgabenteil 2. gilt:
 			\[ p(n+1) = (2 (n+1) - 1) \cdot p(n) \overset{I.V.}{=} (2n + 1) \cdot \frac{(2n)!}{2^n \cdot n!} = \]
 			\[ (2n + 1) \cdot \frac{(2n)!}{2^n \cdot n!} \cdot \frac{(2n + 1)(2n + 2)\cdot 2 \cdot (n+1)}{(2n+1)(2n + 2) \cdot2 \cdot (n+1)} = 
 			   \frac{(2n+1) \cdot 2 \cdot (n+1)}{(2n + 1) (2n +2)}\frac{(2n+2)!}{2^{n+1} \cdot (n+1)!} \]
 			\[ = \frac{(2(n+1))!}{2^{n+1}\cdot (n+1)!} \]
-	\end{enumerate}
+	\end{itemize}
 
 %4.
 \item
