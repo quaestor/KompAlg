@@ -63,16 +63,17 @@
 {\usecounter{itemcounter}\leftmargin=1.4em}}{\end{list}}
 
 % Alphanumerische Aufzählung ohne Einr.
+\newcounter{itemcounter2}
 \newenvironment{flushalpha}{
 \begin{list}
-{\alph{itemcounter})}
-{\usecounter{itemcounter}\leftmargin=1.4em}}{\end{list}}
+{\alph{itemcounter2})}
+{\usecounter{itemcounter2}\leftmargin=1.4em}}{\end{list}}
 
 % Alphanumerische Aufzählung ohne Einr. mit Klammerung
 \newenvironment{flushalphb}{
 \begin{list}
-{(\alph{itemcounter})}
-{\usecounter{itemcounter}\leftmargin=1.4em}}{\end{list}}
+{(\alph{itemcounter2})}
+{\usecounter{itemcounter2}\leftmargin=1.4em}}{\end{list}}
 
 \setkomafont{title}{\normalfont}
 \setkomafont{pageheadfoot}{\normalfont}
