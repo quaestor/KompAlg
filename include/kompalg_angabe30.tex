@@ -1,0 +1,46 @@
+Ein Permutation $\sigma=\sigma_1\,\sigma_2\, \sigma_3\,\ldots \,\sigma_{2n}$ der Zahlen
+$\{1,2,\ldots,2n\}$ soll \emph{perfekt} heissen, wenn folgendes gilt:
+\[
+\sigma_1 < \sigma_3 < \sigma_5 < \cdots < \sigma_{2n-1}~~~\text{und}~~~
+\sigma_1 < \sigma_2, \, \sigma_3 < \sigma_4 , \,   \ldots , \, \sigma_{2n-1} < \sigma_{2n}
+\]
+Anschaulich bedeutet das: ordnet man die $2n$ Zahlen $\sigma_1, \ldots,\sigma_{2n}$
+folgenderma\ss en spaltenweise in einer Matrix an
+\[
+\begin{bmatrix}
+\sigma_1 & \sigma_3 & \ldots & \sigma_{2n-1} \cr
+\sigma_2 & \sigma_4 & \ldots & \sigma_{2n}
+\end{bmatrix}
+\] 
+so sind alle Spalten und die die erste Zeile dieser Matrix monoton wachsende Folgen.
+Die zweite Zeile muss nicht monoton wachsend sein.
+
+Als Beispiel: für $n=2$ gibt es drei perfekte Permutationen:
+\[
+1234 \leftrightarrow \begin{bmatrix} 1 & 3 \cr 2 & 4 \end{bmatrix} ~~~
+1324\leftrightarrow \begin{bmatrix} 1 & 2 \cr 3 & 4 \end{bmatrix} ~~~~
+ 1423\leftrightarrow\begin{bmatrix} 1 & 2 \cr 4 & 3 \end{bmatrix} 
+\]
+
+\begin{enumerate}
+\item Stellen Sie durch Auflisten aller Möglichkeiten fest, dass es genau 15 perfekte Permutationen 
+	von $\{1,2,3,4,5,6\}$ gibt.
+\item Bezeichnet nun $p(n)$ die Anzahl der perfekten Permutationen von $\{1,2,\ldots,2n\}$,
+	so zeigen Sie die Rekursion $p(n)= (2n-1)\cdot p(n-1)$ (mit dem Anfangswert $p(1)=1$).\\
+	Hinweis: Betrachten sie die Matrixdarstellung, so muss die ''1''   in der Position $(1,1)$ stehen
+	und in der Position $(2,1)$ kann eine der $2n-1$ Zahlen $2 \leq k \leq 2n$ stehen. Das sollte
+	Sie auf ein Verfahren füren, wie man alle Möglichkeiten konstruiert.
+\item Zeigen Sie
+	\[
+	p(n) = \frac{(2n)!}{2^n \cdot n!}~~~~~(n \geq 1).
+	\]
+\item Verwenden Sie die Formel von \textsc{Stirling}, um eine Aussage über das
+	asymptotische Verhalten der Folge $(p(n))_{n  \geq 1}$ zu erhalten. Folgt daraus,
+	dass diese Folge \emph{nicht} C-rekursiv ist?
+\item Angenommen, Sie sollen ein Sortierverfahren für perfekte Listen entwerfen, also für 
+	Listen, bei denen die Grössenverhältnisse der Listenelemente denen einer perfekten
+	Permutation entsprechen. Geben Sie eine \emph{untere Schranke} für die
+	Anzahl der Vergleichsoperationen an (worst-case und average-case), die \emph{jeder}
+	hierfür geeignete Algorithmus benötigt.
+\end{enumerate}
+
