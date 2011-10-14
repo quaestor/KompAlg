@@ -48,69 +48,130 @@
 			zwei jeweils kleinsten Häufigkeiten ergibt sich dann
 			der nebenstehende Baum und damit der Code.
 			\begin{table}[!ht]
-				\centering
-			\begin{tabular}{c|c|c}
-				Bitvektor & Wahrscheinlichkeit & Häufigkeit \\
-				\verb|000|& $\left(\frac{7}{8}\right)^3$ & $\frac{343}{512}$ \\
-				\verb|001|& $\frac{1}{8}\left(\frac{7}{8}\right)^2$ & $\frac{49}{512}$ \\
-				\verb|010|& $\frac{1}{8}\left(\frac{7}{8}\right)^2$ & $\frac{49}{512}$ \\
-				\verb|011|& $\left(\frac{1}{8}\right)^2\frac{7}{8}$ & $\frac{7}{512}$ \\
-				\verb|100|& $\frac{1}{8}\left(\frac{7}{8}\right)^2$ & $\frac{49}{512}$ \\
-				\verb|101|& $\left(\frac{1}{8}\right)^2\frac{7}{8}$ & $\frac{7}{512}$ \\
-				\verb|110|& $\left(\frac{1}{8}\right)^2\frac{7}{8}$ & $\frac{7}{512}$ \\
-				\verb|000|& $\left(\frac{1}{8}\right)^3$ & $\frac{1}{512}$
-			\end{tabular}
-			\end{table}
-			
-			\begin{tikzpicture}
-				\tikzstyle{every node}=[circle,level distance=2.5cm,sibling distance=3.5cm]
-				\node {512}
+			\centering
+			\begin{tikzpicture}[font=\small,every node/.style={shape=circle},
+					    level 1/.style={sibling distance=1.3cm,level distance=1.1cm},
+					    level 2/.style={sibling distance=2.3cm},
+					    level 3/.style={sibling distance=1.3cm},
+					    level 4/.style={sibling distance=2.3cm},
+					    level 5/.style={sibling distance=1.3cm}]
+				\path[use as bounding box] (-5,-3.3) rectangle (11,3.3);
+				\node[scale=1.0,font=\normalsize] (tbl) {
+				\begin{tabular}{c|c|c}
+				        Bitvektor & Wahrscheinlichkeit & Häufigkeit \\
+				        \hline
+				        000& $\left(\frac{7}{8}\right)^3$ & $\frac{343}{512}$ \\
+				        001& $\frac{1}{8}\cdot\left(\frac{7}{8}\right)^2$ & $\frac{49}{512}$ \\
+				        010& $\frac{1}{8}\cdot\left(\frac{7}{8}\right)^2$ & $\frac{49}{512}$ \\
+				        011& $\left(\frac{1}{8}\right)^2\cdot\frac{7}{8}$ & $\frac{7}{512}$ \\
+				        100& $\frac{1}{8}\cdot\left(\frac{7}{8}\right)^2$ & $\frac{49}{512}$ \\
+				        101& $\left(\frac{1}{8}\right)^2\cdot\frac{7}{8}$ & $\frac{7}{512}$ \\
+				        110& $\left(\frac{1}{8}\right)^2\cdot\frac{7}{8}$ & $\frac{7}{512}$ \\
+				        111& $\left(\frac{1}{8}\right)^3$ & $\frac{1}{512}$
+				\end{tabular}};
+				\node[scale=0.8,draw] at (6,2.7) {512}
 				  child {
-				    node {343}
+				    node[scale=0.8,draw] {343}
 				    edge from parent
-				    node[left] {0}
+				    node[font=\scriptsize,left] {0}
 				  }
 				  child {
-				    node {169}
+				    node[scale=0.8,draw] {169}
 				      child {
-				        node {98}
+				        node[scale=0.8,draw] {98}
 					  child {
-					    node {49}
+					    node[scale=0.8,draw] {49}
+					    edge from parent
+					    node[font=\scriptsize,left] {0}
 					  }
 					  child {
-					    node {49}
+					    node[scale=0.8,draw] {49}
+					    edge from parent
+					    node[font=\scriptsize,right] {1}
 					  }
+					  edge from parent
+					  node[font=\scriptsize,left] {0}
 				      }
 				      child {
-				        node {71}
+				        node[scale=0.8,draw] {71}
 					  child {
-					    node {49}
+					    node[scale=0.8,draw] {49}
+					    edge from parent
+					    node[font=\scriptsize,left] {0}
 					  }
 					  child {
-					    node {22}
+					    node[scale=0.8,draw] {22}
 					      child {
-					        node {14}
+					        node[scale=0.8,draw] {14}
 						  child {
-						    node {7}
+						    node[scale=0.8,draw] {7}
+						    edge from parent
+						    node[font=\scriptsize,left] {0}
 						  }
 						  child {
-						    node {7}
+						    node[scale=0.8,draw] {7}
+						    edge from parent
+						    node[font=\scriptsize,right] {1}
 						  }
+						  edge from parent
+						  node[font=\scriptsize,left] {0}
 					      }
 					      child {
-					        node {8}
+					        node[scale=0.8,draw] {8}
 						  child {
-						    node {7}
+						    node[scale=0.8,draw] {7}
+						    edge from parent
+						    node[font=\scriptsize,left] {0}
 						  }
 						  child {
-						    node {1}
+						    node[scale=0.8,draw] {1}
+						    edge from parent
+						    node[font=\scriptsize,right] {1}
 						  }
+						  edge from parent
+						  node[font=\scriptsize,right] {1}
 					      }
+					      edge from parent
+					      node[font=\scriptsize,right] {1}
 					  }
+					  edge from parent
+					  node[font=\scriptsize,right] {1}
 				      }
 				    edge from parent
-				    node[right] {1}
+				    node[font=\scriptsize,right] {1}
 				  };
 			\end{tikzpicture}
+			\end{table}
+			
+			Die mittlere Wortlänge ist $\mu_{1/8}^{(3)} =
+			\frac{1}{512} \left(343\cdot1 + 49\cdot3\cdot3 +
+			7\cdot5\cdot3 + 1\cdot5\right) \approx 1.75$.
+
+		\item Nach dem Quellcodierungstheorem von \textsc{Shannon} gilt
+			für die mittlere Höhe des Baumes $t$ mit
+			Wahrscheinlichkeitsverteilung
+			$\beta_p^{(n)}$
+			\[
+			  \operatorname{H}\left(\beta_p^{(n)}\right) \leq
+			  h\left(t, \beta_p^{(n)}\right) \leq
+			  \operatorname{H}\left(\beta_p^{(n)}\right) + 1.
+			\]
+			Die mittlere Codelänge $\mu_p^{(n)}$ ist genau
+			$h\left(t, \beta_p^{(n)}\right)$. Mit
+			$\operatorname{H}\left(\beta_p^{(n)}\right) = n \cdot
+			\operatorname{H}(p, 1-p)$ ergibt sich nach Division
+			durch $n$
+			\[
+			  \operatorname{H}(p, 1-p) \leq \frac{\mu_p^{(n)}}{n}
+			  \leq \operatorname{H}(p, 1-p) + \frac{1}{n}.
+			\]
+			Die Grenzwerte für $n \rightarrow \infty$ der linken
+			und rechten Seite der Ungleichung existieren und sind
+			identisch, daher kann
+			\[
+			  \lim_{n\rightarrow\infty} \frac{\mu_p^{(n)}}{n} =
+			  \operatorname{H}(p, 1-p)
+			\]
+			gefolgert werden.
 		\end{flushalpha}
 \end{flushenum}
