@@ -1,0 +1,116 @@
+\section*{Entropie für Bitvektoren}
+\addcontentsline{toc}{subsection}{Entropie für Bitvektoren}
+\subsection*{Angabe}
+\input{include/kompalg2010_angabe26}
+
+%%%
+% Lösung
+%%%
+\subsection*{Lösung}
+\begin{flushenum}
+	\item Gilt $p_{i,j} = r_i \cdot c_j$ für alle  $1 \leq i \leq m$ und $1
+		\leq j \leq n$, so ist
+		\begin{align*}
+			\operatorname{H}[X,Y] &= -\sum_{i=1}^m \sum_{j=1}^n
+			\Pr[X=i, Y=j] \cdot \log \Pr[X=i, Y=j] = - \sum_{i,j}
+			p_{i,j} \log p_{i,j} \\
+			&= - \sum_{i,j} p_{i,j} \log \left(r_i \cdot c_j\right) =
+			- \sum_{i,j} p_{i,j}\left(\log r_i + \log c_j\right) \\
+			&= - \sum_{j=1}^n \left(\sum_{i=1}^m p_{i,j}\right)
+			\log r_i - \sum_{i=1}^m \left(\sum_{j=1}^n
+			p_{i,j}\right) \log c_j \\ 
+			&= - \sum_{j=1}^n r_i \log r_i - \sum_{i=1}^m c_j \log
+			c_j = \operatorname{H}[X] + \operatorname{H}[Y].
+		\end{align*}
+	\item \begin{flushalpha}
+		\item Aus der vorigen Aufgabe wissen wir, dass -- wegen
+			unabhängiger $X_i$ --
+			$\operatorname{H}[X_1,X_2,\dots,X_n] =
+			\operatorname{H}[X_1] + \operatorname{H}[X_2] + \cdots
+			+ \operatorname{H}[X_n]$ ist. Zudem haben alle $X_i$
+			dieselbe Verteilung $\beta_p$, sodass gilt:
+			\[
+			  \operatorname{H}[X_1,X_2,\dots,X_n] = n \cdot
+			  \operatorname{H}[X_1] = n \cdot
+			  \operatorname{H}(p,1-p).
+			\]
+		\item Mit $p=1/8$ und $n=3$ ist
+			\begin{align*}
+				\operatorname{H}[X_1,X_2,X_3] &= 3 \cdot
+				\operatorname{H}\left(\frac{1}{8},\frac{7}{8}\right)
+				\\
+				&= 3 \cdot \left(- \frac{1}{8}
+				\log\left(\frac{1}{8}\right) - \frac{7}{8}
+				\log\left(\frac{7}{8}\right)\right) \approx 1.63. \\
+			\end{align*}
+			Der optimale Präfixcode lässt sich aus folgender
+			Tabelle konstruieren. Durch schrittweise Addition der
+			zwei jeweils kleinsten Häufigkeiten ergibt sich dann
+			der nebenstehende Baum und damit der Code.
+			\begin{table}[!ht]
+				\centering
+			\begin{tabular}{c|c|c}
+				Bitvektor & Wahrscheinlichkeit & Häufigkeit \\
+				\verb|000|& $\left(\frac{7}{8}\right)^3$ & $\frac{343}{512}$ \\
+				\verb|001|& $\frac{1}{8}\left(\frac{7}{8}\right)^2$ & $\frac{49}{512}$ \\
+				\verb|010|& $\frac{1}{8}\left(\frac{7}{8}\right)^2$ & $\frac{49}{512}$ \\
+				\verb|011|& $\left(\frac{1}{8}\right)^2\frac{7}{8}$ & $\frac{7}{512}$ \\
+				\verb|100|& $\frac{1}{8}\left(\frac{7}{8}\right)^2$ & $\frac{49}{512}$ \\
+				\verb|101|& $\left(\frac{1}{8}\right)^2\frac{7}{8}$ & $\frac{7}{512}$ \\
+				\verb|110|& $\left(\frac{1}{8}\right)^2\frac{7}{8}$ & $\frac{7}{512}$ \\
+				\verb|000|& $\left(\frac{1}{8}\right)^3$ & $\frac{1}{512}$
+			\end{tabular}
+			\end{table}
+			
+			\begin{tikzpicture}
+				\tikzstyle{every node}=[circle,level distance=2.5cm,sibling distance=3.5cm]
+				\node {512}
+				  child {
+				    node {343}
+				    edge from parent
+				    node[left] {0}
+				  }
+				  child {
+				    node {169}
+				      child {
+				        node {98}
+					  child {
+					    node {49}
+					  }
+					  child {
+					    node {49}
+					  }
+				      }
+				      child {
+				        node {71}
+					  child {
+					    node {49}
+					  }
+					  child {
+					    node {22}
+					      child {
+					        node {14}
+						  child {
+						    node {7}
+						  }
+						  child {
+						    node {7}
+						  }
+					      }
+					      child {
+					        node {8}
+						  child {
+						    node {7}
+						  }
+						  child {
+						    node {1}
+						  }
+					      }
+					  }
+				      }
+				    edge from parent
+				    node[right] {1}
+				  };
+			\end{tikzpicture}
+		\end{flushalpha}
+\end{flushenum}

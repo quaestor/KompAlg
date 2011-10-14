@@ -1,0 +1,71 @@
+%%%
+% Angabe: Entropie für Bitvektoren
+%%%
+
+$X$ und $Y$ seien Zufallsvariable, die auf dem gleichen Wahrscheinlichkeitsraum
+$(\Omega, \Pr)$ definiert sind und nur endlich-viele Werte annehmen,
+beispielsweise $X$ die Werte $\{1,2,\dots,m\}$ und $Y$ die Werte
+$\{1,2,\dots,n\}$. Dann sind die zugehörigen Wahrscheinlichkeiten wie üblich
+definiert:
+\[
+  p_{i,j} = \Pr[X=i,Y=j]\ (1\leq i\leq m, 1\leq j\leq n),
+\]
+als die \glqq gemeinsame Verteilung\grqq\ von $X$ und $Y$, sowie
+\begin{align*}
+	r_i &= \sum_{j=1}^n p_{i,j} = \Pr[X=i]\ (1 \leq i \leq m)\quad \text{(Verteilung von $X$)}\\
+	c_j &= \sum_{i=1}^m p_{i,j} = \Pr[Y=j]\ (1 \leq j \leq n)\quad \text{(Verteilung von $Y$)},
+\end{align*}
+d.h.\ die $r_i$ bzw.\ $c_j$ sind die Zeilensummen bzw.\ Spaltensummen der
+Matrix $[p_{i,j}]_{\substack{1\leq i\leq m\\ 1\leq j\leq n}}$.
+
+Die Zufallsvariablen $X$ und $Y$ sind \emph{unabhängig}, falls $p_{i,j} = r_i
+\cdot c_j$ für alle $1\leq i\leq m$ und $1\leq j\leq n$ gilt.
+
+\begin{flushenum}
+	\item Zeigen Sie, dass im Falle der Unabhängigkeit von $X$ und $Y$ die Gleichung
+		\[ \operatorname{H}(X,Y) = \operatorname{H}(X) +
+		\operatorname{H}(Y) \]
+		für die beteiligten Entropien gilt. Dabei ist die Entropie von
+		Zufallsvariablen nichts anderes als die Entropie ihrer
+		Verteilung.
+	\item Es bezeichne $\mathbb{B}^n$ die Menge der Bitstrings der Länge
+		$n$. Für $p$ mit $0\leq p\leq 1$ bezeichne $\beta_p$ die
+		Wahrscheinlichkeitsverteilung mit $\beta_p(1) = p, \beta_p(0) =
+		1 - p$ auf $\mathbb{B}$. Für $n\geq 1$ ist dann $\beta_p^{(n)}$
+		die \emph{Binomialverteilung} zum Parameter $p$ auf
+		$\mathbb{B}^n$, d.h.\ jeder Bitstring $w = w_1 w_2 \dots w_n
+		\in \mathbb{B}^n$ erhält die Wahrscheinlichkeit
+		\[ \beta_p^{(n)}(w_1 w_2 \dots w_n) =
+		\beta_p(w_1)\cdot\beta_p(w_2) \cdots \beta_p(w_n) = p^{\lvert
+		w\rvert}(1-p)^{n-\lvert w\rvert}, \]
+		wobei $\lvert w\rvert = \#_1(w)$ das \textsc{Hamming}-Gewicht
+		von $w$ bezeichnet. Das zeigt, dass die Zufallsvariablen $X_1,
+		X_2, \dots, X_n$ mit $X_j : \mathbb{B}^n \mapsto \mathbb{B} : w
+		= w_1 w_2 \dots w_n \mapsto w_j$ unabhängig sind und jeweils
+		$\beta_p$ als Verteilung haben.
+
+		Betrachten Sie nun die Quellen $Q_p^{(n)} = \left(\mathbb{B}^n,
+		\beta_p^{(n)}\right)$.
+		\begin{flushalpha}
+			\item Wie drückt sich die Entropie
+				$\operatorname{H}_p^{(n)}$ der Quelle
+				$Q_p^{(n)}$ mittels der
+				En\-tro\-pie\-funk\-tion $\operatorname{H}(x,
+				1-x)$ aus?
+			\item Berechnen Sie für die Quelle $Q_{1/8}^{(3)}$
+				deren Entropie, sowie einen optimalen binären
+				Präfixcode und bestimmen Sie dessen mittlere
+				(erwartete) Wortlänge. (Hinweis: verwenden Sie
+				bei der Berechnung der Entropie den numerischen
+				Wert $\log_2 7 \approx 2.807$; bei der
+				Berechnung des Codes ist es bequemer, mit
+				Häufigkeiten statt mit Wahrscheinlichkeiten zu
+				rechnen.)
+			\item Sei $\mu_p^{(n)}$ die mittlere (erwartete)
+				Wortlänge eines optimalen Präfixcodes für die
+				Quelle $Q_p^{(n)}$. Zeigen Sie:
+				\[ \lim_{n\rightarrow\infty}
+				\frac{\mu_p^{(n)}}{n} = \operatorname{H}(p,
+				1-p). \]
+		\end{flushalpha}
+\end{flushenum}
